@@ -1,0 +1,1 @@
+private ManagerList managerList = new ManagerList();
