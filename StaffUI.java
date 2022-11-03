@@ -83,7 +83,6 @@ public class StaffUI {
         System.out.println("Option 2: Get Movie List");
         // System.out.println("Option 3: Update Movie Showtimes");
 
-        StaffUI newUI = new StaffUI(owner);
         do {
             try {
                 choice = sc.nextInt();
