@@ -1,14 +1,18 @@
 import java.io.Serializable;
 
-public class Customer implements Serializable {
+public class Customer extends User implements Serializable {
     private int customerID;
     private Status type;
     private String name;
+    private static final long serialVersionUID = 1L;
 
     public Customer(int id, Status type, String name) {
-        this.customerID = id;
+        super(id, name);
         this.type = type;
-        this.name = name;
+    }
+
+    public Status getStatus() {
+        return type;
     }
 
 }

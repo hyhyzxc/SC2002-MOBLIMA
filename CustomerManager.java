@@ -1,29 +1,32 @@
 import java.util.*;
 import java.io.*;
 
-public class CustomerManager {
+public class CustomerManager implements AccountManager {
     private ArrayList<CustomerAccount> accountList;
     private int numAccounts;
 
     public CustomerManager() {
-        numAccounts = 0;
-        accountList = Serializer.getCustomerAccounts("CustomerAccountData.ser");
+        CustomerAccountSerializer s = new CustomerAccountSerializer();
+        accountList = s.getCustomerAccounts("CustomerAccountData.ser");
         if (accountList == null) {
             accountList = new ArrayList<CustomerAccount>();
         }
+        numAccounts = accountList.size();
     }
 
-    public void createNewAccount(Customer owner, String username, String password) {
-        CustomerAccount newAccount = new CustomerAccount(owner, username, password);
+    public void createNewAccount(User owner, String username, String password) {
+        CustomerAccountSerializer s = new CustomerAccountSerializer();
+        CustomerAccount newAccount = new CustomerAccount((Customer) owner, username, password);
         accountList.add(newAccount);
-        Serializer.saveCustomerAccounts(accountList, "CustomerAccountData.ser");
+        s.saveCustomerAccounts(accountList, "CustomerAccountData.ser");
 
         System.out.println("Customer Account Successfully Created.");
         LoginUI.main(null);
     }
 
     public CustomerAccount validateLoginDetails(String username, String password) {
-        accountList = Serializer.getCustomerAccounts("CustomerAccountData.ser");
+        CustomerAccountSerializer s = new CustomerAccountSerializer();
+        accountList = s.getCustomerAccounts("CustomerAccountData.ser");
         for (int i = 0; i < accountList.size(); i++) {
             String accountUN = accountList.get(i).getUsername();
             String accountPW = accountList.get(i).getPassword();
@@ -34,4 +37,5 @@ public class CustomerManager {
         }
         return null;
     }
+
 }

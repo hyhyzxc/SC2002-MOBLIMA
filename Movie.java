@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class Movie {
+public class Movie implements Serializable {
     private ArrayList<Float> ratings;
     private int movieID;
     private ArrayList<String> reviews;
@@ -10,6 +11,7 @@ public class Movie {
     private ShowingStatus status;
     private String director;
     private ArrayList<String> cast;
+    private static final long serialVersionUID = 4361251724076664901L;
 
     public Movie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
             int movieID) {
@@ -19,7 +21,18 @@ public class Movie {
         this.director = director;
         this.cast = cast;
         this.movieID = movieID;
+        this.averageRatings = 0;
+        ratings = new ArrayList<Float>();
+        reviews = new ArrayList<String>();
 
+    }
+
+    public ShowingStatus getStatus() {
+        return status;
+    }
+
+    public ArrayList<String> getCast() {
+        return cast;
     }
 
     public String getTitle() {
@@ -30,14 +43,12 @@ public class Movie {
         return this.movieID;
     }
 
-    public String getDetails() {
-        String castString = String.join(",", this.cast);
-        String reviewString = String.join("\n", this.reviews);
-        String details = "Movie Title: " + this.title + "\nSynopsis: " + this.synopsis + "\nDirector"
-                + this.director + "\nCast: " + castString + "\nStatus" + this.status
-                + "\nAverage Rating: " + getAverageRatings() + "\nReviews: " + reviewString;
+    public String getSynopsis() {
+        return synopsis;
+    }
 
-        return details;
+    public String getDirector() {
+        return director;
     }
 
     public void addReview(String review) {

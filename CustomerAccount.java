@@ -1,26 +1,13 @@
 import java.io.Serializable;
 
-public class CustomerAccount implements Serializable {
+public class CustomerAccount extends Account implements Serializable {
     private Customer owner;
     private String username;
     private String password;
-    private ManagerList managers;
+    private static final long serialVersionUID = 9091804401885457679L;
 
-    public CustomerAccount(Customer owner, String username, String password) {
-        this.owner = owner;
-        this.username = username;
-        this.password = password;
+    public CustomerAccount(User owner, String username, String password) {
+        super(owner, username, password);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public Customer owner() {
-        return owner;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }
