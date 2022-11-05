@@ -1,0 +1,118 @@
+package moblima.UI;
+
+import java.util.*;
+
+import moblima.Database.*;
+import moblima.Entity.*;
+import moblima.Exceptions.*;
+import moblima.Manager.*;
+import moblima.Serializer.MovieSerializer;
+
+public class CustomerUI {
+
+    private static CustomerAccount owner;
+    private ManagerList managerList = new ManagerList();
+    static final Scanner sc = new Scanner(System.in);
+    static final CustomerUI customerUI = new CustomerUI(owner);
+
+    public CustomerUI(CustomerAccount account) {
+        this.owner = account;
+    }
+
+    public void getAllMovieDetails() {
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movieList = MM.getMovieList();
+        if (movieList == null) {
+            System.out.println("No movies in database");
+            return;
+        }
+        for (int i = 0; i < movieList.size(); i++) {
+            System.out.println("------------------");
+            System.out.println("Movie No: " + (i + 1));
+            System.out.println("Title: " + movieList.get(i).getTitle());
+            System.out.println("Synopsis: " + movieList.get(i).getSynopsis());
+            System.out.println("Status: " + movieList.get(i).getStatus().toString());
+            System.out.println("Director: " + movieList.get(i).getDirector());
+            ArrayList<String> castList = movieList.get(i).getCast();
+            String castString = "|" + String.join("|", castList);
+            System.out.println("Cast: " + castString);
+            double avgRatings = Math.round(movieList.get(i).getAverageRatings() * 10) / 10.0;
+            if (avgRatings != 0)
+                System.out.println("Average Ratings: " + avgRatings);
+            else
+                System.out.println("Average Ratings: NA");
+            ArrayList<String> reviews = movieList.get(i).getReviews();
+            for (int j = 0; j < reviews.size(); j++) {
+                System.out.println("Review " + (j + 1) + ": " + reviews.get(j));
+            }
+
+            System.out.println("------------------");
+        }
+    }
+
+    public void addRatingAndReview() throws InvalidInputException {
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movieList = MM.getMovieList();
+        customerUI.getAllMovieDetails();
+        System.out.println("Choose the Movie Number to rate.");
+
+        int choice = sc.nextInt();
+        if (!(choice >= 1 && choice <= movieList.size())) {
+            throw new InvalidInputException();
+        }
+        System.out.println("Enter the rating from 1 - 5");
+        float rating = sc.nextFloat();
+        if (rating < 1 || rating > 5) {
+            throw new InvalidInputException();
+        }
+        MM.addNewMovieRating(rating, choice - 1);
+        System.out.println("Rating made!");
+
+        System.out.println("Enter review. Press Enter to terminate. ");
+        sc.nextLine();
+        String review = sc.nextLine();
+        MM.addNewMovieReview(review, choice - 1);
+        System.out.println("Review made!");
+    }
+
+    private static void showErrorMessage() {
+        System.out.println("Invalid option. Please enter a valid option. ");
+    }
+
+    public static void main(String[] args) {
+        int choice = 0;
+        do {
+            System.out.println("---------------------");
+            System.out.println("    Customer Menu    ");
+            System.out.println("---------------------");
+            System.out.println("Select options:");
+            System.out.println("Option 1: View All Movie Details");
+            System.out.println("Option 2: Add Rating and Review to Movie");
+
+            try {
+                choice = sc.nextInt();
+            } catch (Exception e) {
+                sc.nextLine();
+                showErrorMessage();
+                continue;
+            }
+            switch (choice) {
+                case 1:
+                    customerUI.getAllMovieDetails();
+                    break;
+                case 2:
+                    try {
+                        customerUI.addRatingAndReview();
+                    } catch (InvalidInputException e) {
+                        System.out.println(e.getMessage());
+
+                    }
+                    customerUI.main(null);
+                    break;
+                default:
+                    showErrorMessage();
+            }
+        } while (1 <= choice && choice <= 3);
+        System.out.println("exited");
+    }
+}
