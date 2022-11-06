@@ -36,8 +36,11 @@ public class LoginUI {
         Status type = (ageGroup == 1) ? Status.STUDENT : (ageGroup == 2) ? Status.ADULT : Status.SENIOR_CITIZEN;
 
         int id = r.nextInt(10000);
-
-        Customer newCustomer = new Customer(id, type, name, "", "");
+        
+        String email = "f ";
+        String phoneNumber = " f";
+        
+        Customer newCustomer = new Customer(id, type, name, email, phoneNumber);
 
         System.out.println("Enter your username: ");
         String username = sc.next();
