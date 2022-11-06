@@ -86,7 +86,7 @@ public class CustomerUI {
     	}
     }
 
-    public static void main(String[] args) {
+    public void main() {
         int choice = 0;
         do {
             System.out.println("---------------------");

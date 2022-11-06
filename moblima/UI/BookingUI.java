@@ -144,7 +144,7 @@ public class BookingUI {
         }
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) throws InvalidEmailException, InvalidPhoneNoException{
 
         System.out.println("------------------");
         System.out.println("   Booking Menu   ");

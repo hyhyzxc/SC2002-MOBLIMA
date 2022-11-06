@@ -28,7 +28,7 @@ public class BookingHistoryUI {
         }
     }
 
-    public static void main(String[] args) {
+    public void main() {
         getBookingHistory();
         return;
     }

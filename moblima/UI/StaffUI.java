@@ -213,7 +213,7 @@ public class StaffUI {
     	}
     }
 
-    public static void main(String[] args) {
+    public void main() {
 
         int choice = 0;
 
