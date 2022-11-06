@@ -89,8 +89,8 @@ public class BookingUI {
             throw new InvalidInputException();
         }
         Seat seatChosen = seats.get(seatChoice - 1);
-
         System.out.println("Enter 1 to make Payment, 0 to return to menu.");
+        /* TODO: ask user for mobile no and email, verify first */
         int payment = sc.nextInt();
         if (payment == 0) {
             return;
