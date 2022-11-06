@@ -1,14 +1,15 @@
 package moblima.Entity;
 
-public class Seat {
+import java.io.Serializable;
+
+public abstract class Seat implements Serializable {
     private boolean occupied;
     private int seatID;
-    private SeatType seatType;
 
-    public Seat(int seatID, SeatType seatType) {
+    public Seat(int seatID) {
         this.occupied = false;
         this.seatID = seatID;
-        this.seatType = seatType;
+
     }
 
     public boolean isOccupied() {
@@ -31,12 +32,12 @@ public class Seat {
         }
     }
 
-    public SeatType getST() {
-        return this.seatType;
-    }
-
     public int getSeatID() {
         return this.seatID;
     }
+
+    public abstract SeatType getSeatType();
+
+    public abstract double getPriceProportion();
 
 }

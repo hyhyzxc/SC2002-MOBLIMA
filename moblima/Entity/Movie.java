@@ -3,7 +3,7 @@ package moblima.Entity;
 import java.io.Serializable;
 import java.util.*;
 
-public class Movie implements Serializable {
+public abstract class Movie implements Serializable {
     private ArrayList<Float> ratings;
     private int movieID;
     private ArrayList<String> reviews;
@@ -80,5 +80,7 @@ public class Movie implements Serializable {
     public ArrayList<String> getReviews() {
         return reviews;
     }
+
+    public abstract double getPriceProportion();
 
 }

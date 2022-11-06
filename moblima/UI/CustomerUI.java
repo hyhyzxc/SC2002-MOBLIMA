@@ -85,9 +85,13 @@ public class CustomerUI {
             System.out.println("---------------------");
             System.out.println("    Customer Menu    ");
             System.out.println("---------------------");
+            System.out.println("Hi! " + owner.getUsername());
             System.out.println("Select options:");
             System.out.println("Option 1: View All Movie Details");
             System.out.println("Option 2: Add Rating and Review to Movie");
+            System.out.println("Option 3: Make Booking");
+            System.out.println("Option 4: View Booking History");
+            System.out.println("0: exit");
 
             try {
                 choice = sc.nextInt();
@@ -97,6 +101,9 @@ public class CustomerUI {
                 continue;
             }
             switch (choice) {
+                case 0:
+                    System.out.println("Goodbye!" + owner.getUsername());
+                    return;
                 case 1:
                     customerUI.getAllMovieDetails();
                     break;
@@ -107,8 +114,15 @@ public class CustomerUI {
                         System.out.println(e.getMessage());
 
                     }
-                    customerUI.main(null);
                     break;
+                case 3:
+                    BookingUI bUI = new BookingUI(owner);
+                    bUI.main(null);
+                    break;
+
+                case 4:
+                    BookingUI bUI = new BookingUI(owner);
+
                 default:
                     showErrorMessage();
             }

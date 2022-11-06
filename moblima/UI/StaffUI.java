@@ -1,6 +1,8 @@
 package moblima.UI;
 
 import java.lang.reflect.Array;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import moblima.Database.*;
@@ -50,7 +52,29 @@ public class StaffUI {
                 cast.add(newCast);
             } while (!newCast.isEmpty());
             int movieID = r.nextInt(100000);
-            Movie newMovie = new Movie(title, synopsis, status, director, cast, movieID);
+            System.out.println("Enter the type of Movie.");
+            System.out.println("1: Regular");
+            System.out.println("2: Blockbuster");
+            System.out.println("3: 3D Movie");
+            int movieType = sc.nextInt();
+            if (movieType < 1 || movieType > 3) {
+                throw new InvalidInputException();
+            }
+            Movie newMovie;
+            switch (movieType) {
+                case 1:
+                    newMovie = new RegularMovie(title, synopsis, status, director, cast, movieID, 2.0);
+                    break;
+                case 2:
+                    newMovie = new BlockbusterMovie(title, synopsis, status, director, cast, movieID, 3.0);
+                    break;
+                case 3:
+                    newMovie = new ThreeDMovie(title, synopsis, status, director, cast, movieID, 4.0);
+                    break;
+                default:
+                    throw new InvalidInputException();
+            }
+            ;
             MM.addNewMovie(newMovie);
         } catch (Exception e) {
             System.out.println("Error input!");
@@ -101,6 +125,63 @@ public class StaffUI {
 
     }
 
+    public void updateCineplexMovies() throws InvalidInputException {
+        CinemaManager CM = managerList.getCinemaManager();
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movieList = MM.getMovieList();
+        ArrayList<Cineplex> cineplexList = CM.getCineplexList();
+        int cont = 1;
+        do {
+
+            for (int i = 0; i < cineplexList.size(); i++) {
+                System.out.printf("%d: %s\n", (i + 1), cineplexList.get(i).getLocation());
+            }
+            System.out.println("Select Cineplex");
+            int cineplexChoice = sc.nextInt();
+            if (cineplexChoice < 1 || cineplexChoice > cineplexList.size()) {
+                throw new InvalidInputException();
+            }
+
+            for (int i = 0; i < movieList.size(); i++) {
+                System.out.printf("%d: %s\n", (i + 1), movieList.get(i).getTitle());
+            }
+            System.out.println("Select Movie to add to Cineplex");
+            int movieChoice = sc.nextInt();
+            if (movieChoice < 1 || movieChoice > movieList.size()) {
+                throw new InvalidInputException();
+            }
+            Movie movie = movieList.get(movieChoice - 1);
+            sc.nextLine();
+            System.out.println("Enter Movie Showtime in format DD/MM/YYYY h:mm a");
+            String movieShowtime = sc.nextLine();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+            LocalDateTime showtime = LocalDateTime.parse(movieShowtime, dtf);
+            System.out.println("Enter Movie Endtime in format DD/MM/YYYY hh:mm a");
+            String movieEndtime = sc.nextLine();
+            DateTimeFormatter dtff = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+            LocalDateTime endtime = LocalDateTime.parse(movieEndtime, dtff);
+            Session session = new Session(movie, showtime, endtime);
+
+            CM.addSessionToCineplex(session, cineplexChoice - 1);
+            System.out.println("To terminate press 0. Else press any digit");
+            cont = sc.nextInt();
+        } while (cont != 0);
+    }
+
+    public void getAllSessions() {
+        CinemaManager CM = managerList.getCinemaManager();
+        ArrayList<Session> sessions = CM.getAllSessions();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        for (int i = 0; i < sessions.size(); i++) {
+            System.out.println("------------------");
+            System.out.println("Session No: " + (i + 1));
+            System.out.println("Movie Title: " + sessions.get(i).getMovie().getTitle());
+            System.out.println("Start Time: " + sessions.get(i).getSessionDateTimeStart().format(dtf));
+            System.out.println("End Time: " + sessions.get(i).getSessionDateTimeEnd().format(dtf));
+            System.out.println("------------------");
+        }
+    }
+
     public static void main(String[] args) {
 
         int choice = 0;
@@ -111,6 +192,8 @@ public class StaffUI {
         System.out.println("Option 1: Add New Movie");
         System.out.println("Option 2: Get Movie List");
         System.out.println("Option 3: Remove Movie");
+        System.out.println("Option 4: Update Movie Location and Showtimes");
+        System.out.println("Option 5: View All Sessions");
 
         do {
             try {
@@ -126,7 +209,7 @@ public class StaffUI {
                     try {
                         staffUI.addNewMovie();
                     } catch (InvalidInputException e) {
-                        e.getMessage();
+                        System.out.println(e.getMessage());
                     }
                     staffUI.main(null);
                     break;
@@ -140,9 +223,24 @@ public class StaffUI {
                     try {
                         staffUI.removeMovie();
                     } catch (InvalidInputException e) {
-                        e.getMessage();
+                        System.out.println(e.getMessage());
                     }
                     staffUI.main(null);
+                    break;
+
+                case 4:
+                    try {
+                        staffUI.updateCineplexMovies();
+                    } catch (InvalidInputException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    staffUI.main(null);
+                    break;
+
+                case 5:
+                    staffUI.getAllSessions();
+                    staffUI.main(null);
+                    break;
                 default:
                     showErrorMessage();
             }

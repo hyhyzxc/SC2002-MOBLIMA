@@ -4,16 +4,17 @@ import java.util.*;
 import java.io.*;
 
 import moblima.Database.*;
+import moblima.Entity.Cineplex;
 import moblima.Entity.CustomerAccount;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
 
-public class CustomerAccountSerializer extends Serializer {
-    public CustomerAccountSerializer() {
+public class CinemaSerializer extends Serializer {
+    public CinemaSerializer() {
         super();
     }
 
-    public static void saveCustomerAccounts(ArrayList<CustomerAccount> o, String filename) {
+    public static void saveCineplexStatus(ArrayList<Cineplex> o, String filename) {
         try {
             FileOutputStream fileOut = new FileOutputStream(filename);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -25,14 +26,14 @@ public class CustomerAccountSerializer extends Serializer {
         }
     }
 
-    public static ArrayList<CustomerAccount> getCustomerAccounts(String fileName) {
+    public static ArrayList<Cineplex> getCineplexStatus(String fileName) {
         FileInputStream fi = null;
         ObjectInputStream os = null;
-        ArrayList<CustomerAccount> accountList = null;
+        ArrayList<Cineplex> cineplexList = null;
         try {
             fi = new FileInputStream(fileName);
             os = new ObjectInputStream(fi);
-            accountList = ((ArrayList<CustomerAccount>) os.readObject());
+            cineplexList = ((ArrayList<Cineplex>) os.readObject());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (EOFException e) {
@@ -51,6 +52,6 @@ public class CustomerAccountSerializer extends Serializer {
                 // if this fails, it's probably open, so just do nothing
             }
         }
-        return accountList;
+        return cineplexList;
     }
 }

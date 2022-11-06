@@ -1,7 +1,8 @@
 package moblima.Entity;
 
 public enum SeatType {
-    NORMAL("Normal"),
+    REGULAR("Regular"),
+    COUPLE("Couple"),
     ELITE("Elite"),
     ULTIMA("Ultima");
 

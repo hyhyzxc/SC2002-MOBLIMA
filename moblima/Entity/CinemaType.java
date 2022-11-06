@@ -2,7 +2,8 @@ package moblima.Entity;
 
 public enum CinemaType {
     REGULAR("Regular"),
-    PLATINUM_MOVIE_SUITES("Platinum");
+    PLATINUM_MOVIE_SUITES("Platinum"),
+    GOLD_CLASS("Gold Class");
 
     private String name;
 
