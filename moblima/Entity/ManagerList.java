@@ -1,6 +1,7 @@
 package moblima.Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import moblima.Manager.*;
 

@@ -46,6 +46,11 @@ public class CinemaManager {
         return sessions;
     }
 
+    public void unreserveSeat(Seat seat) {
+        seat.setEmpty();
+        s.saveCineplexStatus(cineplexList, "CineplexDatabase.ser");
+    }
+
     public void reserveSeat(Seat seat) {
         seat.setOccupied();
         s.saveCineplexStatus(cineplexList, "CineplexDatabase.ser");
