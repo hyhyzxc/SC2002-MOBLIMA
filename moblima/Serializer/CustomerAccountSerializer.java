@@ -3,7 +3,6 @@ package moblima.Serializer;
 import java.util.*;
 import java.io.*;
 
-import moblima.Database.*;
 import moblima.Entity.CustomerAccount;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
