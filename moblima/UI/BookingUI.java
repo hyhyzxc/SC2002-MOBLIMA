@@ -18,7 +18,7 @@ public class BookingUI {
         this.owner = owner;
     }
 
-    private static void makeBooking() throws InvalidInputException {
+    private static void makeBooking() throws InvalidInputException, InvalidEmailException, InvalidPhoneNoException {
         CinemaManager CM = managerList.getCinemaManager();
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
@@ -90,7 +90,8 @@ public class BookingUI {
         }
         Seat seatChosen = seats.get(seatChoice - 1);
         System.out.println("Enter 1 to make Payment, 0 to return to menu.");
-        /* TODO: Ask user for Email and mobile number before payment */
+        
+        /* TODO: Ask user for Email and mobile number before payment */      
         /* TODO: Print price before payment */
         int payment = sc.nextInt();
         if (payment == 0) {
@@ -114,9 +115,29 @@ public class BookingUI {
                 return;
             }
             System.out.println("Enter email: ");
-            String email = sc.next();
+            String email = sc.nextLine();
+            char[] emailArray = email.toCharArray();
+            boolean valid = false;
+            for (int i = 0; i < email.length(); i++){
+                if (emailArray[i] == '@'){
+                    for (int j = i; j < email.length(); j++){
+                        if (emailArray[j] == '.'){
+                            valid = true;
+                            break;
+                        } 
+                    }
+                }
+            }
+            if (valid == false){
+                throw new InvalidEmailException();
+            }
+
             System.out.println("Enter mobile number: ");
-            String mobile = sc.next();
+            String mobile = sc.nextLine();
+            if (mobile.length() != 8 && mobile.length() != 9){
+                throw new InvalidPhoneNoException();
+            }
+
             BM.addNewBooking(newBooking);
             System.out.println(
                     "Receipt has been sent to your email and sms, please show them to the staff at movie entrance.");
