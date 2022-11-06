@@ -8,14 +8,28 @@ import moblima.Manager.*;
 import java.util.*;
 
 public class BookingUI {
+    /**
+     * The owner of the customer account that is making the booking. 
+     */
     private static CustomerAccount owner;
     private static ManagerList managerList = new ManagerList();
     static final Scanner sc = new Scanner(System.in);
     static final BookingUI bUI = new BookingUI(owner);
-
+    /**
+     * Creates a new BookingUI with the specified owner
+     * @param owner This BookingUI's owner
+     */
     public BookingUI(CustomerAccount owner) {
         this.owner = owner;
     }
+    /**
+     * Creates a booking.
+     * A booking will consist of a cineplex number, date and time of a movie, cinema number, seat number.
+     * A booking with settle the payment process and collect the owner's validated email and handphone number. 
+     * @throws InvalidInputException
+     * @throws InvalidEmailException
+     * @throws InvalidPhoneNoException
+     */
 
     private static void makeBooking() throws InvalidInputException, InvalidEmailException, InvalidPhoneNoException {
         CinemaManager CM = managerList.getCinemaManager();
@@ -143,8 +157,12 @@ public class BookingUI {
 
         }
     }
-
-    public void main() throws InvalidEmailException, InvalidPhoneNoException{
+    /**
+     * Driver function of BookingUI
+     * Displays the outline of the main menu and calls makeBooking()
+     * @param args
+     */
+    public void main(){
 
         System.out.println("------------------");
         System.out.println("   Booking Menu   ");
