@@ -3,7 +3,7 @@ package moblima.Entity;
 public enum DayType {
 
     WEEKDAY("Weekday"),
-    WEEEKEND("Weekend"),
+    WEEKEND("Weekend"),
     PUBLIC_HOLIDAY("Public Holiday");
 
     private String name;

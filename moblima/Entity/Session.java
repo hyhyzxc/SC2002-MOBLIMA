@@ -7,11 +7,13 @@ public class Session implements Serializable {
     private Movie movie;
     private LocalDateTime sessionDateTimeStart;
     private LocalDateTime sessionDateTimeEnd;
+    private DayType day;
 
-    public Session(Movie movie, LocalDateTime sessionDateTimeStart, LocalDateTime sessionDateTimeEnd) {
+    public Session(Movie movie, LocalDateTime sessionDateTimeStart, LocalDateTime sessionDateTimeEnd, DayType day) {
         this.movie = movie;
         this.sessionDateTimeStart = sessionDateTimeStart;
         this.sessionDateTimeEnd = sessionDateTimeEnd;
+        this.day = day;
     }
 
     public Movie getMovie() {
@@ -24,5 +26,9 @@ public class Session implements Serializable {
 
     public LocalDateTime getSessionDateTimeEnd() {
         return sessionDateTimeEnd;
+    }
+
+    public DayType getDay() {
+        return day;
     }
 }

@@ -35,7 +35,7 @@ public class StaffUI {
             System.out.println("3: Now Showing");
             System.out.println("4: End of Showing");
             int statusChoice = sc.nextInt();
-            if (statusChoice < 1 || statusChoice > 3) {
+            if (statusChoice < 1 || statusChoice > 4) {
                 throw new InvalidInputException();
             }
             ShowingStatus status = (statusChoice == 1) ? ShowingStatus.COMING_SOON
@@ -151,16 +151,31 @@ public class StaffUI {
                 throw new InvalidInputException();
             }
             Movie movie = movieList.get(movieChoice - 1);
+
             sc.nextLine();
             System.out.println("Enter Movie Showtime in format DD/MM/YYYY h:mm a");
             String movieShowtime = sc.nextLine();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
             LocalDateTime showtime = LocalDateTime.parse(movieShowtime, dtf);
+
             System.out.println("Enter Movie Endtime in format DD/MM/YYYY hh:mm a");
             String movieEndtime = sc.nextLine();
             DateTimeFormatter dtff = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
             LocalDateTime endtime = LocalDateTime.parse(movieEndtime, dtff);
-            Session session = new Session(movie, showtime, endtime);
+
+            System.out.println("Enter Day Type");
+            System.out.println("1: Weekday");
+            System.out.println("2: Weekend");
+            System.out.println("3: Public Holiday");
+            int dayChoice = sc.nextInt();
+            if (dayChoice < 1 || dayChoice > 3) {
+                throw new InvalidInputException();
+            }
+            DayType day = (dayChoice == 1) ? DayType.WEEKDAY
+                    : (dayChoice == 2) ? DayType.WEEKEND : DayType.PUBLIC_HOLIDAY;
+            sc.nextLine();
+
+            Session session = new Session(movie, showtime, endtime, day);
 
             CM.addSessionToCineplex(session, cineplexChoice - 1);
             System.out.println("To terminate press 0. Else press any digit");
@@ -178,6 +193,7 @@ public class StaffUI {
             System.out.println("Movie Title: " + sessions.get(i).getMovie().getTitle());
             System.out.println("Start Time: " + sessions.get(i).getSessionDateTimeStart().format(dtf));
             System.out.println("End Time: " + sessions.get(i).getSessionDateTimeEnd().format(dtf));
+            System.out.println("Day Type: " + sessions.get(i).getDay());
             System.out.println("------------------");
         }
     }
@@ -205,7 +221,7 @@ public class StaffUI {
             System.out.println("Option 4: Update Movie Location and Showtimes");
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
-            /* TODO: Add function to configure Date */
+
             /* TODO: Add function to configure Price */
 
             try {
@@ -257,6 +273,7 @@ public class StaffUI {
                 case 6:
                     staffUI.getAllBookings();
                     break;
+
                 default:
                     showErrorMessage();
             }
