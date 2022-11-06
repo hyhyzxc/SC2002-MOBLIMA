@@ -2,7 +2,6 @@ package moblima.UI;
 
 import java.util.*;
 
-import moblima.Database.*;
 import moblima.Entity.*;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
@@ -78,8 +77,17 @@ public class CustomerUI {
     private static void showErrorMessage() {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
+    
+    public void showTop5Movies() {
+    	MovieManager MM = managerList.getMovieManager();
+    	ArrayList<Movie> movies = MM.getSorted();
+    	System.out.println("Title (Rating):");
+    	for (int i = 0; i < 5; i++) {
+    		System.out.printf("%s (%f)\n", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
+    	}
+    }
 
-    public static void main(String[] args) {
+    public void main() throws InvalidEmailException, InvalidPhoneNoException {
         int choice = 0;
         do {
             System.out.println("---------------------");
@@ -91,6 +99,7 @@ public class CustomerUI {
             System.out.println("Option 2: Add Rating and Review to Movie");
             System.out.println("Option 3: Make Booking");
             System.out.println("Option 4: View Booking History");
+            System.out.println("Option 5: View Top 5 Movies by Rating");
             System.out.println("0: exit");
 
             try {
@@ -117,18 +126,22 @@ public class CustomerUI {
                     break;
                 case 3:
                     BookingUI bUI = new BookingUI(owner);
-                    bUI.main(null);
+                    bUI.main();
                     break;
 
                 case 4:
                     BookingHistoryUI BHUI = new BookingHistoryUI(owner);
-                    BHUI.main(null);
+                    BHUI.main();
                     break;
 
+                case 5:
+                	customerUI.showTop5Movies();
+                	break;
+                
                 default:
                     showErrorMessage();
             }
-        } while (1 <= choice && choice <= 4);
+        } while (1 <= choice && choice <= 5);
         System.out.println("exited");
     }
 }

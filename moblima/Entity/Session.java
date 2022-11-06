@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Session implements Serializable {
-    private Movie movie;
+	private Movie movie;
     private LocalDateTime sessionDateTimeStart;
     private LocalDateTime sessionDateTimeEnd;
     private DayType day;

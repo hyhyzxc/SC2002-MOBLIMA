@@ -3,22 +3,21 @@ package moblima.UI;
 import java.util.*;
 
 import javax.swing.text.html.parser.Entity;
-import moblima.Database.*;
 import moblima.Entity.*;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
 import moblima.*;
 
 public class LoginUI {
-    Scanner sc = new Scanner(System.in);
-    Random r = new Random();
-    private ManagerList managerList = new ManagerList();
+    private static Scanner sc = new Scanner(System.in);
+    private static Random r = new Random();
+    private static ManagerList managerList = new ManagerList();
 
     public LoginUI() {
         ;
     }
 
-    public void registerCustomer() throws InvalidInputException {
+    public static void registerCustomer() throws InvalidInputException {
         CustomerManager CM = managerList.getCustomerManager();
         System.out.println("Welcome to registration page for new Customer!");
         System.out.println("Please input name: ");
@@ -37,8 +36,8 @@ public class LoginUI {
         Status type = (ageGroup == 1) ? Status.STUDENT : (ageGroup == 2) ? Status.ADULT : Status.SENIOR_CITIZEN;
 
         int id = r.nextInt(10000);
-
-        Customer newCustomer = new Customer(id, type, name);
+        
+        Customer newCustomer = new Customer(id, type, name, "", "");
 
         System.out.println("Enter your username: ");
         String username = sc.next();
@@ -47,7 +46,7 @@ public class LoginUI {
         CM.createNewAccount(newCustomer, username, password);
     }
 
-    public CustomerAccount loginCustomerAccount() {
+    public static CustomerAccount loginCustomerAccount() {
         CustomerManager CM = managerList.getCustomerManager();
         System.out.println("Welcome to login page for Customers!");
         System.out.println("Please input username");
@@ -58,7 +57,7 @@ public class LoginUI {
         return account;
     }
 
-    public void registerStaff() throws InvalidInputException {
+    public static void registerStaff() throws InvalidInputException {
         StaffManager SM = managerList.getStaffManager();
         System.out.println("Welcome to registration page for new Staff!");
         System.out.println("Please input name: ");
@@ -78,7 +77,7 @@ public class LoginUI {
 
     }
 
-    public StaffAccount loginStaffAccount() {
+    public static StaffAccount loginStaffAccount() {
         StaffManager SM = managerList.getStaffManager();
         System.out.println("Welcome to login page for Staff!");
         System.out.println("Please input username");
@@ -89,56 +88,57 @@ public class LoginUI {
         return account;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidEmailException, InvalidPhoneNoException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("--- Welcome to MOBLIMA ---");
-        System.out.println("1: Register as New Customer");
-        System.out.println("2: Login as Customer");
-        System.out.println("3: Register as New Staff");
-        System.out.println("4: Login as Staff");
-        int option = sc.nextInt();
-        LoginUI newUI = new LoginUI();
+        int option = 0;
+        do {
+        	System.out.println("--- Welcome to MOBLIMA ---");
+            System.out.println("1: Register as New Customer");
+            System.out.println("2: Login as Customer");
+            System.out.println("3: Register as New Staff");
+            System.out.println("4: Login as Staff");
+            option = sc.nextInt();
 
-        switch (option) {
-            case 1:
-                try {
-                    newUI.registerCustomer();
-                } catch (InvalidInputException e) {
-                    e.getMessage();
-                    newUI.main(null);
-                }
-                break;
-            case 2:
-                CustomerAccount account = newUI.loginCustomerAccount();
-                if (account != null) {
-                    CustomerUI CustomerAccountUI = new CustomerUI(account);
-                    CustomerAccountUI.main(null);
-                } else {
-                    System.out.println("Wrong password! Try again.");
-                    newUI.main(null);
-                }
-                break;
-            case 3:
-                try {
-                    newUI.registerStaff();
-                } catch (InvalidInputException e) {
-                    e.getMessage();
-                    newUI.main(null);
-                }
-                break;
-            case 4:
-                StaffAccount staffAccount = newUI.loginStaffAccount();
-                if (staffAccount != null) {
-                    StaffUI StaffAccountUI = new StaffUI(staffAccount);
-                    StaffAccountUI.main(null);
-                } else {
-                    System.out.println("Wrong password! Try again.");
-                    newUI.main(null);
-                }
-                break;
-            default:
-                break;
-        }
-
+            switch (option) {
+                case 1:
+                    try {
+                    	registerCustomer();
+                    } catch (InvalidInputException e) {
+                        e.getMessage();
+                    }
+                    break;
+                case 2:
+                	CustomerAccount account;
+                	while (true) {
+                		account = loginCustomerAccount();
+                		if (account == null) {
+                			System.out.println("Wrong password! Try again.");
+                		} else break;
+                	}
+                		CustomerUI CustomerAccountUI = new CustomerUI(account);
+                        CustomerAccountUI.main();
+                    break;
+                case 3:
+                    try {
+                        registerStaff();
+                    } catch (InvalidInputException e) {
+                        e.getMessage();
+                    }
+                    break;
+                case 4:
+                	StaffAccount staffAccount;
+                	while (true) {
+                		staffAccount = loginStaffAccount();
+                		if (staffAccount == null) {
+                			System.out.println("Wrong password! Try again.");
+                		} else break;
+                	}
+                        StaffUI StaffAccountUI = new StaffUI(staffAccount);
+                        StaffAccountUI.main();
+                    break;
+                default:
+                    break;
+            }
+        } while (1 <= option && option <= 4);
     }
 }

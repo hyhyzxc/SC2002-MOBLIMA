@@ -2,7 +2,6 @@ package moblima.UI;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import moblima.Database.*;
 import moblima.Entity.*;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
@@ -145,7 +144,7 @@ public class BookingUI {
         }
     }
 
-    public static void main(String[] args) {
+    public void main() throws InvalidEmailException, InvalidPhoneNoException{
 
         System.out.println("------------------");
         System.out.println("   Booking Menu   ");
@@ -153,7 +152,7 @@ public class BookingUI {
             makeBooking();
         } catch (InvalidInputException e) {
             System.out.println(e.getMessage());
-            bUI.main(null);
+            bUI.main();
             return;
         }
         return;

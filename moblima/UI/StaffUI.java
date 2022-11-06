@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import moblima.Database.*;
 import moblima.Entity.*;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
@@ -78,7 +77,7 @@ public class StaffUI {
             MM.addNewMovie(newMovie);
         } catch (Exception e) {
             System.out.println("Error input!");
-            staffUI.main(null);
+            staffUI.main();
         }
 
     }
@@ -205,8 +204,17 @@ public class StaffUI {
             booking.toTicket();
         }
     }
+    
+    public void viewMoviesByRating() {
+    	MovieManager MM = managerList.getMovieManager();
+    	ArrayList<Movie> movies = MM.getSorted();
+    	System.out.println("Title (Rating):");
+    	for (Movie m : movies) {
+    		System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+    	}
+    }
 
-    public static void main(String[] args) {
+    public void main() {
 
         int choice = 0;
 
@@ -221,6 +229,8 @@ public class StaffUI {
             System.out.println("Option 4: Update Movie Location and Showtimes");
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
+            System.out.println("Option 7: View Movies by Rating");
+            System.out.println("Option 0: Return to previous menu");
             /* TODO: Add function to configure Price */
 
             try {
@@ -272,11 +282,18 @@ public class StaffUI {
                 case 6:
                     staffUI.getAllBookings();
                     break;
-
+                   
+                case 7:
+                	staffUI.viewMoviesByRating();
+                	break;
+                
+                case 0:
+                	break;
+                	
                 default:
                     showErrorMessage();
             }
-        } while ((0 <= choice && choice <= 6));
+        } while ((1 <= choice && choice <= 7));
     }
 
     private static void showErrorMessage() {

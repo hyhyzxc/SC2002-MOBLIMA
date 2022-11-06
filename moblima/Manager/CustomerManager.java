@@ -30,7 +30,6 @@ public class CustomerManager implements AccountManager {
         s.saveCustomerAccounts(accountList, "CustomerAccountData.ser");
 
         System.out.println("Customer Account Successfully Created.");
-        LoginUI.main(null);
     }
 
     public CustomerAccount validateLoginDetails(String username, String password) {
@@ -39,7 +38,7 @@ public class CustomerManager implements AccountManager {
         for (int i = 0; i < accountList.size(); i++) {
             String accountUN = accountList.get(i).getUsername();
             String accountPW = accountList.get(i).getPassword();
-            System.out.println(accountUN + accountPW);
+            System.out.println(accountUN + " " + accountPW);
             if (accountUN.equals(username) && accountPW.equals(password)) {
                 return accountList.get(i);
             }

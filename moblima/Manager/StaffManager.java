@@ -27,7 +27,6 @@ public class StaffManager implements AccountManager {
         StaffAccountSerializer s = new StaffAccountSerializer();
         s.saveStaffAccounts(accountList, "StaffAccountData.ser");
         System.out.println("Staff Account Successfully Created.");
-        LoginUI.main(null);
 
     }
 
@@ -37,7 +36,7 @@ public class StaffManager implements AccountManager {
         for (int i = 0; i < accountList.size(); i++) {
             String accountUN = accountList.get(i).getUsername();
             String accountPW = accountList.get(i).getPassword();
-            System.out.println(accountUN + accountPW);
+            System.out.println(accountUN + " " + accountPW);
             if (accountUN.equals(username) && accountPW.equals(password)) {
                 return accountList.get(i);
             }
