@@ -124,6 +124,7 @@ public class CustomerUI {
                     BookingHistoryUI BHUI = new BookingHistoryUI(owner);
                     BHUI.main(null);
                     break;
+
                 default:
                     showErrorMessage();
             }

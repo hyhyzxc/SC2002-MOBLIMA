@@ -98,12 +98,28 @@ public class BookingUI {
         } else {
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss");
-            String datetime = now.format(df).substring(0, 14);
+            String datetime = now.format(df).substring(0, 14).replace(" ", "").replace(":", "");
+            System.out.println("this is datetime" + datetime);
             String TID = cinemaChosen.getCinemaID() + datetime;
             CM.reserveSeat(seatChosen);
             Booking newBooking = new Booking(TID, owner, sessionChosen, cineplexChosen, seatChosen);
             BookingManager BM = managerList.getBookingManager();
+            System.out.println("------------- Confirm Payment ------------");
+
+            PriceManager PM = managerList.getPriceManager(newBooking);
+
+            System.out.println("1: Proceed, 0: return to menu.");
+            int proceed = sc.nextInt();
+            if (proceed == 0) {
+                return;
+            }
+            System.out.println("Enter email: ");
+            String email = sc.next();
+            System.out.println("Enter mobile number: ");
+            String mobile = sc.next();
             BM.addNewBooking(newBooking);
+            System.out.println(
+                    "Receipt has been sent to your email and sms, please show them to the staff at movie entrance.");
 
         }
     }
