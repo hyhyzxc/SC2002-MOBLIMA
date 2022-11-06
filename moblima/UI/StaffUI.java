@@ -182,20 +182,32 @@ public class StaffUI {
         }
     }
 
+    public void getAllBookings() {
+        BookingManager BM = managerList.getBookingManager();
+        ArrayList<Booking> bookings = BM.getBookings();
+        for (Booking booking : bookings) {
+            booking.toTicket();
+        }
+    }
+
     public static void main(String[] args) {
 
         int choice = 0;
-        System.out.println("------------------");
-        System.out.println("    Staff Menu    ");
-        System.out.println("------------------");
-        System.out.println("Select options:");
-        System.out.println("Option 1: Add New Movie");
-        System.out.println("Option 2: Get Movie List");
-        System.out.println("Option 3: Remove Movie");
-        System.out.println("Option 4: Update Movie Location and Showtimes");
-        System.out.println("Option 5: View All Sessions");
 
         do {
+            System.out.println("------------------");
+            System.out.println("    Staff Menu    ");
+            System.out.println("------------------");
+            System.out.println("Select options:");
+            System.out.println("Option 1: Add New Movie");
+            System.out.println("Option 2: Get Movie List");
+            System.out.println("Option 3: Remove Movie");
+            System.out.println("Option 4: Update Movie Location and Showtimes");
+            System.out.println("Option 5: View All Sessions");
+            System.out.println("Option 6: View All Bookings");
+            /* TODO: Add function to configure Date */
+            /* TODO: Add function to configure Price */
+
             try {
                 choice = sc.nextInt();
                 sc.nextLine();
@@ -211,12 +223,12 @@ public class StaffUI {
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
-                    staffUI.main(null);
+                    // staffUI.main(null);
                     break;
 
                 case 2:
                     staffUI.getAllMovieDetails();
-                    staffUI.main(null);
+                    // staffUI.main(null);
                     break;
 
                 case 3:
@@ -225,7 +237,7 @@ public class StaffUI {
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
-                    staffUI.main(null);
+                    // staffUI.main(null);
                     break;
 
                 case 4:
@@ -234,17 +246,21 @@ public class StaffUI {
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
-                    staffUI.main(null);
+                    // staffUI.main(null);
                     break;
 
                 case 5:
                     staffUI.getAllSessions();
-                    staffUI.main(null);
+                    // staffUI.main(null);
+                    break;
+
+                case 6:
+                    staffUI.getAllBookings();
                     break;
                 default:
                     showErrorMessage();
             }
-        } while (!(0 <= choice && choice <= 3));
+        } while ((0 <= choice && choice <= 6));
     }
 
     private static void showErrorMessage() {

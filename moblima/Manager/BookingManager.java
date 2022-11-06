@@ -23,4 +23,18 @@ public class BookingManager {
         System.out.println("Booking Successfully Saved.");
     }
 
+    public ArrayList<Booking> getBookingsOfCustomer(CustomerAccount owner) {
+        ArrayList<Booking> customerBookings = new ArrayList<Booking>();
+        for (Booking booking : bookings) {
+            if (booking.getBooker().getUsername().equals(owner.getUsername())) {
+                customerBookings.add(booking);
+            }
+        }
+        return customerBookings;
+    }
+
+    public ArrayList<Booking> getBookings() {
+        return bookings;
+    }
+
 }

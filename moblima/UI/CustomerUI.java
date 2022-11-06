@@ -121,12 +121,13 @@ public class CustomerUI {
                     break;
 
                 case 4:
-                    BookingUI bUI = new BookingUI(owner);
-
+                    BookingHistoryUI BHUI = new BookingHistoryUI(owner);
+                    BHUI.main(null);
+                    break;
                 default:
                     showErrorMessage();
             }
-        } while (1 <= choice && choice <= 3);
+        } while (1 <= choice && choice <= 4);
         System.out.println("exited");
     }
 }
