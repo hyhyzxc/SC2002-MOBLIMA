@@ -37,7 +37,7 @@ public class LoginUI {
 
         int id = r.nextInt(10000);
 
-        Customer newCustomer = new Customer(id, type, name);
+        Customer newCustomer = new Customer(id, type, name, "", "");
 
         System.out.println("Enter your username: ");
         String username = sc.next();
