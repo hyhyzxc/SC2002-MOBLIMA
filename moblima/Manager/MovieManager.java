@@ -3,12 +3,13 @@ package moblima.Manager;
 import java.util.*;
 
 import moblima.Entity.Movie;
+import moblima.Entity.Sorter;
 import moblima.Serializer.MovieSerializer;
 import moblima.UI.StaffUI;
 
 import java.io.*;
 
-public class MovieManager {
+public class MovieManager implements Sorter {
     private ArrayList<Movie> movieList;
     private int numMovies;
     static MovieSerializer s = new MovieSerializer();
@@ -50,6 +51,12 @@ public class MovieManager {
 
     public ArrayList<Movie> getMovieList() {
         movieList = s.getMovieList("MovieDatabase.ser");
+        movieList.sort((m1, m2) -> Integer.compare(m1.getMovieID(), m2.getMovieID()));
         return movieList;
+    }
+    
+    public ArrayList<Movie> getSorted() {
+    	movieList.sort((m1, m2) -> Float.compare(m1.getAverageRatings(), m2.getAverageRatings()));
+    	return movieList;
     }
 }

@@ -205,6 +205,14 @@ public class StaffUI {
             booking.toTicket();
         }
     }
+    
+    public void viewMoviesByRating() {
+    	MovieManager MM = managerList.getMovieManager();
+    	ArrayList<Movie> movies = MM.getSorted();
+    	for (Movie m : movies) {
+    		System.out.printf("Title: %s -------- %d", m.getTitle(), m.getAverageRatings());
+    	}
+    }
 
     public static void main(String[] args) {
 
@@ -221,6 +229,7 @@ public class StaffUI {
             System.out.println("Option 4: Update Movie Location and Showtimes");
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
+            System.out.println("Option 7: View Movies by Rating");
             /* TODO: Add function to configure Price */
 
             try {
@@ -272,7 +281,11 @@ public class StaffUI {
                 case 6:
                     staffUI.getAllBookings();
                     break;
-
+                   
+                case 7:
+                	staffUI.viewMoviesByRating();
+                	break;
+                	
                 default:
                     showErrorMessage();
             }
