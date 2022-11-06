@@ -10,6 +10,7 @@ public class ManagerList {
     private StaffManager staffManager;
     private CinemaManager cinemaManager;
     private BookingManager bookingManager;
+    private PriceManager priceManager;
 
     public ManagerList() {
         this.customerManager = new CustomerManager();
@@ -17,6 +18,7 @@ public class ManagerList {
         this.staffManager = new StaffManager();
         this.cinemaManager = new CinemaManager();
         this.bookingManager = new BookingManager();
+        this.priceManager = new PriceManager();
     }
 
     public CustomerManager getCustomerManager() {
@@ -37,5 +39,9 @@ public class ManagerList {
 
     public BookingManager getBookingManager() {
         return bookingManager;
+    }
+
+    public PriceManager getPriceManager() {
+        return priceManager;
     }
 }
