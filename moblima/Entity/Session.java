@@ -4,10 +4,11 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Session implements Serializable {
-	private Movie movie;
+    private Movie movie;
     private LocalDateTime sessionDateTimeStart;
     private LocalDateTime sessionDateTimeEnd;
     private DayType day;
+    private static final long serialVersionUID = 4190978198976273755L;
 
     public Session(Movie movie, LocalDateTime sessionDateTimeStart, LocalDateTime sessionDateTimeEnd, DayType day) {
         this.movie = movie;

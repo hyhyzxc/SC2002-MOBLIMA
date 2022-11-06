@@ -9,23 +9,29 @@ import java.util.*;
 
 public class BookingUI {
     /**
-     * The owner of the customer account that is making the booking. 
+     * The owner of the customer account that is making the booking.
      */
     private static CustomerAccount owner;
     private static ManagerList managerList = new ManagerList();
     static final Scanner sc = new Scanner(System.in);
     static final BookingUI bUI = new BookingUI(owner);
+
     /**
      * Creates a new BookingUI with the specified owner
+     * 
      * @param owner This BookingUI's owner
      */
     public BookingUI(CustomerAccount owner) {
         this.owner = owner;
     }
+
     /**
      * Creates a booking.
-     * A booking will consist of a cineplex number, date and time of a movie, cinema number, seat number.
-     * A booking with settle the payment process and collect the owner's validated email and handphone number. 
+     * A booking will consist of a cineplex number, date and time of a movie, cinema
+     * number, seat number.
+     * A booking with settle the payment process and collect the owner's validated
+     * email and handphone number.
+     * 
      * @throws InvalidInputException
      * @throws InvalidEmailException
      * @throws InvalidPhoneNoException
@@ -103,8 +109,8 @@ public class BookingUI {
         }
         Seat seatChosen = seats.get(seatChoice - 1);
         System.out.println("Enter 1 to make Payment, 0 to return to menu.");
-        
-        /* TODO: Ask user for Email and mobile number before payment */      
+
+        /* TODO: Ask user for Email and mobile number before payment */
         /* TODO: Print price before payment */
         int payment = sc.nextInt();
         if (payment == 0) {
@@ -120,34 +126,35 @@ public class BookingUI {
             BookingManager BM = managerList.getBookingManager();
             System.out.println("------------- Confirm Payment ------------");
 
-            PriceManager PM = managerList.getPriceManager(newBooking);
+            // PriceManager PM = managerList.getPriceManager(newBooking);
 
             System.out.println("1: Proceed, 0: return to menu.");
             int proceed = sc.nextInt();
             if (proceed == 0) {
                 return;
             }
+            sc.nextLine();
             System.out.println("Enter email: ");
             String email = sc.nextLine();
             char[] emailArray = email.toCharArray();
             boolean valid = false;
-            for (int i = 0; i < email.length(); i++){
-                if (emailArray[i] == '@'){
-                    for (int j = i; j < email.length(); j++){
-                        if (emailArray[j] == '.'){
+            for (int i = 0; i < email.length(); i++) {
+                if (emailArray[i] == '@') {
+                    for (int j = i; j < email.length(); j++) {
+                        if (emailArray[j] == '.') {
                             valid = true;
                             break;
-                        } 
+                        }
                     }
                 }
             }
-            if (valid == false){
+            if (valid == false) {
                 throw new InvalidEmailException();
             }
 
             System.out.println("Enter mobile number: ");
             String mobile = sc.nextLine();
-            if (mobile.length() != 8 && mobile.length() != 9){
+            if (mobile.length() != 8 && mobile.length() != 9) {
                 throw new InvalidPhoneNoException();
             }
 
@@ -157,12 +164,14 @@ public class BookingUI {
 
         }
     }
+
     /**
      * Driver function of BookingUI
      * Displays the outline of the main menu and calls makeBooking()
+     * 
      * @param args
      */
-    public void main(){
+    public void main() {
 
         System.out.println("------------------");
         System.out.println("   Booking Menu   ");
@@ -172,6 +181,10 @@ public class BookingUI {
             System.out.println(e.getMessage());
             bUI.main();
             return;
+        } catch (InvalidEmailException ee) {
+            System.out.println(ee.getMessage());
+        } catch (InvalidPhoneNoException eee) {
+            System.out.println(eee.getMessage());
         }
         return;
     }
