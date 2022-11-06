@@ -78,6 +78,14 @@ public class CustomerUI {
     private static void showErrorMessage() {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
+    
+    public void showTop5Movies() {
+    	MovieManager MM = managerList.getMovieManager();
+    	ArrayList<Movie> movies = MM.getSorted();
+    	for (int i = 0; i < 5; i++) {
+    		System.out.printf("Title: %s -------- %d", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
+    	}
+    }
 
     public static void main(String[] args) {
         int choice = 0;
@@ -91,6 +99,7 @@ public class CustomerUI {
             System.out.println("Option 2: Add Rating and Review to Movie");
             System.out.println("Option 3: Make Booking");
             System.out.println("Option 4: View Booking History");
+            System.out.println("Option 5: View Top 5 Movies by Rating");
             System.out.println("0: exit");
 
             try {
@@ -125,6 +134,10 @@ public class CustomerUI {
                     BHUI.main(null);
                     break;
 
+                case 5:
+                	customerUI.showTop5Movies();
+                	break;
+                
                 default:
                     showErrorMessage();
             }
