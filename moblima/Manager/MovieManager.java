@@ -56,7 +56,7 @@ public class MovieManager implements Sorter {
     }
     
     public ArrayList<Movie> getSorted() {
-    	movieList.sort((m1, m2) -> Float.compare(m1.getAverageRatings(), m2.getAverageRatings()));
+    	movieList.sort((m1, m2) -> m1.getAverageRatings() > m2.getAverageRatings() ? -1 : 1);
     	return movieList;
     }
 }
