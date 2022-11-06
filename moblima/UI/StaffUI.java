@@ -208,8 +208,9 @@ public class StaffUI {
     public void viewMoviesByRating() {
     	MovieManager MM = managerList.getMovieManager();
     	ArrayList<Movie> movies = MM.getSorted();
+    	System.out.println("Title (Rating):");
     	for (Movie m : movies) {
-    		System.out.printf("Title: %s -------- %d", m.getTitle(), m.getAverageRatings());
+    		System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
     	}
     }
 
@@ -292,7 +293,7 @@ public class StaffUI {
                 default:
                     showErrorMessage();
             }
-        } while ((1 <= choice && choice <= 6));
+        } while ((1 <= choice && choice <= 7));
     }
 
     private static void showErrorMessage() {

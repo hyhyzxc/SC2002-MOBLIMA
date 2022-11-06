@@ -81,8 +81,9 @@ public class CustomerUI {
     public void showTop5Movies() {
     	MovieManager MM = managerList.getMovieManager();
     	ArrayList<Movie> movies = MM.getSorted();
+    	System.out.println("Title (Rating):");
     	for (int i = 0; i < 5; i++) {
-    		System.out.printf("Title: %s -------- %d", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
+    		System.out.printf("%s (%f)\n", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
     	}
     }
 
@@ -140,7 +141,7 @@ public class CustomerUI {
                 default:
                     showErrorMessage();
             }
-        } while (1 <= choice && choice <= 4);
+        } while (1 <= choice && choice <= 5);
         System.out.println("exited");
     }
 }

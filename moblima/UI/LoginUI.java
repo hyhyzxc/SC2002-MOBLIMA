@@ -37,10 +37,7 @@ public class LoginUI {
 
         int id = r.nextInt(10000);
         
-        String email = "f ";
-        String phoneNumber = " f";
-        
-        Customer newCustomer = new Customer(id, type, name, email, phoneNumber);
+        Customer newCustomer = new Customer(id, type, name, "", "");
 
         System.out.println("Enter your username: ");
         String username = sc.next();
@@ -111,14 +108,15 @@ public class LoginUI {
                     }
                     break;
                 case 2:
+                	CustomerAccount account;
                 	while (true) {
-                		CustomerAccount account = loginCustomerAccount();
+                		account = loginCustomerAccount();
                 		if (account == null) {
                 			System.out.println("Wrong password! Try again.");
                 		} else break;
+                	}
                 		CustomerUI CustomerAccountUI = new CustomerUI(account);
                         CustomerAccountUI.main();
-                	}
                     break;
                 case 3:
                     try {
