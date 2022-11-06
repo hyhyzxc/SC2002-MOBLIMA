@@ -229,6 +229,7 @@ public class StaffUI {
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Movies by Rating");
+            System.out.println("Option 0: Return to previous menu");
             /* TODO: Add function to configure Price */
 
             try {
@@ -284,11 +285,14 @@ public class StaffUI {
                 case 7:
                 	staffUI.viewMoviesByRating();
                 	break;
+                
+                case 0:
+                	break;
                 	
                 default:
                     showErrorMessage();
             }
-        } while ((0 <= choice && choice <= 6));
+        } while ((1 <= choice && choice <= 6));
     }
 
     private static void showErrorMessage() {

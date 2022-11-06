@@ -141,6 +141,6 @@ public class LoginUI {
                 default:
                     break;
             }
-        } while (option < 1 || option > 4);
+        } while (1 <= option && option <= 4);
     }
 }
