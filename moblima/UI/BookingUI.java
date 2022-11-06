@@ -90,7 +90,8 @@ public class BookingUI {
         }
         Seat seatChosen = seats.get(seatChoice - 1);
         System.out.println("Enter 1 to make Payment, 0 to return to menu.");
-        /* TODO: ask user for mobile no and email, verify first */
+        /* TODO: Ask user for Email and mobile number before payment */
+        /* TODO: Print price before payment */
         int payment = sc.nextInt();
         if (payment == 0) {
             return;

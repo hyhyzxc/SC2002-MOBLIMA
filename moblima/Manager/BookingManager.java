@@ -24,6 +24,7 @@ public class BookingManager {
     }
 
     public ArrayList<Booking> getBookingsOfCustomer(CustomerAccount owner) {
+        bookings = s.getBookings("BookingDatabase.ser");
         ArrayList<Booking> customerBookings = new ArrayList<Booking>();
         for (Booking booking : bookings) {
             if (booking.getBooker().getUsername().equals(owner.getUsername())) {
