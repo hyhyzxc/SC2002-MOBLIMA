@@ -221,7 +221,6 @@ public class StaffUI {
             System.out.println("Option 4: Update Movie Location and Showtimes");
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
-
             /* TODO: Add function to configure Price */
 
             try {
