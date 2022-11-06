@@ -1,4 +1,4 @@
-package Manager;
+package moblima.Manager;
 
 public class PriceManager {
     /* TODO */
