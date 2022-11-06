@@ -30,7 +30,6 @@ public class CustomerManager implements AccountManager {
         s.saveCustomerAccounts(accountList, "CustomerAccountData.ser");
 
         System.out.println("Customer Account Successfully Created.");
-        LoginUI.main(null);
     }
 
     public CustomerAccount validateLoginDetails(String username, String password) {

@@ -27,7 +27,6 @@ public class StaffManager implements AccountManager {
         StaffAccountSerializer s = new StaffAccountSerializer();
         s.saveStaffAccounts(accountList, "StaffAccountData.ser");
         System.out.println("Staff Account Successfully Created.");
-        LoginUI.main(null);
 
     }
 

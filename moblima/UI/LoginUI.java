@@ -91,7 +91,7 @@ public class LoginUI {
         return account;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidEmailException, InvalidPhoneNoException {
         Scanner sc = new Scanner(System.in);
         int option = 0;
         do {

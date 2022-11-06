@@ -77,7 +77,7 @@ public class StaffUI {
             MM.addNewMovie(newMovie);
         } catch (Exception e) {
             System.out.println("Error input!");
-            staffUI.main(null);
+            staffUI.main();
         }
 
     }
