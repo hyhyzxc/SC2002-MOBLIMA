@@ -111,13 +111,14 @@ public class LoginUI {
                     }
                     break;
                 case 2:
-                    CustomerAccount account = loginCustomerAccount();
-                    if (account != null) {
-                        CustomerUI CustomerAccountUI = new CustomerUI(account);
+                	while (true) {
+                		CustomerAccount account = loginCustomerAccount();
+                		if (account == null) {
+                			System.out.println("Wrong password! Try again.");
+                		} else break;
+                		CustomerUI CustomerAccountUI = new CustomerUI(account);
                         CustomerAccountUI.main();
-                    } else {
-                        System.out.println("Wrong password! Try again.");
-                    }
+                	}
                     break;
                 case 3:
                     try {
@@ -127,13 +128,15 @@ public class LoginUI {
                     }
                     break;
                 case 4:
-                    StaffAccount staffAccount = loginStaffAccount();
-                    if (staffAccount != null) {
+                	StaffAccount staffAccount;
+                	while (true) {
+                		staffAccount = loginStaffAccount();
+                		if (staffAccount == null) {
+                			System.out.println("Wrong password! Try again.");
+                		} else break;
+                	}
                         StaffUI StaffAccountUI = new StaffUI(staffAccount);
                         StaffAccountUI.main();
-                    } else {
-                        System.out.println("Wrong password! Try again.");
-                    }
                     break;
                 default:
                     break;
