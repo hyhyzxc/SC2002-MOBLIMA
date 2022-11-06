@@ -86,7 +86,7 @@ public class CustomerUI {
     	}
     }
 
-    public void main() {
+    public void main() throws InvalidEmailException, InvalidPhoneNoException {
         int choice = 0;
         do {
             System.out.println("---------------------");
@@ -125,12 +125,12 @@ public class CustomerUI {
                     break;
                 case 3:
                     BookingUI bUI = new BookingUI(owner);
-                    bUI.main(null);
+                    bUI.main();
                     break;
 
                 case 4:
                     BookingHistoryUI BHUI = new BookingHistoryUI(owner);
-                    BHUI.main(null);
+                    BHUI.main();
                     break;
 
                 case 5:
