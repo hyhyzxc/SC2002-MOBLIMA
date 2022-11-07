@@ -2,6 +2,7 @@ package moblima.UI;
 
 import java.util.*;
 
+import javax.swing.event.SwingPropertyChangeSupport;
 import javax.swing.text.html.parser.Entity;
 import moblima.Entity.*;
 import moblima.Exceptions.*;
@@ -36,7 +37,7 @@ public class LoginUI {
         Status type = (ageGroup == 1) ? Status.STUDENT : (ageGroup == 2) ? Status.ADULT : Status.SENIOR_CITIZEN;
 
         int id = r.nextInt(10000);
-        
+
         Customer newCustomer = new Customer(id, type, name, "", "");
 
         System.out.println("Enter your username: ");
@@ -92,7 +93,7 @@ public class LoginUI {
         Scanner sc = new Scanner(System.in);
         int option = 0;
         do {
-        	System.out.println("--- Welcome to MOBLIMA ---");
+            System.out.println("--- Welcome to MOBLIMA ---");
             System.out.println("1: Register as New Customer");
             System.out.println("2: Login as Customer");
             System.out.println("3: Register as New Staff");
@@ -102,21 +103,22 @@ public class LoginUI {
             switch (option) {
                 case 1:
                     try {
-                    	registerCustomer();
+                        registerCustomer();
                     } catch (InvalidInputException e) {
                         e.getMessage();
                     }
                     break;
                 case 2:
-                	CustomerAccount account;
-                	while (true) {
-                		account = loginCustomerAccount();
-                		if (account == null) {
-                			System.out.println("Wrong password! Try again.");
-                		} else break;
-                	}
-                		CustomerUI CustomerAccountUI = new CustomerUI(account);
-                        CustomerAccountUI.main();
+                    CustomerAccount account;
+                    while (true) {
+                        account = loginCustomerAccount();
+                        if (account == null) {
+                            System.out.println("Wrong password! Try again.");
+                        } else
+                            break;
+                    }
+                    CustomerUI CustomerAccountUI = new CustomerUI(account);
+                    CustomerAccountUI.main();
                     break;
                 case 3:
                     try {
@@ -126,15 +128,16 @@ public class LoginUI {
                     }
                     break;
                 case 4:
-                	StaffAccount staffAccount;
-                	while (true) {
-                		staffAccount = loginStaffAccount();
-                		if (staffAccount == null) {
-                			System.out.println("Wrong password! Try again.");
-                		} else break;
-                	}
-                        StaffUI StaffAccountUI = new StaffUI(staffAccount);
-                        StaffAccountUI.main();
+                    StaffAccount staffAccount;
+                    while (true) {
+                        staffAccount = loginStaffAccount();
+                        if (staffAccount == null) {
+                            System.out.println("Wrong password! Try again.");
+                        } else
+                            break;
+                    }
+                    StaffUI StaffAccountUI = new StaffUI(staffAccount);
+                    StaffAccountUI.main();
                     break;
                 default:
                     break;

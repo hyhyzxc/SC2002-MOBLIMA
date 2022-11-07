@@ -107,11 +107,12 @@ public class CustomerUI {
             System.out.println("Select options:");
             System.out.println("Option 1: View All Movie Details");
             System.out.println("Option 2: Add Rating and Review to Movie");
-            System.out.println("Option 3: Make Booking");
-            System.out.println("Option 4: View Booking History");
-            System.out.println("Option 5: View Top 5 Movies by Rating");
-            System.out.println("Option 6: View Top 5 Movies by Ticket Sales");
-            System.out.println("0: exit");
+            System.out.println("Option 3: View Seat Availability");
+            System.out.println("Option 4: Make Booking");
+            System.out.println("Option 5: View Booking History");
+            System.out.println("Option 6: View Top 5 Movies by Rating");
+            System.out.println("Option 7: View Top 5 Movies by Ticket Sales");
+            System.out.println("Click 0 to exit.");
 
             try {
                 choice = sc.nextInt();
@@ -136,27 +137,35 @@ public class CustomerUI {
                     }
                     break;
                 case 3:
+                    BookingUI UI = new BookingUI(owner);
+                    try {
+                        UI.viewSeatAvailability();
+                    } catch (InvalidInputException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 4:
                     BookingUI bUI = new BookingUI(owner);
                     bUI.main();
                     break;
 
-                case 4:
+                case 5:
                     BookingHistoryUI BHUI = new BookingHistoryUI(owner);
                     BHUI.main();
                     break;
 
-                case 5:
+                case 6:
                     customerUI.showTop5Movies();
                     break;
 
-                case 6:
+                case 7:
                     customerUI.showTop5MovieBySales();
                     break;
 
                 default:
                     showErrorMessage();
             }
-        } while (1 <= choice && choice <= 6);
+        } while (1 <= choice && choice <= 7);
         System.out.println("exited");
     }
 }
