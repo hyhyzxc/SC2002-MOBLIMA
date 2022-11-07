@@ -54,6 +54,10 @@ public class BookingUI {
         Cineplex cineplexChosen = cineplexList.get(cineplexChoice - 1);
 
         ArrayList<Session> sessions = cineplexList.get(cineplexChoice - 1).getAvailableSessions();
+        if (sessions.size() == 0) {
+            System.out.println("No sessions available.");
+            return;
+        }
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
         for (int i = 0; i < sessions.size(); i++) {
             System.out.println("------------------");
