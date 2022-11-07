@@ -159,6 +159,8 @@ public class BookingUI {
             }
 
             BM.addNewBooking(newBooking);
+            System.out.println("Here is the receipt.");
+            newBooking.toTicket();
             System.out.println(
                     "Receipt has been sent to your email and sms, please show them to the staff at movie entrance.");
 

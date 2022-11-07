@@ -6,6 +6,7 @@ import moblima.Entity.*;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
 import moblima.Serializer.MovieSerializer;
+import java.lang.*;
 
 public class CustomerUI {
 
@@ -77,14 +78,23 @@ public class CustomerUI {
     private static void showErrorMessage() {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
-    
+
     public void showTop5Movies() {
-    	MovieManager MM = managerList.getMovieManager();
-    	ArrayList<Movie> movies = MM.getSorted();
-    	System.out.println("Title (Rating):");
-    	for (int i = 0; i < 5; i++) {
-    		System.out.printf("%s (%f)\n", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
-    	}
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSorted();
+        System.out.println("Title (Rating):");
+        for (int i = 0; i < 5; i++) {
+            System.out.printf("%s (%f)\n", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
+        }
+    }
+
+    public void showTop5MovieBySales() {
+        BookingManager BM = managerList.getBookingManager();
+        Map<String, Integer> map = BM.sortMoviesBySales();
+        for (Map.Entry<String, Integer> en : map.entrySet()) {
+            System.out
+                    .println("Movie Title: " + en.getKey() + "---->" + "Number of Sales: " + en.getValue());
+        }
     }
 
     public void main() throws InvalidEmailException, InvalidPhoneNoException {
@@ -100,6 +110,7 @@ public class CustomerUI {
             System.out.println("Option 3: Make Booking");
             System.out.println("Option 4: View Booking History");
             System.out.println("Option 5: View Top 5 Movies by Rating");
+            System.out.println("Option 6: View Top 5 Movies by Ticket Sales");
             System.out.println("0: exit");
 
             try {
@@ -135,13 +146,17 @@ public class CustomerUI {
                     break;
 
                 case 5:
-                	customerUI.showTop5Movies();
-                	break;
-                
+                    customerUI.showTop5Movies();
+                    break;
+
+                case 6:
+                    customerUI.showTop5MovieBySales();
+                    break;
+
                 default:
                     showErrorMessage();
             }
-        } while (1 <= choice && choice <= 5);
+        } while (1 <= choice && choice <= 6);
         System.out.println("exited");
     }
 }

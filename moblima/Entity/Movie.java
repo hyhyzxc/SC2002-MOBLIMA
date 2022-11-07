@@ -81,6 +81,10 @@ public abstract class Movie implements Serializable {
         return reviews;
     }
 
+    public void setStatus(ShowingStatus status) {
+        this.status = ShowingStatus.END_OF_SHOWING;
+    }
+
     public abstract double getPriceProportion();
 
 }

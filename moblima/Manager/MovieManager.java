@@ -3,6 +3,7 @@ package moblima.Manager;
 import java.util.*;
 
 import moblima.Entity.Movie;
+import moblima.Entity.ShowingStatus;
 import moblima.Entity.Sorter;
 import moblima.Serializer.MovieSerializer;
 import moblima.UI.StaffUI;
@@ -31,7 +32,8 @@ public class MovieManager implements Sorter {
     }
 
     public void removeMovie(int movieChoice) {
-        movieList.remove(movieChoice);
+        Movie movieToRemove = movieList.get(movieChoice);
+        movieToRemove.setStatus(ShowingStatus.END_OF_SHOWING);
         s.saveMovieList(movieList, "MovieDatabase.ser");
         System.out.println("Movie Successfully Removed");
 
@@ -52,11 +54,17 @@ public class MovieManager implements Sorter {
     public ArrayList<Movie> getMovieList() {
         movieList = s.getMovieList("MovieDatabase.ser");
         movieList.sort((m1, m2) -> Integer.compare(m1.getMovieID(), m2.getMovieID()));
-        return movieList;
+        ArrayList<Movie> newList = new ArrayList<Movie>();
+        for (Movie movie : movieList) {
+            if (movie.getStatus() != ShowingStatus.END_OF_SHOWING) {
+                newList.add(movie);
+            }
+        }
+        return newList;
     }
-    
+
     public ArrayList<Movie> getSorted() {
-    	movieList.sort((m1, m2) -> m1.getAverageRatings() > m2.getAverageRatings() ? -1 : 1);
-    	return movieList;
+        movieList.sort((m1, m2) -> m1.getAverageRatings() > m2.getAverageRatings() ? -1 : 1);
+        return movieList;
     }
 }
