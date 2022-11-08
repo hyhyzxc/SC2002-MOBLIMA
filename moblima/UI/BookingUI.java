@@ -12,17 +12,23 @@ public class BookingUI {
      * The owner of the customer account that is making the booking.
      */
     private static CustomerAccount owner;
-    private static ManagerList managerList = new ManagerList();
+    /**
+     * List of all managers
+     */
+    private static ManagerList managerList;
+    /** 
+     * Scanner for IO
+     */
     static final Scanner sc = new Scanner(System.in);
-    static final BookingUI bUI = new BookingUI(owner);
 
     /**
      * Creates a new BookingUI with the specified owner
      * 
      * @param owner This BookingUI's owner
      */
-    public BookingUI(CustomerAccount owner) {
+    public BookingUI(CustomerAccount owner, ManagerList managerList) {
         this.owner = owner;
+        this.managerList = managerList;
     }
 
     /**
@@ -251,7 +257,7 @@ public class BookingUI {
      * 
      * @param args
      */
-    public void main() {
+    public void init() {
 
         System.out.println("------------------");
         System.out.println("   Booking Menu   ");
@@ -259,7 +265,7 @@ public class BookingUI {
             makeBooking();
         } catch (InvalidInputException e) {
             System.out.println(e.getMessage());
-            bUI.main();
+            init();
             return;
         } catch (InvalidEmailException ee) {
             System.out.println(ee.getMessage());

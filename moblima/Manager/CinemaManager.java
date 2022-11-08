@@ -37,6 +37,7 @@ public class CinemaManager {
     public ArrayList<Session> getAllSessions() {
         cineplexList = s.getCineplexStatus("CineplexDatabase.ser");
         ArrayList<Session> sessions = new ArrayList<Session>();
+        
         for (int i = 0; i < cineplexList.size(); i++) {
             ArrayList<Session> cineSess = cineplexList.get(i).getAvailableSessions();
             for (Session j : cineSess) {

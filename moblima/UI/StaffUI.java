@@ -13,11 +13,11 @@ public class StaffUI {
     static final Scanner sc = new Scanner(System.in);
     static final Random r = new Random();
     private static StaffAccount owner;
-    private ManagerList managerList = new ManagerList();
-    static final StaffUI staffUI = new StaffUI(owner);
+    private ManagerList managerList;
 
-    public StaffUI(StaffAccount account) {
+    public StaffUI(StaffAccount account, ManagerList managerList) {
         this.owner = account;
+        this.managerList = managerList;
     }
 
     public void addNewMovie() throws InvalidInputException {
@@ -77,7 +77,6 @@ public class StaffUI {
             MM.addNewMovie(newMovie);
         } catch (Exception e) {
             System.out.println("Error input!");
-            staffUI.main();
         }
 
     }
@@ -114,7 +113,7 @@ public class StaffUI {
     public void removeMovie() throws InvalidInputException {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
-        staffUI.getAllMovieDetails();
+        getAllMovieDetails();
         System.out.println("Choose the movie");
         int choice = sc.nextInt();
         if (choice < 1 || choice > movieList.size()) {
@@ -214,7 +213,7 @@ public class StaffUI {
     	}
     }
 
-    public void main() {
+    public void init() {
 
         int choice = 0;
 
@@ -244,7 +243,7 @@ public class StaffUI {
             switch (choice) {
                 case 1:
                     try {
-                        staffUI.addNewMovie();
+                        addNewMovie();
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
@@ -252,13 +251,13 @@ public class StaffUI {
                     break;
 
                 case 2:
-                    staffUI.getAllMovieDetails();
+                    getAllMovieDetails();
                     // staffUI.main(null);
                     break;
 
                 case 3:
                     try {
-                        staffUI.removeMovie();
+                        removeMovie();
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
@@ -267,7 +266,7 @@ public class StaffUI {
 
                 case 4:
                     try {
-                        staffUI.updateCineplexMovies();
+                        updateCineplexMovies();
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
@@ -275,16 +274,16 @@ public class StaffUI {
                     break;
 
                 case 5:
-                    staffUI.getAllSessions();
+                    getAllSessions();
                     // staffUI.main(null);
                     break;
 
                 case 6:
-                    staffUI.getAllBookings();
+                    getAllBookings();
                     break;
                    
                 case 7:
-                	staffUI.viewMoviesByRating();
+                	viewMoviesByRating();
                 	break;
                 
                 case 0:

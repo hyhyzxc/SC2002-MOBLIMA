@@ -9,10 +9,11 @@ import java.util.*;
 
 public class BookingHistoryUI {
     private static CustomerAccount owner;
-    private static ManagerList managerList = new ManagerList();
+    private static ManagerList managerList;
 
-    public BookingHistoryUI(CustomerAccount account) {
+    public BookingHistoryUI(CustomerAccount account, ManagerList managerList) {
         this.owner = account;
+        this.managerList = managerList;
     }
 
     private static void getBookingHistory() {
@@ -28,7 +29,7 @@ public class BookingHistoryUI {
         }
     }
 
-    public void main() {
+    public void init() {
         getBookingHistory();
         return;
     }

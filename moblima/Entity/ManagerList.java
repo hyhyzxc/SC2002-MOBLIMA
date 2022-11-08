@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import moblima.Manager.*;
-
+/**
+ * Maintains an instance of all managers
+ */
 public class ManagerList {
     private CustomerManager customerManager;
     private MovieManager movieManager;

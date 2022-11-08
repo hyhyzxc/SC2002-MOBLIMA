@@ -13,11 +13,7 @@ public class LoginUI {
     private static Scanner sc = new Scanner(System.in);
     private static Random r = new Random();
     private static ManagerList managerList = new ManagerList();
-
-    public LoginUI() {
-        ;
-    }
-
+    
     public static void registerCustomer() throws InvalidInputException {
         CustomerManager CM = managerList.getCustomerManager();
         System.out.println("Welcome to registration page for new Customer!");
@@ -117,7 +113,7 @@ public class LoginUI {
                         } else
                             break;
                     }
-                    CustomerUI CustomerAccountUI = new CustomerUI(account);
+                    CustomerUI CustomerAccountUI = new CustomerUI(account, managerList);
                     CustomerAccountUI.main();
                     break;
                 case 3:
@@ -136,8 +132,8 @@ public class LoginUI {
                         } else
                             break;
                     }
-                    StaffUI StaffAccountUI = new StaffUI(staffAccount);
-                    StaffAccountUI.main();
+                    StaffUI StaffAccountUI = new StaffUI(staffAccount, managerList);
+                    StaffAccountUI.init();
                     break;
                 default:
                     break;

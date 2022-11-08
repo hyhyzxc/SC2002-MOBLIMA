@@ -11,12 +11,12 @@ import java.lang.*;
 public class CustomerUI {
 
     private static CustomerAccount owner;
-    private ManagerList managerList = new ManagerList();
+    private ManagerList managerList;
     static final Scanner sc = new Scanner(System.in);
-    static final CustomerUI customerUI = new CustomerUI(owner);
 
-    public CustomerUI(CustomerAccount account) {
+    public CustomerUI(CustomerAccount account, ManagerList managerList) {
         this.owner = account;
+        this.managerList = managerList;
     }
 
     public void getAllMovieDetails() {
@@ -53,7 +53,7 @@ public class CustomerUI {
     public void addRatingAndReview() throws InvalidInputException {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
-        customerUI.getAllMovieDetails();
+        getAllMovieDetails();
         System.out.println("Choose the Movie Number to rate.");
 
         int choice = sc.nextInt();
@@ -126,18 +126,18 @@ public class CustomerUI {
                     System.out.println("Goodbye!" + owner.getUsername());
                     return;
                 case 1:
-                    customerUI.getAllMovieDetails();
+                    getAllMovieDetails();
                     break;
                 case 2:
                     try {
-                        customerUI.addRatingAndReview();
+                        addRatingAndReview();
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
 
                     }
                     break;
                 case 3:
-                    BookingUI UI = new BookingUI(owner);
+                    BookingUI UI = new BookingUI(owner, managerList);
                     try {
                         UI.viewSeatAvailability();
                     } catch (InvalidInputException e) {
@@ -145,21 +145,21 @@ public class CustomerUI {
                     }
                     break;
                 case 4:
-                    BookingUI bUI = new BookingUI(owner);
-                    bUI.main();
+                    BookingUI bUI = new BookingUI(owner, managerList);
+                    bUI.init();
                     break;
 
                 case 5:
-                    BookingHistoryUI BHUI = new BookingHistoryUI(owner);
-                    BHUI.main();
+                    BookingHistoryUI BHUI = new BookingHistoryUI(owner, managerList);
+                    BHUI.init();
                     break;
 
                 case 6:
-                    customerUI.showTop5Movies();
+                    showTop5Movies();
                     break;
 
                 case 7:
-                    customerUI.showTop5MovieBySales();
+                    showTop5MovieBySales();
                     break;
 
                 default:
