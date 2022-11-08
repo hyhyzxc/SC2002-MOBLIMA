@@ -1,4 +1,4 @@
-package UI;
+package moblima.UI;
 
 public class UserUI {
 

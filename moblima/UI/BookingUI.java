@@ -182,6 +182,10 @@ public class BookingUI {
             throw new InvalidInputException();
         }
         Seat seatChosen = seats.get(seatChoice - 1);
+        if (seatChosen.isOccupied()) {
+            System.out.println("Seat already occupied.");
+            return;
+        }
         System.out.println("Enter 1 to make Payment, 0 to return to menu.");
 
         /* TODO: Ask user for Email and mobile number before payment */
