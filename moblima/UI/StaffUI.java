@@ -9,17 +9,42 @@ import moblima.Entity.*;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
 
+/**
+ * Handles all user IO for current Staff
+ * @author 
+ *
+ */
 public class StaffUI {
+	/**
+     * Static Scanner object for all IO.
+     */
     static final Scanner sc = new Scanner(System.in);
+    /**
+     * Static instance of ManagerList for entire programme.
+     */
     static final Random r = new Random();
-    private static StaffAccount owner;
+    /**
+	 * The StaffAccount logged into the UI.
+	 */
+    private StaffAccount owner;
+    /**
+     * This StaffUI's list of managers.
+     */
     private ManagerList managerList;
 
+    /**
+     * Creates new StaffUI with given account and managerList.
+     * @param account Current account logged into the UI.
+     * @param managerList List of Managers.
+     */
     public StaffUI(StaffAccount account, ManagerList managerList) {
         this.owner = account;
         this.managerList = managerList;
     }
 
+    /**
+     * Gets user input and adds new Movie to MovieManager movieList.
+     */
     public void addNewMovie() throws InvalidInputException {
         try {
             MovieManager MM = managerList.getMovieManager();
@@ -81,6 +106,9 @@ public class StaffUI {
 
     }
 
+    /**
+     * Retrieves movieList from MovieManager and displays all movie details.
+     */
     public void getAllMovieDetails() {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
@@ -110,6 +138,10 @@ public class StaffUI {
         }
     }
 
+    /**
+     * Gets user input for movie title to be removed and removes it from MovieManager's movieList.
+     * @throws InvalidInputException
+     */
     public void removeMovie() throws InvalidInputException {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
@@ -123,6 +155,10 @@ public class StaffUI {
 
     }
 
+    /**
+     * Gets user input to assign a Movie to a Cineplex.
+     * @throws InvalidInputException
+     */
     public void updateCineplexMovies() throws InvalidInputException {
         CinemaManager CM = managerList.getCinemaManager();
         MovieManager MM = managerList.getMovieManager();
@@ -181,6 +217,9 @@ public class StaffUI {
         } while (cont != 0);
     }
 
+    /**
+     * Retrieves all Sessions from CinemaManager and displays them.
+     */
     public void getAllSessions() {
         CinemaManager CM = managerList.getCinemaManager();
         ArrayList<Session> sessions = CM.getAllSessions();
@@ -196,6 +235,9 @@ public class StaffUI {
         }
     }
 
+    /**
+     * Retrieves all Bookings from BookingManager and displays them.
+     */
     public void getAllBookings() {
         BookingManager BM = managerList.getBookingManager();
         ArrayList<Booking> bookings = BM.getBookings();
@@ -204,6 +246,9 @@ public class StaffUI {
         }
     }
     
+    /**
+     * Retrieves all Movies from MovieManager and displays sorted by rating.
+     */
     public void viewMoviesByRating() {
     	MovieManager MM = managerList.getMovieManager();
     	ArrayList<Movie> movies = MM.getSorted();
@@ -213,8 +258,11 @@ public class StaffUI {
     	}
     }
 
+    /**
+     * Initialises StaffUI.
+     * Displays user's options and calls relevent methods.
+     */
     public void init() {
-
         int choice = 0;
 
         do {

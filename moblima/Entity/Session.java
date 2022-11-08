@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * Represents a Session in which bookings are made.
+ * Represents a Session in which Movie will be showing.
  * implements Serializable.
  */
 public class Session implements Serializable {
 	/**
-	 * Movie booked in this Session.
+	 * Movie showed in this Session.
 	 */
     private Movie movie;
     /**
@@ -31,7 +31,7 @@ public class Session implements Serializable {
 
     /**
      * Creates new Session with given movie, start and end time and day
-     * @param movie Movie booked in this Session.
+     * @param movie Movie showed in this Session.
      * @param sessionDateTimeStart This Session's start time.
      * @param sessionDateTimeEnd This Session's end time.
      * @param day The day this Session was made on.

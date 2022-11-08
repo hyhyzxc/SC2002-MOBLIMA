@@ -9,11 +9,30 @@ import moblima.Exceptions.*;
 import moblima.Manager.*;
 import moblima.*;
 
+/**
+ * Main class of entire programme.
+ * Initialises Login Menu for the user.
+ * @author 
+ *
+ */
 public class LoginUI {
+	/**
+	 * Static Scanner object for user IO.
+	 */
     private static Scanner sc = new Scanner(System.in);
+    /**
+     * Static Random object for ID generation.
+     */
     private static Random r = new Random();
+    /**
+     * Static instance of ManagerList for entire programme.
+     */
     private static ManagerList managerList = new ManagerList();
     
+    /**
+     * Gets valid user input for Customer and registers them as a new Customer.
+     * @throws InvalidInputException
+     */
     public static void registerCustomer() throws InvalidInputException {
         CustomerManager CM = managerList.getCustomerManager();
         System.out.println("Welcome to registration page for new Customer!");
@@ -43,6 +62,10 @@ public class LoginUI {
         CM.createNewAccount(newCustomer, username, password);
     }
 
+    /**
+     * Gets valid username and password from the user and logs them into their CustomerAccount if valid.
+     * @return
+     */
     public static CustomerAccount loginCustomerAccount() {
         CustomerManager CM = managerList.getCustomerManager();
         System.out.println("Welcome to login page for Customers!");
@@ -54,6 +77,9 @@ public class LoginUI {
         return account;
     }
 
+    /**
+     * Gets valid user input for Staff and registers them as a new Staff.
+     */
     public static void registerStaff() throws InvalidInputException {
         StaffManager SM = managerList.getStaffManager();
         System.out.println("Welcome to registration page for new Staff!");
@@ -73,7 +99,11 @@ public class LoginUI {
         SM.createNewAccount(newStaff, username, password);
 
     }
-
+    
+    /**
+     * Gets valid username and password from the user and logs them into their StaffAccount if valid.
+     * @return The StaffAccount retrieved.
+     */
     public static StaffAccount loginStaffAccount() {
         StaffManager SM = managerList.getStaffManager();
         System.out.println("Welcome to login page for Staff!");
@@ -84,7 +114,22 @@ public class LoginUI {
         StaffAccount account = SM.validateLoginDetails(username, password);
         return account;
     }
+    
+    /**
+     * Displays error message if input is invalid.
+     */
+    private static void showErrorMessage() {
+        System.out.println("Invalid option. Please enter a valid option. ");
+    }
 
+    /**
+     * Main method for programme.
+     * Initialises login menu.
+     * Calls other UI init functions to transfer control flow.
+     * @param args
+     * @throws InvalidEmailException
+     * @throws InvalidPhoneNoException
+     */
     public static void main(String[] args) throws InvalidEmailException, InvalidPhoneNoException {
         Scanner sc = new Scanner(System.in);
         int option = 0;
@@ -94,9 +139,12 @@ public class LoginUI {
             System.out.println("2: Login as Customer");
             System.out.println("3: Register as New Staff");
             System.out.println("4: Login as Staff");
+            System.out.println("Enter 0 to exit");
             option = sc.nextInt();
 
             switch (option) {
+            	case 0:
+            		break;
                 case 1:
                     try {
                         registerCustomer();
@@ -114,7 +162,7 @@ public class LoginUI {
                             break;
                     }
                     CustomerUI CustomerAccountUI = new CustomerUI(account, managerList);
-                    CustomerAccountUI.main();
+                    CustomerAccountUI.init();
                     break;
                 case 3:
                     try {
@@ -136,8 +184,9 @@ public class LoginUI {
                     StaffAccountUI.init();
                     break;
                 default:
+                	showErrorMessage();
                     break;
             }
-        } while (1 <= option && option <= 4);
+        } while (option != 0);
     }
 }
