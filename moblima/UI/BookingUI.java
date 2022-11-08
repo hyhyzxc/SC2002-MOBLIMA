@@ -7,24 +7,30 @@ import moblima.Exceptions.*;
 import moblima.Manager.*;
 import java.util.*;
 
+/**
+ * Handles all user IO for booking purposes.
+ * 
+ * @author
+ *
+ */
 public class BookingUI {
     /**
      * The owner of the customer account that is making the booking.
      */
     private static CustomerAccount owner;
     /**
-     * List of all managers
+     * List of all managers.
      */
     private static ManagerList managerList;
     /**
-     * Scanner for IO
+     * Static Scanner object for IO.
      */
     static final Scanner sc = new Scanner(System.in);
 
     /**
-     * Creates a new BookingUI with the specified owner
+     * Creates a new BookingUI with the specified owner.
      * 
-     * @param owner This BookingUI's owner
+     * @param owner This BookingUI's owner.
      */
     public BookingUI(CustomerAccount owner, ManagerList managerList) {
         this.owner = owner;
@@ -113,6 +119,13 @@ public class BookingUI {
 
     }
 
+    /**
+     * Gets user input to make new Booking.
+     * 
+     * @throws InvalidInputException
+     * @throws InvalidEmailException
+     * @throws InvalidPhoneNoException
+     */
     private static void makeBooking() throws InvalidInputException, InvalidEmailException, InvalidPhoneNoException {
         CinemaManager CM = managerList.getCinemaManager();
         MovieManager MM = managerList.getMovieManager();
@@ -256,7 +269,7 @@ public class BookingUI {
     }
 
     /**
-     * Driver function of BookingUI
+     * Initialises BookingUI.
      * Displays the outline of the main menu and calls makeBooking()
      * 
      * @param args

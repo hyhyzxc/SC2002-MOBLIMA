@@ -8,18 +8,39 @@ import moblima.Manager.*;
 import moblima.Serializer.MovieSerializer;
 import java.lang.*;
 
+/**
+ * Handles all user IO for current Customer
+ * @author 
+ *
+ */
 public class CustomerUI {
-
+	/**
+	 * The CustomerAccount logged into the UI.
+	 */
     private static CustomerAccount owner;
+    /**
+     * This CustomerUI's list of managers.
+     */
     private ManagerList managerList;
+    /**
+     * Static Scanner object for all IO.
+     */
     static final Scanner sc = new Scanner(System.in);
 
+    /**
+     * Creates new CustomerUI with given account and managerList.
+     * @param account Current account logged into the UI.
+     * @param managerList List of Managers.
+     */
     public CustomerUI(CustomerAccount account, ManagerList managerList) {
         this.owner = account;
         this.managerList = managerList;
     }
 
-    public void getAllMovieDetails() {
+    /**
+     * Calls MovieManager for MovieList and displays all movie details.
+     */
+    public void showAllMovieDetails() {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
         if (movieList == null) {
@@ -50,10 +71,14 @@ public class CustomerUI {
         }
     }
 
+    /**
+     * Allows user to input ratings and reviews for a movie.
+     * @throws InvalidInputException
+     */
     public void addRatingAndReview() throws InvalidInputException {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
-        getAllMovieDetails();
+        showAllMovieDetails();
         System.out.println("Choose the Movie Number to rate.");
 
         int choice = sc.nextInt();
@@ -75,10 +100,16 @@ public class CustomerUI {
         System.out.println("Review made!");
     }
 
+    /**
+     * Displays error message if input is invalid.
+     */
     private static void showErrorMessage() {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
 
+    /**
+     * Uses MovieManager and displays top 5 movies ranked by rating.
+     */
     public void showTop5Movies() {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movies = MM.getSorted();
@@ -88,6 +119,9 @@ public class CustomerUI {
         }
     }
 
+    /**
+     * Uses Booking Manager and displays top 5 movies ranked by sales.
+     */
     public void showTop5MovieBySales() {
         BookingManager BM = managerList.getBookingManager();
         Map<String, Integer> map = BM.sortMoviesBySales();
@@ -97,7 +131,13 @@ public class CustomerUI {
         }
     }
 
-    public void main() throws InvalidEmailException, InvalidPhoneNoException {
+    /**
+     * Initialises CustomerUI.
+     * Displays user's options and calls relevant methods and UIs.
+     * @throws InvalidEmailException
+     * @throws InvalidPhoneNoException
+     */
+    public void init() throws InvalidEmailException, InvalidPhoneNoException {
         int choice = 0;
         do {
             System.out.println("---------------------");
@@ -112,7 +152,7 @@ public class CustomerUI {
             System.out.println("Option 5: View Booking History");
             System.out.println("Option 6: View Top 5 Movies by Rating");
             System.out.println("Option 7: View Top 5 Movies by Ticket Sales");
-            System.out.println("Click 0 to exit.");
+            System.out.println("Enter 0 to exit");
 
             try {
                 choice = sc.nextInt();
@@ -126,7 +166,7 @@ public class CustomerUI {
                     System.out.println("Goodbye!" + owner.getUsername());
                     return;
                 case 1:
-                    getAllMovieDetails();
+                    showAllMovieDetails();
                     break;
                 case 2:
                     try {

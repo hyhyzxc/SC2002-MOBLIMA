@@ -7,16 +7,35 @@ import moblima.Exceptions.*;
 import moblima.Manager.*;
 import java.util.*;
 
+/**
+ * Handles all user IO for current BookingHistory
+ * @author 
+ *
+ */
 public class BookingHistoryUI {
-    private static CustomerAccount owner;
-    private static ManagerList managerList;
+	/**
+	 * The Owner that this BookingHistoryUI is servicing.
+	 */
+    private CustomerAccount owner;
+    /**
+     * This StaffUI's list of managers.
+     */
+    private ManagerList managerList;
 
+    /**
+     * Creates new BookingHistoryUI with given account and managerList.
+     * @param account The Owner that this BookingHistoryUI is servicing.
+     * @param managerList This StaffUI's list of managers.
+     */
     public BookingHistoryUI(CustomerAccount account, ManagerList managerList) {
         this.owner = account;
         this.managerList = managerList;
     }
 
-    private static void getBookingHistory() {
+    /**
+     * Retrieves BookingHistory of owner from BookingManager and displays them.
+     */
+    private void getBookingHistory() {
         BookingManager BM = managerList.getBookingManager();
         ArrayList<Booking> bookings = BM.getBookingsOfCustomer(owner);
         if (bookings == null) {
@@ -29,6 +48,9 @@ public class BookingHistoryUI {
         }
     }
 
+    /**
+     * Initialises BookingHistoryUI.
+     */
     public void init() {
         getBookingHistory();
         return;
