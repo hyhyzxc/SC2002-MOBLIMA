@@ -2,15 +2,18 @@ package moblima.Manager;
 
 import java.util.ArrayList;
 
+import moblima.Entity.Booking;
+import moblima.Entity.Cineplex;
 import moblima.Entity.DayType;
 import moblima.Entity.Movie;
+import moblima.Entity.Seat;
 import moblima.Entity.SeatType;
 import moblima.Entity.Session;
 import moblima.Entity.Status;
-import moblima.Entity.Ticket;
 
 /**
- * Logic Class that calculates price of tickets. Can be an individual ticket or
+ * Logic Class that calculates price of a booking. Can be an individual ticket
+ * or
  * the total of all tickets.
  */
 public class PriceManager {
@@ -21,13 +24,14 @@ public class PriceManager {
      * 
      * @param ticket A single unit from tickets
      */
-    public double calcPrice(Ticket ticket) {
+    public double calcPrice(Booking booking) {
         double price = 0;
-        Session session = ticket.getSessionBooked();
+        Session session = booking.getSessionBooked();
         DayType dayType = session.getDay();
-        Status status = ticket.getStatus();
-        SeatType seatType = ticket.getSeatType();
+        Status status = booking.getStatus();
+        Seat seat = booking.getSeatBooked();
         Movie movie = session.getMovie();
+        Cineplex cineplex = booking.getCineplexBooked();
 
         price += movie.getPriceProportion();
         switch (dayType.getName()) {
@@ -58,35 +62,10 @@ public class PriceManager {
 
         }
 
-        switch (seatType) {
-            case COUPLE:
-                price *= 2;
-                price += 2;
-                break;
-            case ELITE:
-                price += 3;
-            case REGULAR:
-                break;
-            case ULTIMA:
-                price += 5;
-            default:
-                break;
-        }
+        price += seat.getPriceProportion();
+        price += movie.getPriceProportion();
 
         return price;
     }
 
-    /**
-     * Returns the total cost of all tickets in the "Shopping Cart"
-     * 
-     * @param tickets the ArrayList of Ticket type
-     */
-    public double calcTotalPrice(ArrayList<Ticket> tickets) {
-        double total = 0;
-        for (Ticket ticket : tickets) {
-            total += calcPrice(ticket);
-        }
-
-        return total;
-    }
 }

@@ -14,7 +14,7 @@ public class Cinema implements Serializable {
      */
     private String cinemaID;
     /**
-     * The arrayList of Seat class that represents the cinema. 
+     * The arrayList of Seat class that represents the cinema.
      */
     private ArrayList<Seat> seats;
     /**
@@ -29,6 +29,7 @@ public class Cinema implements Serializable {
     /**
      * Creates a Cinema with given cinemaID.
      * Cinema consist of RegularSeat, CoupleSeat,EliteSeat and UltimaSeat.
+     * 
      * @param cinemaID
      */
     public Cinema(String cinemaID, double priceProportion) {
@@ -51,6 +52,7 @@ public class Cinema implements Serializable {
 
     /**
      * Accessor method to gets this Cinema's ID.
+     * 
      * @return this Cinema's cinemaID.
      */
     public String getCinemaID() {
@@ -59,24 +61,38 @@ public class Cinema implements Serializable {
 
     /**
      * Accessor method to get this Cinema's seats.
-     * @return this Cinema's seats. 
+     * 
+     * @return this Cinema's seats.
      */
     public ArrayList<Seat> getSeats() {
         return seats;
     }
 
     /**
-     * Accessor method to gets Cinema type's price. 
-     * @return this Cinema's price. 
+     * Accessor method to gets Cinema type's price.
+     * 
+     * @return this Cinema's price.
      */
     public double getPriceProportion() {
         return priceProportion;
     }
+
     /**
-     * Accessor method to gets Cinema's type. 
-     * @return this Cinema's type. 
+     * Accessor method to gets Cinema's type.
+     * 
+     * @return this Cinema's type.
      */
     public CinemaType getCinemaType() {
-    	return type;
+        return type;
+    }
+
+    /**
+     * Mutator method to change price proportion of the cinema.
+     * 
+     * @param the new price.
+     */
+    public void setPriceProportion(double newPrice) {
+        this.priceProportion = newPrice;
+        return;
     }
 }

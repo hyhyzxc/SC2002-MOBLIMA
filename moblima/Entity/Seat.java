@@ -7,9 +7,9 @@ import java.io.Serializable;
  * Implements Serializable.
  */
 public class Seat implements Serializable {
-	/**
-	 * Whether this Seat has been occupied.
-	 */
+    /**
+     * Whether this Seat has been occupied.
+     */
     private boolean occupied;
     /**
      * This Seat's ID.
@@ -26,8 +26,9 @@ public class Seat implements Serializable {
 
     /**
      * Creates new Seat with given ID and price.
+     * 
      * @param seatID This Seat's ID.
-     * @param price This Seat's price.
+     * @param price  This Seat's price.
      */
     public Seat(int seatID, double price) {
         this.occupied = false;
@@ -37,6 +38,7 @@ public class Seat implements Serializable {
 
     /**
      * Gets whether this seat has been occupied.
+     * 
      * @return This seat's occupancy.
      */
     public boolean isOccupied() {
@@ -67,26 +69,39 @@ public class Seat implements Serializable {
 
     /**
      * Gets this Seat's ID.
+     * 
      * @return This Seat's ID.
      */
     public int getSeatID() {
         return this.seatID;
     }
-    
+
     /**
      * Gets this Seat's type.
+     * 
      * @return This Seat's type.
      */
     public SeatType getSeatType() {
-    	return this.type;
+        return this.type;
     }
-    
+
     /**
      * Gets this Seat's price.
+     * 
      * @return This Seat's price.
      */
     public double getPriceProportion() {
-    	return this.price;
+        return this.price;
+    }
+
+    /**
+     * Mutator method to change price proportion of the seat.
+     * 
+     * @param the new price.
+     */
+    public void setPriceProportion(double newPrice) {
+        this.price = newPrice;
+        return;
     }
 
 }

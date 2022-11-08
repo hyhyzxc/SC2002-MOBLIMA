@@ -1,11 +1,12 @@
 package moblima.Entity;
 
 import java.io.Serializable;
+
 /**
  * Represent an Account
  * Abstract class that implements the Serializable interface
  */
-public abstract class Account implements Serializable {
+public class Account implements Serializable {
     /**
      * The owner of this Account
      */
@@ -34,7 +35,8 @@ public abstract class Account implements Serializable {
 
     /**
      * Creates a new Account with the given owner, username and password.
-     * @param owner This Account's owner.
+     * 
+     * @param owner    This Account's owner.
      * @param username This Account's username.
      * @param password This Account's password.
      */
@@ -43,16 +45,20 @@ public abstract class Account implements Serializable {
         this.username = username;
         this.password = password;
     }
+
     /**
      * Gets the username of this Account.
+     * 
      * @return this Account's username.
      */
     public String getUsername() {
         return username;
     }
+
     /**
      * Gets the password of this Account.
-     * @return this Account's password. 
+     * 
+     * @return this Account's password.
      */
     public String getPassword() {
         return password;
@@ -60,9 +66,11 @@ public abstract class Account implements Serializable {
 
     /**
      * Gets the owner of this Account.
+     * 
      * @return this Account's owner.
      */
     public User getOwner() {
         return owner;
     }
+
 }

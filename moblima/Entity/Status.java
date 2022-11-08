@@ -5,5 +5,5 @@ package moblima.Entity;
  * Enum Class
  */
 public enum Status {
-    STUDENT, ADULT, SENIOR_CITIZEN;
+    STUDENT, ADULT, SENIOR_CITIZEN, STAFF;
 }
