@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Represents a Cinema
+ * Represents a Cinema.
  * Concrete base class that implements the Serializable interface.
- * All cinema types extend this class
+ * All cinema types extend this class.
  */
 public class Cinema implements Serializable {
     /**
@@ -50,7 +50,7 @@ public class Cinema implements Serializable {
     }
 
     /**
-     * Gets this Cinema's ID.
+     * Accessor method to gets this Cinema's ID.
      * @return this Cinema's cinemaID.
      */
     public String getCinemaID() {
@@ -58,7 +58,7 @@ public class Cinema implements Serializable {
     }
 
     /**
-     * Gets this A
+     * Accessor method to get this Cinema's seats.
      * @return this Cinema's seats. 
      */
     public ArrayList<Seat> getSeats() {
@@ -66,14 +66,14 @@ public class Cinema implements Serializable {
     }
 
     /**
-     * Gets Cinema's price. 
+     * Accessor method to gets Cinema type's price. 
      * @return this Cinema's price. 
      */
     public double getPriceProportion() {
         return priceProportion;
     }
     /**
-     * Gets Cinema's type. 
+     * Accessor method to gets Cinema's type. 
      * @return this Cinema's type. 
      */
     public CinemaType getCinemaType() {

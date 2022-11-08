@@ -20,15 +20,15 @@ public class EliteSeat extends Seat {
         this.price = price;
     }
     /**
-     * Gets type of Seat
-     * @return type of Seat
+     * Gets the type of Seat.
+     * @return this Seat's seatType.
      */
     public SeatType getSeatType() {
         return SeatType.ELITE;
     }
     /**
-     * Gets price proportion constant for EliteSeat
-     * @return price of EliteSeat
+     * Gets the price proportion constant for EliteSeat
+     * @return this eliteSeat's price. 
      */
     public double getPriceProportion() {
         return price;
