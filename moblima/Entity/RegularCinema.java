@@ -1,22 +1,18 @@
 package moblima.Entity;
 
 import java.util.*;
-
+/**
+ * Represents a Regular Cinema
+ * Concrete class that extends from Cinema
+ */
 public class RegularCinema extends Cinema {
-    private int cinemaID;
-    private ArrayList<Seat> seats;
-    private double priceProportion;
-
     public RegularCinema(String cinemaID, double price) {
-        super(cinemaID);
-        priceProportion = price;
-    }
-
-    public double getPriceProportion() {
-        return priceProportion;
-    }
-
-    public CinemaType getCinemaType() {
-        return CinemaType.REGULAR;
+    	/**
+    	 * Creates new RegularCinema
+    	 * @param cinemaID ID of the RegularCinema
+    	 * @param price priceProportionality constant of the RegularCinema
+    	 */
+        super(cinemaID, price);
+        super.type = CinemaType.REGULAR;
     }
 }

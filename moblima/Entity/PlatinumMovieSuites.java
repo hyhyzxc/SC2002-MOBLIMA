@@ -1,22 +1,18 @@
 package moblima.Entity;
 
 import java.util.ArrayList;
-
+/**
+ * Represents a Platinum Movie Suites
+ * Concrete class that extends from Cinema
+ */
 public class PlatinumMovieSuites extends Cinema {
-    private int cinemaID;
-    private ArrayList<Seat> seats;
-    private double priceProportion;
-
+	/**
+	 * Creates new PlatinumMovieSuites
+	 * @param cinemaID ID of the PlatinumMovieSuites
+	 * @param price priceProportionality constant of the PlatinumMovieSuites
+	 */
     public PlatinumMovieSuites(String cinemaID, double price) {
-        super(cinemaID);
-        priceProportion = price;
-    }
-
-    public double getPriceProportion() {
-        return priceProportion;
-    }
-
-    public CinemaType getCinemaType() {
-        return CinemaType.PLATINUM_MOVIE_SUITES;
+        super(cinemaID, price);
+        super.type = CinemaType.PLATINUM_MOVIE_SUITES;
     }
 }

@@ -5,9 +5,10 @@ import java.util.*;
 
 /**
  * Represents a Cinema
- * Abstract class that implements the Serializable interface.
+ * Concrete base class that implements the Serializable interface.
+ * All cinema types extend this class
  */
-public abstract class Cinema implements Serializable {
+public class Cinema implements Serializable {
     /**
      * The cinema ID of this cinema.
      */
@@ -16,14 +17,23 @@ public abstract class Cinema implements Serializable {
      * The arrayList of Seat class that represents the cinema. 
      */
     private ArrayList<Seat> seats;
+    /**
+     * The price proportionality constant for the cinema.
+     */
+    private double priceProportion;
+    /**
+     * The type of the Cinema
+     */
+    protected CinemaType type;
 
     /**
      * Creates a Cinema with given cinemaID.
      * Cinema consist of RegularSeat, CoupleSeat,EliteSeat and UltimaSeat.
      * @param cinemaID
      */
-    public Cinema(String cinemaID) {
+    public Cinema(String cinemaID, double priceProportion) {
         this.cinemaID = cinemaID;
+        this.priceProportion = priceProportion;
         this.seats = new ArrayList<Seat>();
         for (int i = 0; i < 20; i++) {
             seats.add(new RegularSeat(i + 1, 2.0));
@@ -56,13 +66,17 @@ public abstract class Cinema implements Serializable {
     }
 
     /**
-     * Abstract method to get Cinema's price. 
+     * Gets Cinema's price. 
      * @return this Cinema's price. 
      */
-    public abstract double getPriceProportion();
+    public double getPriceProportion() {
+        return priceProportion;
+    }
     /**
-     * Abstract method to get Cinema's type. 
+     * Gets Cinema's type. 
      * @return this Cinema's type. 
      */
-    public abstract CinemaType getCinemaType();
+    public CinemaType getCinemaType() {
+    	return type;
+    }
 }

@@ -1,22 +1,18 @@
 package moblima.Entity;
 
 import java.util.ArrayList;
-
+/**
+ * Represents a Gold Class Cinema
+ * Concrete class that extends from Cinema
+ */
 public class GoldClassCinema extends Cinema {
-    private String cinemaID;
-    private ArrayList<Seat> seats;
-    private double priceProportion;
-
+	/**
+	 * Creates new GoldClassCinema
+	 * @param cinemaID ID of the GoldClassCinema
+	 * @param price priceProportionality constant of the GoldClassCinema
+	 */
     public GoldClassCinema(String cinemaID, double price) {
-        super(cinemaID);
-        priceProportion = price;
-    }
-
-    public double getPriceProportion() {
-        return priceProportion;
-    }
-
-    public CinemaType getCinemaType() {
-        return CinemaType.GOLD_CLASS;
+        super(cinemaID, price);
+        super.type = CinemaType.GOLD_CLASS;
     }
 }
