@@ -1,7 +1,8 @@
 package moblima.Entity;
 
 /**
- * Enum for different types of Customers.
+ * Represents the Status of a Customer.
+ * Enum Class
  */
 public enum Status {
     STUDENT, ADULT, SENIOR_CITIZEN;

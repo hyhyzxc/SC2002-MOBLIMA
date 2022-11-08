@@ -2,11 +2,22 @@ package moblima.Entity;
 
 import java.io.Serializable;
 
+/**
+ * Represents a Staff.
+ * Subclass of User Superclass.
+ * Implements Serializable.
+ */
 public class Staff extends User implements Serializable {
-    private int staffID;
-    private String name;
+	/**
+     * The serialization version UID of User Class.
+     */
     private static final long serialVersionUID = 8345936623728562248L;
 
+    /**
+     * Creates new Staff with given ID and name.
+     * @param id This Staff's ID.
+     * @param name This Staff's name.
+     */
     public Staff(int id, String name) {
         super(id, name);
     }
