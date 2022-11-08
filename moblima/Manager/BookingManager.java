@@ -7,6 +7,9 @@ import moblima.Serializer.*;
 import java.util.*;
 import java.util.Map.Entry;
 
+/**
+ * 
+ */
 public class BookingManager {
     private ArrayList<Booking> bookings;
     static BookingSerializer s = new BookingSerializer();
