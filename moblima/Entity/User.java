@@ -49,5 +49,5 @@ public abstract class User implements Serializable {
         return name;
     }
 
-    public abstract Status getStatus();
+    public abstract String getStatus();
 }

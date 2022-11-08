@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
  * implements Serializable.
  */
 public class Session implements Serializable {
-	/**
-	 * Movie showed in this Session.
-	 */
+    /**
+     * Movie showed in this Session.
+     */
     private Movie movie;
     /**
      * This Session's start time.
@@ -23,7 +23,7 @@ public class Session implements Serializable {
     /**
      * The day this Session was made on.
      */
-    private DayType day;
+    private String day;
     /**
      * The serialization version UID of User Class.
      */
@@ -31,12 +31,13 @@ public class Session implements Serializable {
 
     /**
      * Creates new Session with given movie, start and end time and day
-     * @param movie Movie showed in this Session.
+     * 
+     * @param movie                Movie showed in this Session.
      * @param sessionDateTimeStart This Session's start time.
-     * @param sessionDateTimeEnd This Session's end time.
-     * @param day The day this Session was made on.
+     * @param sessionDateTimeEnd   This Session's end time.
+     * @param day                  The day this Session was made on.
      */
-    public Session(Movie movie, LocalDateTime sessionDateTimeStart, LocalDateTime sessionDateTimeEnd, DayType day) {
+    public Session(Movie movie, LocalDateTime sessionDateTimeStart, LocalDateTime sessionDateTimeEnd, String day) {
         this.movie = movie;
         this.sessionDateTimeStart = sessionDateTimeStart;
         this.sessionDateTimeEnd = sessionDateTimeEnd;
@@ -45,6 +46,7 @@ public class Session implements Serializable {
 
     /**
      * Gets this Session's Movie.
+     * 
      * @return this Session's Movie.
      */
     public Movie getMovie() {
@@ -53,6 +55,7 @@ public class Session implements Serializable {
 
     /**
      * Gets this Session's start time.
+     * 
      * @return this Session's start time.
      */
     public LocalDateTime getSessionDateTimeStart() {
@@ -61,6 +64,7 @@ public class Session implements Serializable {
 
     /**
      * Gets this Session's end time.
+     * 
      * @return this Session's end time.
      */
     public LocalDateTime getSessionDateTimeEnd() {
@@ -69,9 +73,10 @@ public class Session implements Serializable {
 
     /**
      * Gets this Session's day.
+     * 
      * @return this Session's day.
      */
-    public DayType getDay() {
+    public String getDay() {
         return day;
     }
 }

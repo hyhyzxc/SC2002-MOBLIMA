@@ -30,7 +30,7 @@ public class Booking implements Serializable {
     /**
      * The status of the ticket owner.
      */
-    private Status status;
+    private String status;
     /**
      * The status of the ticket owner.
      */
@@ -120,7 +120,7 @@ public class Booking implements Serializable {
      * 
      * @return an enum of type Status
      */
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 

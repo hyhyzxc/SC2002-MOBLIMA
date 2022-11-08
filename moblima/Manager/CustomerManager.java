@@ -41,6 +41,8 @@ public class CustomerManager implements AccountManager {
 
     /**
      * Creates a new account for a customer with the given owner, username, password.
+     * If a valid newAccount of CustomersAccount type is created, append newAccount to accountList.
+     * Displays a message of a successful confirmation. 
      * @param owner This CustomerAccount's owner.
      * @param username This CustomerAccount's username.
      * @param password This CustomerAccount's password.
@@ -56,6 +58,7 @@ public class CustomerManager implements AccountManager {
 
     /**
      * Verifies the validity of the given username and password.
+     * Iterates through the accountList and search for an entry corresponding to the given username and password. 
      * @param username This CustomerAccount's username.
      * @param password This CustomerAccount's password.
      * @return an Account if given details are valid, else null.

@@ -12,13 +12,14 @@ import moblima.*;
 /**
  * Main class of entire programme.
  * Initialises Login Menu for the user.
- * @author 
+ * 
+ * @author
  *
  */
 public class LoginUI {
-	/**
-	 * Static Scanner object for user IO.
-	 */
+    /**
+     * Static Scanner object for user IO.
+     */
     private static Scanner sc = new Scanner(System.in);
     /**
      * Static Random object for ID generation.
@@ -28,9 +29,10 @@ public class LoginUI {
      * Static instance of ManagerList for entire programme.
      */
     private static ManagerList managerList = new ManagerList();
-    
+
     /**
      * Gets valid user input for Customer and registers them as a new Customer.
+     * 
      * @throws InvalidInputException
      */
     public static void registerCustomer() throws InvalidInputException {
@@ -49,7 +51,7 @@ public class LoginUI {
             throw new InvalidInputException("Invalid Age Group input");
         }
 
-        Status type = (ageGroup == 1) ? Status.STUDENT : (ageGroup == 2) ? Status.ADULT : Status.SENIOR_CITIZEN;
+        String type = (ageGroup == 1) ? "STUDENT" : (ageGroup == 2) ? "ADULT" : "SENIOR_CITIZEN";
 
         int id = r.nextInt(10000);
 
@@ -63,7 +65,9 @@ public class LoginUI {
     }
 
     /**
-     * Gets valid username and password from the user and logs them into their CustomerAccount if valid.
+     * Gets valid username and password from the user and logs them into their
+     * CustomerAccount if valid.
+     * 
      * @return
      */
     public static CustomerAccount loginCustomerAccount() {
@@ -99,9 +103,11 @@ public class LoginUI {
         SM.createNewAccount(newStaff, username, password);
 
     }
-    
+
     /**
-     * Gets valid username and password from the user and logs them into their StaffAccount if valid.
+     * Gets valid username and password from the user and logs them into their
+     * StaffAccount if valid.
+     * 
      * @return The StaffAccount retrieved.
      */
     public static StaffAccount loginStaffAccount() {
@@ -114,7 +120,7 @@ public class LoginUI {
         StaffAccount account = SM.validateLoginDetails(username, password);
         return account;
     }
-    
+
     /**
      * Displays error message if input is invalid.
      */
@@ -126,6 +132,7 @@ public class LoginUI {
      * Main method for programme.
      * Initialises login menu.
      * Calls other UI init functions to transfer control flow.
+     * 
      * @param args
      * @throws InvalidEmailException
      * @throws InvalidPhoneNoException
@@ -143,8 +150,8 @@ public class LoginUI {
             option = sc.nextInt();
 
             switch (option) {
-            	case 0:
-            		break;
+                case 0:
+                    break;
                 case 1:
                     try {
                         registerCustomer();
@@ -184,7 +191,7 @@ public class LoginUI {
                     StaffAccountUI.init();
                     break;
                 default:
-                	showErrorMessage();
+                    showErrorMessage();
                     break;
             }
         } while (option != 0);

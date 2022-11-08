@@ -28,7 +28,7 @@ public class Staff extends User implements Serializable {
      * 
      * @return enum Status
      */
-    public Status getStatus() {
-        return Status.STAFF;
+    public String getStatus() {
+        return "STAFF";
     }
 }

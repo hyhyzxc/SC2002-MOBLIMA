@@ -11,11 +11,12 @@ import moblima.Manager.*;
 
 /**
  * Handles all user IO for current Staff
- * @author 
+ * 
+ * @author
  *
  */
 public class StaffUI {
-	/**
+    /**
      * Static Scanner object for all IO.
      */
     static final Scanner sc = new Scanner(System.in);
@@ -24,8 +25,8 @@ public class StaffUI {
      */
     static final Random r = new Random();
     /**
-	 * The StaffAccount logged into the UI.
-	 */
+     * The StaffAccount logged into the UI.
+     */
     private StaffAccount owner;
     /**
      * This StaffUI's list of managers.
@@ -34,7 +35,8 @@ public class StaffUI {
 
     /**
      * Creates new StaffUI with given account and managerList.
-     * @param account Current account logged into the UI.
+     * 
+     * @param account     Current account logged into the UI.
      * @param managerList List of Managers.
      */
     public StaffUI(StaffAccount account, ManagerList managerList) {
@@ -139,7 +141,9 @@ public class StaffUI {
     }
 
     /**
-     * Gets user input for movie title to be removed and removes it from MovieManager's movieList.
+     * Gets user input for movie title to be removed and removes it from
+     * MovieManager's movieList.
+     * 
      * @throws InvalidInputException
      */
     public void removeMovie() throws InvalidInputException {
@@ -157,6 +161,7 @@ public class StaffUI {
 
     /**
      * Gets user input to assign a Movie to a Cineplex.
+     * 
      * @throws InvalidInputException
      */
     public void updateCineplexMovies() throws InvalidInputException {
@@ -205,8 +210,8 @@ public class StaffUI {
             if (dayChoice < 1 || dayChoice > 3) {
                 throw new InvalidInputException();
             }
-            DayType day = (dayChoice == 1) ? DayType.WEEKDAY
-                    : (dayChoice == 2) ? DayType.WEEKEND : DayType.PUBLIC_HOLIDAY;
+            String day = (dayChoice == 1) ? "WEEKDAY"
+                    : (dayChoice == 2) ? "WEEKEND" : "PUBLIC_HOLIDAY";
             sc.nextLine();
 
             Session session = new Session(movie, showtime, endtime, day);
@@ -245,17 +250,17 @@ public class StaffUI {
             booking.toTicket();
         }
     }
-    
+
     /**
      * Retrieves all Movies from MovieManager and displays sorted by rating.
      */
     public void viewMoviesByRating() {
-    	MovieManager MM = managerList.getMovieManager();
-    	ArrayList<Movie> movies = MM.getSorted();
-    	System.out.println("Title (Rating):");
-    	for (Movie m : movies) {
-    		System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
-    	}
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSorted();
+        System.out.println("Title (Rating):");
+        for (Movie m : movies) {
+            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+        }
     }
 
     /**
@@ -329,14 +334,14 @@ public class StaffUI {
                 case 6:
                     getAllBookings();
                     break;
-                   
+
                 case 7:
-                	viewMoviesByRating();
-                	break;
-                
+                    viewMoviesByRating();
+                    break;
+
                 case 0:
-                	break;
-                	
+                    break;
+
                 default:
                     showErrorMessage();
             }

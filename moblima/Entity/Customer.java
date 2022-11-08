@@ -15,7 +15,7 @@ public class Customer extends User implements Serializable {
     /**
      * The type of this Customer.
      */
-    private Status type;
+    private String type;
     /**
      * The name of this Customer.
      */
@@ -34,7 +34,7 @@ public class Customer extends User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Creates a new Customer with given id, status, name, email, phoneNumber
+     * Creates a new Customer with given id, type, name, email, phoneNumber
      * 
      * @param id          This Customer's id.
      * @param type        This Customer's type.
@@ -42,7 +42,7 @@ public class Customer extends User implements Serializable {
      * @param email       This Customer's email.
      * @param phoneNumber This Customer's phoneNumber.
      */
-    public Customer(int id, Status type, String name, String email, String phoneNumber) {
+    public Customer(int id, String type, String name, String email, String phoneNumber) {
         super(id, name);
         this.type = type;
     }
@@ -52,7 +52,7 @@ public class Customer extends User implements Serializable {
      * 
      * @return this Customer's type.
      */
-    public Status getStatus() {
+    public String getStatus() {
         return this.type;
     }
 
