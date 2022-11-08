@@ -1,18 +1,17 @@
 package moblima.Entity;
 
+/**
+ * Represents an Ultima Seat.
+ * Subclass of Seat superclass.
+ */
 public class UltimaSeat extends Seat {
-    private double price;
-
+	/**
+	 * Creates new UltimaSeat.
+	 * @param seatID This UltimaSeat's ID.
+	 * @param price This UltimaSeat's price.
+	 */
     public UltimaSeat(int seatID, double price) {
-        super(seatID);
-        this.price = price;
-    }
-
-    public SeatType getSeatType() {
-        return SeatType.ULTIMA;
-    }
-
-    public double getPriceProportion() {
-        return price;
+        super(seatID, price);
+        type = SeatType.ULTIMA;
     }
 }
