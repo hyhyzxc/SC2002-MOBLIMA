@@ -8,10 +8,6 @@ import java.util.ArrayList;
  */
 public class BlockbusterMovie extends Movie {
     /**
-     * The price of this BlockbusterMovie.
-     */
-    private double price;
-    /**
      * Creates a new BlockbusterMovie with given title, sypnosis, status, director. 
      * @param title This BlockbusterMovie's title. 
      * @param sypnosis This BlockbusterMovie's sypnosis. 
@@ -23,16 +19,7 @@ public class BlockbusterMovie extends Movie {
      */
     public BlockbusterMovie(String title, String sypnosis, ShowingStatus status, String director,
             ArrayList<String> cast,
-            int movieID, double price) {
-        super(title, sypnosis, status, director, cast, movieID);
-        this.price = price;
-    }
-    
-    /**
-     * Gets the price of this BlockbusterMovie. 
-     * @return This BlockbusterMovie's price. 
-     */
-    public double getPriceProportion() {
-        return price;
+            int movieID, double priceProportion) {
+        super(title, sypnosis, status, director, cast, movieID, priceProportion);
     }
 }

@@ -8,11 +8,7 @@ public class ThreeDMovie extends Movie {
     public ThreeDMovie(String title, String sypnosis, ShowingStatus status, String director,
             ArrayList<String> cast,
             int movieID, double price) {
-        super(title, sypnosis, status, director, cast, movieID);
+        super(title, sypnosis, status, director, cast, movieID, price);
         this.price = price;
-    }
-
-    public double getPriceProportion() {
-        return price;
     }
 }

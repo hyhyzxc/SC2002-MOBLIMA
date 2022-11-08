@@ -3,7 +3,7 @@ package moblima.Entity;
 import java.io.Serializable;
 import java.util.*;
 
-public abstract class Movie implements Serializable {
+public class Movie implements Serializable {
     private ArrayList<Float> ratings;
     private int movieID;
     private ArrayList<String> reviews;
@@ -14,10 +14,11 @@ public abstract class Movie implements Serializable {
     private String director;
     private ArrayList<String> cast;
     private int numSales;
+    private double priceProportion;
     private static final long serialVersionUID = 4361251724076664901L;
 
     public Movie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
-            int movieID) {
+            int movieID, double priceProportion) {
         this.title = title;
         this.synopsis = sypnosis;
         this.status = status;
@@ -26,6 +27,7 @@ public abstract class Movie implements Serializable {
         this.movieID = movieID;
         this.averageRatings = 0;
         this.numSales = 0;
+        this.priceProportion = priceProportion;
         ratings = new ArrayList<Float>();
         reviews = new ArrayList<String>();
 
@@ -85,6 +87,8 @@ public abstract class Movie implements Serializable {
         this.status = ShowingStatus.END_OF_SHOWING;
     }
 
-    public abstract double getPriceProportion();
+    public double getPriceProportion() {
+    	return priceProportion;
+    }
 
 }
