@@ -29,7 +29,7 @@ public class PriceManager {
         double price = 0;
         Session session = booking.getSessionBooked();
         String day = session.getDay();
-        Status status = booking.getStatus();
+        String status = booking.getStatus();
         Seat seat = booking.getSeatBooked();
         Movie movie = session.getMovie();
 
