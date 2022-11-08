@@ -3,8 +3,8 @@ package moblima.Entity;
 import java.util.ArrayList;
 
 /**
- * Represents a 3D Movie
- * Subclass of Movie Superclass
+ * Represents a 3D Movie.
+ * Subclass of Movie Superclass.
  */
 public class RegularMovie extends Movie {
 	/**

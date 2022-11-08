@@ -20,7 +20,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 841221869724731376L;
     
     /**
-     * Creates a new User with the given name and ID
+     * Creates a new User with the given name and ID.
      * @param userID This User's ID.
      * @param name This User's name.
      */
@@ -30,16 +30,16 @@ public class User implements Serializable {
     }
     
     /**
-     * Gets this User's ID
-     * @return this User's ID
+     * Gets this User's ID.
+     * @return this User's ID.
      */
     public int getUserID() {
         return userID;
     }
     
     /** 
-     * Gets this User's Name
-     * @return this User's name
+     * Gets this User's Name.
+     * @return this User's name.
      */
     public String getName() {
         return name;
