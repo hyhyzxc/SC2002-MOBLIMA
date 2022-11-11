@@ -89,18 +89,17 @@ public class StaffUI {
             Movie newMovie;
             switch (movieType) {
                 case 1:
-                    newMovie = new RegularMovie(title, synopsis, status, director, cast, movieID, 2.0);
+                    newMovie = new Movie(title, synopsis, status, director, cast, movieID, 2, MovieType.REGULAR);
                     break;
                 case 2:
-                    newMovie = new BlockbusterMovie(title, synopsis, status, director, cast, movieID, 3.0);
+                    newMovie = new Movie(title, synopsis, status, director, cast, movieID, 3, MovieType.BLOCKBUSTER);
                     break;
                 case 3:
-                    newMovie = new ThreeDMovie(title, synopsis, status, director, cast, movieID, 4.0);
+                    newMovie = new Movie(title, synopsis, status, director, cast, movieID, 4, MovieType.THREED);
                     break;
                 default:
                     throw new InvalidInputException();
             }
-            ;
             MM.addNewMovie(newMovie);
         } catch (Exception e) {
             System.out.println("Error input!");
@@ -249,6 +248,13 @@ public class StaffUI {
         for (Booking booking : bookings) {
             booking.toTicket();
         }
+
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSortedRating();
+        System.out.println("Title (Rating):");
+        for (Movie m : movies) {
+            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+        }
     }
 
     /**
@@ -260,6 +266,21 @@ public class StaffUI {
         System.out.println("Title (Rating):");
         for (Movie m : movies) {
             System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+        }
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSortedRating();
+        System.out.println("Title (Rating):");
+        for (Movie m : movies) {
+            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+        }
+    }
+
+    public void viewMoviesBySales() {
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSortedSales();
+        System.out.println("Title (Rating):");
+        for (Movie m : movies) {
+            System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
         }
     }
 
@@ -366,6 +387,15 @@ public class StaffUI {
 
     }
 
+    public void viewMoviesBySales() {
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSortedSales();
+        System.out.println("Title (Rating):");
+        for (Movie m : movies) {
+            System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
+        }
+    }
+
     /**
      * Initialises StaffUI.
      * Displays user's options and calls relevent methods.
@@ -385,8 +415,9 @@ public class StaffUI {
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Movies by Rating");
-            System.out.println("Option 8: Configure Price of Tickets");
-            System.out.println("Option 9: Configure Settings (e.g: add Day Type, add Type of Customer)");
+
+            System.out.println("Option 8: View Movies by Ticket Sales");
+            System.out.println("Option 9: Configure Price of Tickets");
             System.out.println("Option 0: Return to previous menu");
 
             try {
@@ -444,55 +475,27 @@ public class StaffUI {
                     break;
 
                 case 8:
+                    viewMoviesBySales();
+                    break;
+
+                case 9:
                     configurePriceOfTickets();
                     break;
+
                 case 0:
                     break;
 
                 default:
                     showErrorMessage();
             }
-        } while ((1 <= choice && choice <= 7));
+        } while ((1 <= choice && choice <= 8));
     }
 
+    /**
+     * Static UI method to show error message.
+     */
     private static void showErrorMessage() {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
-
-    /*
-     * public void showUpdateMovieListingMenu() {
-     * int choice = 0;
-     * System.out.println("---------------------------------");
-     * System.out.println("    Update Movie Listing Menu    ");
-     * System.out.println("---------------------------------");
-     * System.out.println("Select options:");
-     * System.out.println("Option 1: Show Movie Listing");
-     * System.out.println("Option 2: Add Movie");
-     * System.out.println("Option 3: Remove Movie");
-     * System.out.println("Option 0: Return to previous menu");
-     * do {
-     * try {
-     * choice = sc.nextInt();
-     * } catch (Exception e) {
-     * sc.nextLine();
-     * showErrorMessage();
-     * continue;
-     * }
-     * switch (choice) {
-     * case 1:
-     * showMovieListing();
-     * break;
-     * case 2:
-     * addMovieMenu();
-     * break;
-     * case 3:
-     * removeMovie();
-     * break;
-     * default:
-     * showErrorMessage();
-     * }
-     * } while (!(0 < choice && choice <= 3));
-     * }
-     */
 
 }

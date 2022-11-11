@@ -53,6 +53,10 @@ public class Movie implements Serializable {
      */
     private double priceProportion;
     /**
+     * The type of this Movie.
+     */
+    private MovieType type;
+    /**
      * The serialVersionUID of this Movie.
      */
     private static final long serialVersionUID = 4361251724076664901L;
@@ -61,16 +65,17 @@ public class Movie implements Serializable {
      * Creates a new Movie with given title, sypnosis, status, director, cast,
      * movieID.
      * 
-     * @param title           This Movie's title.
-     * @param sypnosis        This Movie's sypnosis.
-     * @param status          This Movie's status.
-     * @param director        This Movie's director.
-     * @param cast            This Movie's cast.
-     * @param movieID         This Movie's movieID.
-     * @param priceProportion this Movie's priceProportion.
+     * @param title    This Movie's title.
+     * @param sypnosis This Movie's sypnosis.
+     * @param status   This Movie's status.
+     * @param director This Movie's director.
+     * @param cast     This Movie's cast.
+     * @param movieID  This Movie's movieID.
+     * @param price    This Movie's price.
+     * @param type     This Movie's type.
      */
     public Movie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
-            int movieID, double priceProportion) {
+            int movieID, double price, MovieType type) {
         this.title = title;
         this.synopsis = sypnosis;
         this.status = status;
@@ -79,7 +84,8 @@ public class Movie implements Serializable {
         this.movieID = movieID;
         this.averageRatings = 0;
         this.numSales = 0;
-        this.priceProportion = priceProportion;
+        this.priceProportion = price;
+        this.type = type;
         ratings = new ArrayList<Float>();
         reviews = new ArrayList<String>();
 
@@ -185,6 +191,15 @@ public class Movie implements Serializable {
      */
     public ArrayList<String> getReviews() {
         return reviews;
+    }
+
+    /**
+     * Gets the total number of sales of this Movie.
+     * 
+     * @return this Movie's numSales.
+     */
+    public int getNumSales() {
+        return numSales;
     }
 
     /**
