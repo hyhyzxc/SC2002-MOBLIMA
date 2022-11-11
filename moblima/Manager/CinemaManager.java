@@ -7,9 +7,10 @@ import moblima.Serializer.*;
 
 /**
  * Represents a CinemaManager.
+ * 
  * @author
  * @version 1.0
- * @since 2022-08-11 
+ * @since 2022-11-08
  */
 public class CinemaManager {
     /**
@@ -17,6 +18,7 @@ public class CinemaManager {
      */
     private ArrayList<Cineplex> cineplexList;
     static CinemaSerializer s = new CinemaSerializer();
+
     /**
      * Creates a new CinemaManager.
      * If cineplexList does not exist, create a cineplexList.
@@ -34,17 +36,22 @@ public class CinemaManager {
             cineplexList.add(newCine3);
         }
     }
+
     /**
-     * Gets an ArrayList of Cineplex. 
+     * Gets an ArrayList of Cineplex.
+     * 
      * @return this CinemaManager's cineplexList.
      */
     public ArrayList<Cineplex> getCineplexList() {
         return cineplexList;
     }
+
     /**
      * Appends a given session to a given cineplex.
-     * Displays a message of a successful addition of given session to given cineplex.
-     * @param session new session to be added
+     * Displays a message of a successful addition of given session to given
+     * cineplex.
+     * 
+     * @param session       new session to be added
      * @param cineplexIndex index value of cineplex
      */
     public void addSessionToCineplex(Session session, int cineplexIndex) {
@@ -55,13 +62,14 @@ public class CinemaManager {
     }
 
     /**
-     * Gets the full ArrayList of sessions across all cineplexes. 
-     * @return 
+     * Gets the full ArrayList of sessions across all cineplexes.
+     * 
+     * @return
      */
     public ArrayList<Session> getAllSessions() {
         cineplexList = s.getCineplexStatus("CineplexDatabase.ser");
         ArrayList<Session> sessions = new ArrayList<Session>();
-        
+
         for (int i = 0; i < cineplexList.size(); i++) {
             ArrayList<Session> cineSess = cineplexList.get(i).getAvailableSessions();
             for (Session j : cineSess) {
@@ -70,9 +78,11 @@ public class CinemaManager {
         }
         return sessions;
     }
+
     /**
      * Change given seat's status to empty.
-     * @param seat 
+     * 
+     * @param seat
      */
     public void unreserveSeat(Seat seat) {
         seat.setEmpty();
@@ -81,6 +91,7 @@ public class CinemaManager {
 
     /**
      * Change given seat's status to occupied.
+     * 
      * @param seat
      */
     public void reserveSeat(Seat seat) {
