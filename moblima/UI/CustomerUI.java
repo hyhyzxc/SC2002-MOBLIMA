@@ -10,13 +10,14 @@ import java.lang.*;
 
 /**
  * Handles all user IO for current Customer
- * @author 
+ * 
+ * @author
  *
  */
 public class CustomerUI {
-	/**
-	 * The CustomerAccount logged into the UI.
-	 */
+    /**
+     * The CustomerAccount logged into the UI.
+     */
     private static CustomerAccount owner;
     /**
      * This CustomerUI's list of managers.
@@ -29,7 +30,8 @@ public class CustomerUI {
 
     /**
      * Creates new CustomerUI with given account and managerList.
-     * @param account Current account logged into the UI.
+     * 
+     * @param account     Current account logged into the UI.
      * @param managerList List of Managers.
      */
     public CustomerUI(CustomerAccount account, ManagerList managerList) {
@@ -73,6 +75,7 @@ public class CustomerUI {
 
     /**
      * Allows user to input ratings and reviews for a movie.
+     * 
      * @throws InvalidInputException
      */
     public void addRatingAndReview() throws InvalidInputException {
@@ -107,33 +110,36 @@ public class CustomerUI {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
 
-    /**
-     * Uses MovieManager and displays top 5 movies ranked by rating.
-     */
-    public void showTop5Movies() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedRating();
-        System.out.println("Title (Rating):");
-        for (int i = 0; i < 5; i++) {
-            System.out.printf("%s (%f)\n", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
-        }
-    }
+    // /**
+    // * Uses MovieManager and displays top 5 movies ranked by rating.
+    // */
+    // public void showTop5Movies() {
+    // MovieManager MM = managerList.getMovieManager();
+    // ArrayList<Movie> movies = MM.getSortedRating();
+    // System.out.println("Title (Rating):");
+    // for (int i = 0; i < 5; i++) {
+    // System.out.printf("%s (%f)\n", movies.get(i).getTitle(),
+    // movies.get(i).getAverageRatings());
+    // }
+    // }
 
-    /**
-     * Uses Booking Manager and displays top 5 movies ranked by sales.
-     */
-    public void showTop5MovieBySales() {
-        BookingManager BM = managerList.getBookingManager();
-        Map<String, Integer> map = BM.sortMoviesBySales();
-        for (Map.Entry<String, Integer> en : map.entrySet()) {
-            System.out
-                    .println("Movie Title: " + en.getKey() + "---->" + "Number of Sales: " + en.getValue());
-        }
-    }
+    // /**
+    // * Uses Booking Manager and displays top 5 movies ranked by sales.
+    // */
+    // public void showTop5MovieBySales() {
+    // BookingManager BM = managerList.getBookingManager();
+    // Map<String, Integer> map = BM.sortMoviesBySales();
+    // for (Map.Entry<String, Integer> en : map.entrySet()) {
+    // System.out
+    // .println("Movie Title: " + en.getKey() + "---->" + "Number of Sales: " +
+    // en.getValue());
+    // }
+    // }
 
     /**
      * Initialises CustomerUI.
      * Displays user's options and calls relevant methods and UIs.
+     * 
      * @throws InvalidEmailException
      * @throws InvalidPhoneNoException
      */
@@ -150,8 +156,7 @@ public class CustomerUI {
             System.out.println("Option 3: View Seat Availability");
             System.out.println("Option 4: Make Booking");
             System.out.println("Option 5: View Booking History");
-            System.out.println("Option 6: View Top 5 Movies by Rating");
-            System.out.println("Option 7: View Top 5 Movies by Ticket Sales");
+            System.out.println("Option 6: Sort Movies");
             System.out.println("Enter 0 to exit");
 
             try {
@@ -195,12 +200,21 @@ public class CustomerUI {
                     break;
 
                 case 6:
-                    showTop5Movies();
+                    System.out.println("(1) by Ranking \n(2) by Ticket Sales\n");
+                    int c = sc.nextInt();
+                    ArrayList<Movie> sortedList = new MovieManager().getSorted(c);
+                    for (Movie movie : sortedList) {
+                        System.out.println("----------------------------------------");
+                        System.out.println("Title: " + movie.getTitle());
+                        System.out.println("Avg Ratings: " + movie.getAverageRatings());
+                        System.out.println("Num Sales: " + movie.getNumSales());
+                        System.out.println("----------------------------------------");
+                    }
                     break;
 
-                case 7:
-                    showTop5MovieBySales();
-                    break;
+                // case 7:
+                // showTop5MovieBySales();
+                // break;
 
                 default:
                     showErrorMessage();

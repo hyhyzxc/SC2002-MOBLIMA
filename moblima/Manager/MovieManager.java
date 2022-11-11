@@ -4,7 +4,6 @@ import java.util.*;
 
 import moblima.Entity.Movie;
 import moblima.Entity.ShowingStatus;
-import moblima.Entity.Sorter;
 import moblima.Serializer.MovieSerializer;
 import moblima.UI.StaffUI;
 
@@ -17,7 +16,7 @@ import java.io.*;
  * @version 1.0
  * @since 2022-11-11
  */
-public class MovieManager implements Sorter {
+public class MovieManager {
     /**
      * ArrayList consisting of list of movies.
      */
@@ -113,18 +112,19 @@ public class MovieManager implements Sorter {
         return newList;
     }
 
-    /**
-     * Sorts movies by ratings.
-     * 
-     * @return the movie list sorted by ratings.
-     */
-    public ArrayList<Movie> getSortedRating() {
-        movieList.sort((m1, m2) -> m1.getAverageRatings() > m2.getAverageRatings() ? -1 : 1);
-        return movieList;
+    public ArrayList<Movie> getSorted(int choice) {
+        SortContext sc;
+        switch (choice) {
+            case 1: // sort by ratings
+                sc = new SortContext(new SortByRating());
+                return sc.executeSort(this.movieList);
+            case 2:
+                sc = new SortContext(new SortBySales());
+                return sc.executeSort(this.movieList);
+            default:
+                System.out.println("Invalid Input");
+                return null;
+        }
     }
-    
-    public ArrayList<Movie> getSortedSales() {
-    	movieList.sort((m1, m2) -> m1.getNumSales() > m2.getNumSales() ? -1 : 1);
-        return movieList;
-    }
+
 }

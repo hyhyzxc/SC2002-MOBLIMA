@@ -250,27 +250,16 @@ public class StaffUI {
         }
     }
 
-    /**
-     * Retrieves all Movies from MovieManager and displays sorted by rating.
-     */
-    public void viewMoviesByRating() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedRating();
-        System.out.println("Title (Rating):");
-        for (Movie m : movies) {
-            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
-        }
-    }
-
-    /**
-     * Retrieves all Movies from MovieManager and displays sorted by sales.
-     */
-    public void viewMoviesBySales() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedSales();
-        System.out.println("Title (Rating):");
-        for (Movie m : movies) {
-            System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
+    public void viewSortedMovies() {
+        System.out.println("(1) by Ranking \n(2) by Ticket Sales\n");
+        int c = sc.nextInt();
+        ArrayList<Movie> sortedList = new MovieManager().getSorted(c);
+        for (Movie movie : sortedList) {
+            System.out.println("----------------------------------------");
+            System.out.println("Title: " + movie.getTitle());
+            System.out.println("Avg Ratings: " + movie.getAverageRatings());
+            System.out.println("Num Sales: " + movie.getNumSales());
+            System.out.println("----------------------------------------");
         }
     }
 
@@ -399,10 +388,8 @@ public class StaffUI {
             System.out.println("Option 4: Update Movie Location and Showtimes");
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
-            System.out.println("Option 7: View Movies by Rating");
-
-            System.out.println("Option 8: View Movies by Ticket Sales");
-            System.out.println("Option 9: Configure Price of Tickets");
+            System.out.println("Option 7: View Sorted Movies");
+            System.out.println("Option 8: Configure Price of Tickets");
             System.out.println("Option 0: Return to previous menu");
 
             try {
@@ -456,14 +443,9 @@ public class StaffUI {
                     break;
 
                 case 7:
-                    viewMoviesByRating();
+                    viewSortedMovies();
                     break;
-
                 case 8:
-                    viewMoviesBySales();
-                    break;
-
-                case 9:
                     configurePriceOfTickets();
                     break;
 
