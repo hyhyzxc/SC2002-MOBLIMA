@@ -2,15 +2,19 @@ package moblima.Manager;
 
 import java.util.ArrayList;
 
+import moblima.Entity.Booking;
+import moblima.Entity.Cinema;
+import moblima.Entity.Cineplex;
 import moblima.Entity.DayType;
 import moblima.Entity.Movie;
+import moblima.Entity.Seat;
 import moblima.Entity.SeatType;
 import moblima.Entity.Session;
 import moblima.Entity.Status;
-import moblima.Entity.Ticket;
 
 /**
- * Logic Class that calculates price of tickets. Can be an individual ticket or
+ * Logic Class that calculates price of a booking. Can be an individual ticket
+ * or
  * the total of all tickets.
  */
 public class PriceManager {
@@ -21,72 +25,33 @@ public class PriceManager {
      * 
      * @param ticket A single unit from tickets
      */
-    public double calcPrice(Ticket ticket) {
+    public double calcPrice(Booking booking) {
         double price = 0;
-        Session session = ticket.getSessionBooked();
-        DayType dayType = session.getDay();
-        Status status = ticket.getStatus();
-        SeatType seatType = ticket.getSeatType();
+        Session session = booking.getSessionBooked();
+        String day = session.getDay();
+        String status = booking.getStatus();
+        Seat seat = booking.getSeatBooked();
         Movie movie = session.getMovie();
 
+        Cinema cinema = booking.getCinemaBooked();
         price += movie.getPriceProportion();
-        switch (dayType.getName()) {
-            case ("Weekday"):
-                price += 6.5;
-                break;
-            case ("Weekend"):
-                price += 9.0;
-                break;
-            case ("Public Holiday"):
-                price += 10;
-                break;
-            default:
-                break;
-        }
-
-        switch (status) {
-            case STUDENT:
-                price -= 2.0;
-                break;
-            case ADULT:
-                break;
-            case SENIOR_CITIZEN:
-                price -= 3.0;
-                break;
-            default:
-                break;
-
-        }
-
-        switch (seatType) {
-            case COUPLE:
-                price *= 2;
-                price += 2;
-                break;
-            case ELITE:
-                price += 3;
-            case REGULAR:
-                break;
-            case ULTIMA:
-                price += 5;
-            default:
-                break;
-        }
+        price += new DayType().getPriceProportion(day);
+        price += new Status().getPriceProportion(status);
+        price += seat.getPriceProportion();
+        price += cinema.getPriceProportion();
 
         return price;
     }
 
-    /**
-     * Returns the total cost of all tickets in the "Shopping Cart"
-     * 
-     * @param tickets the ArrayList of Ticket type
-     */
-    public double calcTotalPrice(ArrayList<Ticket> tickets) {
-        double total = 0;
-        for (Ticket ticket : tickets) {
-            total += calcPrice(ticket);
+    public void setPriceProportion(Object o, double newPrice) {
+        if (o instanceof Movie) {
+            ((Movie) o).setPriceProportion(newPrice);
+        } else if (o instanceof Cinema) {
+            ((Cinema) o).setPriceProportion(newPrice);
+        } else if (o instanceof Seat) {
+            ((Seat) o).setPriceProportion(newPrice);
+        } else {
+            // throw some errors
         }
-
-        return total;
     }
 }

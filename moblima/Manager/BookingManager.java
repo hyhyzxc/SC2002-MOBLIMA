@@ -9,13 +9,14 @@ import java.util.Map.Entry;
 
 /**
  * Represent a BookingManager.
+ * 
  * @author
  * @version 1.0
- * @since 2022-11-08  
+ * @since 2022-11-08
  */
 public class BookingManager {
     /**
-     * ArrayList consisting of bookings. 
+     * ArrayList consisting of bookings.
      */
     private ArrayList<Booking> bookings;
     static BookingSerializer s = new BookingSerializer();
@@ -32,8 +33,9 @@ public class BookingManager {
 
     /**
      * Appends newBooking to ArrayList of current bookings.
-     * Displays a message of a successful booking. 
-     * @param newBooking this BookingManager's newBooking. 
+     * Displays a message of a successful booking.
+     * 
+     * @param newBooking this BookingManager's newBooking.
      */
     public void addNewBooking(Booking newBooking) {
         bookings.add(newBooking);
@@ -43,9 +45,11 @@ public class BookingManager {
 
     /**
      * Searches for a customers booking with given owner.
-     * Iterates through ArrayList of bookings and finds an entry corresponding to the given owner.
+     * Iterates through ArrayList of bookings and finds an entry corresponding to
+     * the given owner.
+     * 
      * @param owner This BookingManager's owner.
-     * @return this owner's customerBookings. 
+     * @return this owner's customerBookings.
      */
     public ArrayList<Booking> getBookingsOfCustomer(CustomerAccount owner) {
         bookings = s.getBookings("BookingDatabase.ser");
@@ -60,6 +64,7 @@ public class BookingManager {
 
     /**
      * Gets an ArrayList of Booking.
+     * 
      * @return this BookingManager's bookings.
      */
     public ArrayList<Booking> getBookings() {
@@ -90,7 +95,7 @@ public class BookingManager {
         bookings = s.getBookings("BookingDatabase.ser");
         HashMap<String, Integer> map = new HashMap<>();
         for (Booking booking : bookings) {
-            String movieBooke d = booking.getSessionBooked().getMovie().getTitle();
+            String movieBooked = booking.getSessionBooked().getMovie().getTitle();
             if (!map.containsKey(movieBooked)) {
                 map.put(movieBooked, 1);
             } else {

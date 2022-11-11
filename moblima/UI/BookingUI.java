@@ -9,7 +9,8 @@ import java.util.*;
 
 /**
  * Handles all user IO for booking purposes.
- * @author 
+ * 
+ * @author
  *
  */
 public class BookingUI {
@@ -21,13 +22,14 @@ public class BookingUI {
      * List of all managers.
      */
     private static ManagerList managerList;
-    /** 
+    /**
      * Static Scanner object for IO.
      */
     static final Scanner sc = new Scanner(System.in);
 
     /**
      * Creates a new BookingUI with the specified owner.
+     * 
      * @param owner This BookingUI's owner.
      */
     public BookingUI(CustomerAccount owner, ManagerList managerList) {
@@ -119,6 +121,7 @@ public class BookingUI {
 
     /**
      * Gets user input to make new Booking.
+     * 
      * @throws InvalidInputException
      * @throws InvalidEmailException
      * @throws InvalidPhoneNoException
@@ -216,12 +219,16 @@ public class BookingUI {
             System.out.println("this is datetime" + datetime);
             String TID = cinemaChosen.getCinemaID() + datetime;
             CM.reserveSeat(seatChosen);
-            Booking newBooking = new Booking(TID, owner, sessionChosen, cineplexChosen, seatChosen);
+            System.out.println("owner " + owner);
+            Booking newBooking = new Booking(TID, owner, sessionChosen, cineplexChosen, seatChosen, cinemaChosen);
             BookingManager BM = managerList.getBookingManager();
             System.out.println("------------- Confirm Payment ------------");
 
-            // PriceManager PM = managerList.getPriceManager(newBooking);
-
+            PriceManager PM = managerList.getPriceManager();
+            System.out.println("Movie: " + sessionChosen.getMovie().getTitle());
+            System.out.println("Start DateTime: " + sessionChosen.getSessionDateTimeStart().toString());
+            System.out.println("End DateTime: " + sessionChosen.getSessionDateTimeEnd().toString());
+            System.out.println("The total price is: " + PM.calcPrice(newBooking));
             System.out.println("1: Proceed, 0: return to menu.");
             int proceed = sc.nextInt();
             if (proceed == 0) {

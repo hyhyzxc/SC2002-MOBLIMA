@@ -1,6 +1,7 @@
 package moblima.Entity;
 
 import java.io.Serializable;
+
 /**
  * Represents a Booking
  * Class that implements the Serializable interface
@@ -27,27 +28,42 @@ public class Booking implements Serializable {
      */
     private Seat seatBooked;
     /**
+     * The status of the ticket owner.
+     */
+    private String status;
+    /**
+     * The status of the ticket owner.
+     */
+    private Cinema cinemaBooked;
+    /**
      * The serialVersionUID of this Booking.
      */
     private static final long serialVersionUID = 3258651340543939867L;
-    
+
     /**
-     * Creates a new Booking with the given TID, owner, session, cineplex, seat. 
-     * @param TID This Booking's TID.
-     * @param owner This Booking's owner.
-     * @param session This Booking's session.
+     * Creates a new Booking with the given TID, owner, session, cineplex, seat.
+     * 
+     * @param TID      This Booking's TID.
+     * @param owner    This Booking's owner.
+     * @param session  This Booking's session.
      * @param cineplex This Booking's cineplex.
-     * @param seat This Booking's seat.
+     * @param seat     This Booking's seat.
+     * @param cinema   This Booking's cinema.
      */
-    public Booking(String TID, CustomerAccount owner, Session session, Cineplex cineplex, Seat seat) {
+    public Booking(String TID, CustomerAccount ownerAccount, Session session, Cineplex cineplex, Seat seat,
+            Cinema cinema) {
         this.transactionID = TID;
-        this.booker = owner;
+        this.booker = ownerAccount;
         this.sessionBooked = session;
         this.cineplexBooked = cineplex;
+        this.cinemaBooked = cinema;
         this.seatBooked = seat;
+        this.status = ((Customer) booker.getOwner()).getStatus();
     }
+
     /**
      * Gets the transaction ID of this Booking.
+     * 
      * @return This Booking's transactionID.
      */
     public String getTID() {
@@ -56,7 +72,8 @@ public class Booking implements Serializable {
 
     /**
      * Gets the booker of this Booking.
-     * @return This Booking's booker. 
+     * 
+     * @return This Booking's booker.
      */
     public CustomerAccount getBooker() {
         return booker;
@@ -64,29 +81,53 @@ public class Booking implements Serializable {
 
     /**
      * Gets the session booked by this Booking.
-     * @return This Booking's sessionBooked. 
+     * 
+     * @return This Booking's sessionBooked.
      */
     public Session getSessionBooked() {
         return sessionBooked;
     }
+
     /**
      * Gets the cineplex booked by this Booking.
-     * @return This Booking's cineplexBooked. 
+     * 
+     * @return This Booking's cineplexBooked.
      */
     public Cineplex getCineplexBooked() {
         return cineplexBooked;
     }
+
+    /**
+     * Gets the cinema booked by this Booking.
+     * 
+     * @return This Booking's cinemaBooked.
+     */
+    public Cinema getCinemaBooked() {
+        return cinemaBooked;
+    }
+
     /**
      * Gets the seat booked by this Booking.
-     * @return This Booking's seatBooked. 
+     * 
+     * @return This Booking's seatBooked.
      */
     public Seat getSeatBooked() {
         return seatBooked;
     }
 
     /**
+     * Gets the customer's status, which is a Status enum
+     * 
+     * @return an enum of type Status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
      * Prints a ticket to the user with the following details:
-     * TransactionID, customer name, movie title, cineplex, seat number, and seat type.
+     * TransactionID, customer name, movie title, cineplex, seat number, and seat
+     * type.
      */
     public void toTicket() {
         /* TODO: Add price print statement as well */

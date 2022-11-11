@@ -23,27 +23,29 @@ public class Ticket {
 	/**
 	 * The age group this Ticket is purchased for.
 	 */
-	private Status status;
+	private String status;
 
 	/**
 	 * Creates a new Ticket.
-	 * @param booker The CustomerAccount that books this Ticket.
-	 * @param sessionBooked The Session in which this Ticket was booked.
+	 * 
+	 * @param booker         The CustomerAccount that books this Ticket.
+	 * @param sessionBooked  The Session in which this Ticket was booked.
 	 * @param cineplexBooked The Cineplex that this Tickets booked a movie for.
-	 * @param seatBooked The Seat booked by this Ticket.
-	 * @param status The age group this Ticket is purchased for.
+	 * @param seatBooked     The Seat booked by this Ticket.
+	 * @param status         The age group this Ticket is purchased for.
 	 */
 	public Ticket(CustomerAccount booker, Session sessionBooked, Cineplex cineplexBooked, Seat seatBooked,
-			Status status) {
+			String status) {
 		this.booker = booker;
 		this.sessionBooked = sessionBooked;
 		this.cineplexBooked = cineplexBooked;
 		this.seatBooked = seatBooked;
 		this.status = status; // affects the price: Child, Adult, Senior Citizen
 	}
-	
+
 	/**
 	 * Gets the CustomerAccount that books this Ticket.
+	 * 
 	 * @return this Ticket's CustomerAccount.
 	 */
 	public CustomerAccount getBooker() {
@@ -52,6 +54,7 @@ public class Ticket {
 
 	/**
 	 * Gets the Session in which this Ticket was booked.
+	 * 
 	 * @return this Ticket's Session.
 	 */
 	public Session getSessionBooked() {
@@ -60,6 +63,7 @@ public class Ticket {
 
 	/**
 	 * Gets the Cineplex that this Tickets booked a movie for.
+	 * 
 	 * @return this Ticket's Cineplex.
 	 */
 	public Cineplex getCineplexBooked() {
@@ -68,6 +72,7 @@ public class Ticket {
 
 	/**
 	 * Gets the Seat booked by this Ticket.
+	 * 
 	 * @return this Ticket's Seat.
 	 */
 	public Seat getSeatBooked() {
@@ -76,6 +81,7 @@ public class Ticket {
 
 	/**
 	 * Gets the SeatType booked by this Ticket.
+	 * 
 	 * @return this Ticket's SeatType.
 	 */
 	public SeatType getSeatType() {
@@ -84,9 +90,10 @@ public class Ticket {
 
 	/**
 	 * Gets the age group this Ticket is purchased for.
+	 * 
 	 * @return this Ticket's status.
 	 */
-	public Status getStatus() {
+	public String getStatus() {
 		return this.status;
 	}
 }

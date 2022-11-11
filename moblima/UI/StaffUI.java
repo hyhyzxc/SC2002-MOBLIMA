@@ -11,11 +11,12 @@ import moblima.Manager.*;
 
 /**
  * Handles all user IO for current Staff
- * @author 
+ * 
+ * @author
  *
  */
 public class StaffUI {
-	/**
+    /**
      * Static Scanner object for all IO.
      */
     static final Scanner sc = new Scanner(System.in);
@@ -24,8 +25,8 @@ public class StaffUI {
      */
     static final Random r = new Random();
     /**
-	 * The StaffAccount logged into the UI.
-	 */
+     * The StaffAccount logged into the UI.
+     */
     private StaffAccount owner;
     /**
      * This StaffUI's list of managers.
@@ -34,7 +35,8 @@ public class StaffUI {
 
     /**
      * Creates new StaffUI with given account and managerList.
-     * @param account Current account logged into the UI.
+     * 
+     * @param account     Current account logged into the UI.
      * @param managerList List of Managers.
      */
     public StaffUI(StaffAccount account, ManagerList managerList) {
@@ -138,7 +140,9 @@ public class StaffUI {
     }
 
     /**
-     * Gets user input for movie title to be removed and removes it from MovieManager's movieList.
+     * Gets user input for movie title to be removed and removes it from
+     * MovieManager's movieList.
+     * 
      * @throws InvalidInputException
      */
     public void removeMovie() throws InvalidInputException {
@@ -156,6 +160,7 @@ public class StaffUI {
 
     /**
      * Gets user input to assign a Movie to a Cineplex.
+     * 
      * @throws InvalidInputException
      */
     public void updateCineplexMovies() throws InvalidInputException {
@@ -204,8 +209,8 @@ public class StaffUI {
             if (dayChoice < 1 || dayChoice > 3) {
                 throw new InvalidInputException();
             }
-            DayType day = (dayChoice == 1) ? DayType.WEEKDAY
-                    : (dayChoice == 2) ? DayType.WEEKEND : DayType.PUBLIC_HOLIDAY;
+            String day = (dayChoice == 1) ? "WEEKDAY"
+                    : (dayChoice == 2) ? "WEEKEND" : "PUBLIC_HOLIDAY";
             sc.nextLine();
 
             Session session = new Session(movie, showtime, endtime, day);
@@ -244,26 +249,132 @@ public class StaffUI {
             booking.toTicket();
         }
     }
-    
+
     /**
      * Retrieves all Movies from MovieManager and displays sorted by rating.
      */
     public void viewMoviesByRating() {
-    	MovieManager MM = managerList.getMovieManager();
-    	ArrayList<Movie> movies = MM.getSortedRating();
-    	System.out.println("Title (Rating):");
-    	for (Movie m : movies) {
-    		System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
-    	}
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSortedRating();
+        System.out.println("Title (Rating):");
+        for (Movie m : movies) {
+            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+        }
     }
-    
+
+    /**
+     * Retrieves all Movies from MovieManager and displays sorted by sales.
+     */
     public void viewMoviesBySales() {
-    	MovieManager MM = managerList.getMovieManager();
-    	ArrayList<Movie> movies = MM.getSortedSales();
-    	System.out.println("Title (Rating):");
-    	for (Movie m : movies) {
-    		System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
-    	}
+        MovieManager MM = managerList.getMovieManager();
+        ArrayList<Movie> movies = MM.getSortedSales();
+        System.out.println("Title (Rating):");
+        for (Movie m : movies) {
+            System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
+        }
+    }
+
+    /**
+     * Allows staff to change the price of the tickets of different Day Types or
+     * Customer Status Type. If no existing predefined price for a new category, the
+     * new criteria
+     * is added. For example, if staff wants to add "DAY_A" with priceProportion of
+     * 8, but currently
+     * there's no "DAY_A" day type, it will be added.
+     * 
+     * If "DAY_A" already exists, then the priceProportion corresponding to "DAY_A"
+     * will be updated.
+     * 
+     */
+    public void configurePriceOfTickets() {
+        int choice;
+        System.out.println("Configure Ticket Price by:");
+        System.out.println("1: Type of Day (e.g: Public Holiday, Weekday, Weekend...");
+        System.out.println("2: Type of Customer (e.g: Adult, Senior Citizen, Child...");
+        System.out.println("0: Back");
+        choice = sc.nextInt();
+        String key;
+        double newPrice;
+        switch (choice) {
+            case 1:
+                DayType d = new DayType();
+                System.out.println("Pick: (1) Delete (2) Add");
+                int c = sc.nextInt();
+                System.out.println("Existing Keys");
+                try {
+                    for (String k : d.getAllExistingKeys()) {
+                        System.out.println(k);
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println("There are no existing keys!, please try again");
+                    return;
+                }
+
+                switch (c) {
+                    case 1:
+                        System.out.println("--------Delete--------");
+                        System.out.println("Please choose from the available keys");
+                        try {
+                            d.delKey(sc.next());
+                        } catch (NullPointerException e) {
+                            System.out.println("Sorry, there's no such key to delete");
+                            return;
+                        }
+                        break;
+                    case 2:
+                        System.out.println("--------Add--------");
+                        System.out.println("You may choose from the existing keys, or input a new type");
+                        key = sc.next();
+                        System.out.println("Enter new price");
+                        newPrice = sc.nextDouble();
+                        d.setAddPriceProportion(key, newPrice);
+                        System.out.println("Successfully updated!");
+                        break;
+
+                }
+
+            case 2:
+                Status s = new Status();
+                System.out.println("Pick: (1) Delete (2) Add");
+                int c2 = sc.nextInt();
+                System.out.println("Existing Keys");
+                try {
+                    for (String k : s.getAllExistingKeys()) {
+                        System.out.println(k);
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println("There are no existing keys!, please try again");
+                    return;
+                }
+
+                switch (c2) {
+                    case 1:
+                        System.out.println("--------Delete--------");
+                        System.out.println("Please choose from the available keys");
+                        try {
+                            s.delKey(sc.next());
+                        } catch (NullPointerException e) {
+                            System.out.println("Sorry, there's no such key to delete");
+                            return;
+                        }
+                        break;
+                    case 2:
+                        System.out.println("--------Add--------");
+                        System.out.println("You may choose from the existing keys, or input a new type");
+                        key = sc.next();
+                        System.out.println("Enter new price");
+                        newPrice = sc.nextDouble();
+                        s.setAddPriceProportion(key, newPrice);
+                        System.out.println("Successfully updated!");
+                        break;
+
+                }
+            case 0:
+                return;
+            default:
+                showErrorMessage();
+        }
+
     }
 
     /**
@@ -285,9 +396,10 @@ public class StaffUI {
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Movies by Rating");
+
             System.out.println("Option 8: View Movies by Ticket Sales");
+            System.out.println("Option 9: Configure Price of Tickets");
             System.out.println("Option 0: Return to previous menu");
-            /* TODO: Add function to configure Price */
 
             try {
                 choice = sc.nextInt();
@@ -338,25 +450,29 @@ public class StaffUI {
                 case 6:
                     getAllBookings();
                     break;
-                   
+
                 case 7:
-                	viewMoviesByRating();
-                	break;
-                	
+                    viewMoviesByRating();
+                    break;
+
                 case 8:
-                	viewMoviesBySales();
-                	break;
-                
+                    viewMoviesBySales();
+                    break;
+
+                case 9:
+                    configurePriceOfTickets();
+                    break;
+
                 case 0:
-                	break;
-                	
+                    break;
+
                 default:
                     showErrorMessage();
             }
-        } while ((1 <= choice && choice <= 8));
+        } while ((1 <= choice && choice <= 9));
     }
 
-    /** 
+    /**
      * Static UI method to show error message.
      */
     private static void showErrorMessage() {

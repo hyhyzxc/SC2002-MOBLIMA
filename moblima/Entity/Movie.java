@@ -5,7 +5,7 @@ import java.util.*;
 
 /**
  * Represents a Movie.
- * Concrete class that implements the Serializable interface. 
+ * Concrete class that implements the Serializable interface.
  */
 public class Movie implements Serializable {
     /**
@@ -45,7 +45,7 @@ public class Movie implements Serializable {
      */
     private ArrayList<String> cast;
     /**
-     * The sales count of this Movie. 
+     * The sales count of this Movie.
      */
     private int numSales;
     /**
@@ -62,15 +62,17 @@ public class Movie implements Serializable {
     private static final long serialVersionUID = 4361251724076664901L;
 
     /**
-     * Creates a new Movie with given title, sypnosis, status, director, cast, movieID.
-     * @param title This Movie's title.
+     * Creates a new Movie with given title, sypnosis, status, director, cast,
+     * movieID.
+     * 
+     * @param title    This Movie's title.
      * @param sypnosis This Movie's sypnosis.
-     * @param status This Movie's status.
+     * @param status   This Movie's status.
      * @param director This Movie's director.
-     * @param cast This Movie's cast.
-     * @param movieID This Movie's movieID.
-     * @param price This Movie's price.
-     * @param type This Movie's type.
+     * @param cast     This Movie's cast.
+     * @param movieID  This Movie's movieID.
+     * @param price    This Movie's price.
+     * @param type     This Movie's type.
      */
     public Movie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
             int movieID, double price, MovieType type) {
@@ -91,6 +93,7 @@ public class Movie implements Serializable {
 
     /**
      * Gets the status of this Movie.
+     * 
      * @return this Movie's status.
      */
     public ShowingStatus getStatus() {
@@ -99,6 +102,7 @@ public class Movie implements Serializable {
 
     /**
      * Gets the cast of this Movie..
+     * 
      * @return this Movie's cast.
      */
     public ArrayList<String> getCast() {
@@ -107,6 +111,7 @@ public class Movie implements Serializable {
 
     /**
      * Gets the title of this Movie.
+     * 
      * @return this Movie's title.
      */
     public String getTitle() {
@@ -115,7 +120,8 @@ public class Movie implements Serializable {
 
     /**
      * Gets the identification number of this Movie.
-     * @return this Movie's movieID. 
+     * 
+     * @return this Movie's movieID.
      */
     public int getMovieID() {
         return this.movieID;
@@ -123,6 +129,7 @@ public class Movie implements Serializable {
 
     /**
      * Gets the sypnosis of this Movie.
+     * 
      * @return this Movie's sypnosis.
      */
     public String getSynopsis() {
@@ -131,6 +138,7 @@ public class Movie implements Serializable {
 
     /**
      * Gets the director of this Movie.
+     * 
      * @return this Movie's director.
      */
     public String getDirector() {
@@ -139,14 +147,17 @@ public class Movie implements Serializable {
 
     /**
      * Appends a new review to ArrayList of reviews.
-     * @param review This Movie's new review. 
+     * 
+     * @param review This Movie's new review.
      */
     public void addReview(String review) {
         reviews.add(review);
     }
 
     /**
-     * Adds a new rating to current average rating and computes a new average rating.
+     * Adds a new rating to current average rating and computes a new average
+     * rating.
+     * 
      * @param rating This Movie's new rating.
      */
     public void addRatings(float rating) {
@@ -158,50 +169,65 @@ public class Movie implements Serializable {
         }
         this.averageRatings = sum / ratings.size();
     }
-    
+
     /**
-    * Gets the average rating of this Movie. 
-    * If there are no existing ratings, return 0.
-    * @return this Movie's averageRatings.
-    */
-   public float getAverageRatings() {
-       if (ratings.size() > 1) {
-           return averageRatings;
-       } else {
-           return 0;
-       }
-   }
+     * Gets the average rating of this Movie.
+     * If there are no existing ratings, return 0.
+     * 
+     * @return this Movie's averageRatings.
+     */
+    public float getAverageRatings() {
+        if (ratings.size() > 1) {
+            return averageRatings;
+        } else {
+            return 0;
+        }
+    }
 
-   /**
-    * Gets the reviews of this Movie.
-    * @return this Movie's reviews.
-    */
-   public ArrayList<String> getReviews() {
-       return reviews;
-   }
-   
-   /**
-    * Gets the total number of sales of this Movie.
-    * @return this Movie's numSales.
-    */
-   public int getNumSales() {
-	   return numSales;
-   }
+    /**
+     * Gets the reviews of this Movie.
+     * 
+     * @return this Movie's reviews.
+     */
+    public ArrayList<String> getReviews() {
+        return reviews;
+    }
 
-   /**
-    * Changes the status of this Movie.
-    * @param status This Movie's status.
-    */
-   public void setStatus(ShowingStatus status) {
-       this.status = ShowingStatus.END_OF_SHOWING;
-   }
+    /**
+     * Gets the total number of sales of this Movie.
+     * 
+     * @return this Movie's numSales.
+     */
+    public int getNumSales() {
+        return numSales;
+    }
 
-   /**
-    * Gets the price proportion constant for this Movie.
-    * @return this Movie's price.
-    */
-   public double getPriceProportion(){
-       return priceProportion;
-   };
+    /**
+     * Changes the status of this Movie.
+     * 
+     * @param status This Movie's status.
+     */
+    public void setStatus(ShowingStatus status) {
+        this.status = ShowingStatus.END_OF_SHOWING;
+    }
+
+    /**
+     * Gets the price proportion constant for this Movie.
+     * 
+     * @return this Movie's price.
+     */
+    public double getPriceProportion() {
+        return priceProportion;
+    };
+
+    /**
+     * Mutator method to change price proportion of the movie.
+     * 
+     * @param the new price.
+     */
+    public void setPriceProportion(double newPrice) {
+        this.priceProportion = newPrice;
+        return;
+    }
 
 }
