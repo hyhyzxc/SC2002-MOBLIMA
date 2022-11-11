@@ -251,10 +251,19 @@ public class StaffUI {
      */
     public void viewMoviesByRating() {
     	MovieManager MM = managerList.getMovieManager();
-    	ArrayList<Movie> movies = MM.getSorted();
+    	ArrayList<Movie> movies = MM.getSortedRating();
     	System.out.println("Title (Rating):");
     	for (Movie m : movies) {
     		System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+    	}
+    }
+    
+    public void viewMoviesBySales() {
+    	MovieManager MM = managerList.getMovieManager();
+    	ArrayList<Movie> movies = MM.getSortedSales();
+    	System.out.println("Title (Rating):");
+    	for (Movie m : movies) {
+    		System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
     	}
     }
 
@@ -277,6 +286,7 @@ public class StaffUI {
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Movies by Rating");
+            System.out.println("Option 8: View Movies by Ticket Sales");
             System.out.println("Option 0: Return to previous menu");
             /* TODO: Add function to configure Price */
 
@@ -333,6 +343,10 @@ public class StaffUI {
                 case 7:
                 	viewMoviesByRating();
                 	break;
+                	
+                case 8:
+                	viewMoviesBySales();
+                	break;
                 
                 case 0:
                 	break;
@@ -340,47 +354,14 @@ public class StaffUI {
                 default:
                     showErrorMessage();
             }
-        } while ((1 <= choice && choice <= 7));
+        } while ((1 <= choice && choice <= 8));
     }
 
+    /** 
+     * Static UI method to show error message.
+     */
     private static void showErrorMessage() {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
-
-    /*
-     * public void showUpdateMovieListingMenu() {
-     * int choice = 0;
-     * System.out.println("---------------------------------");
-     * System.out.println("    Update Movie Listing Menu    ");
-     * System.out.println("---------------------------------");
-     * System.out.println("Select options:");
-     * System.out.println("Option 1: Show Movie Listing");
-     * System.out.println("Option 2: Add Movie");
-     * System.out.println("Option 3: Remove Movie");
-     * System.out.println("Option 0: Return to previous menu");
-     * do {
-     * try {
-     * choice = sc.nextInt();
-     * } catch (Exception e) {
-     * sc.nextLine();
-     * showErrorMessage();
-     * continue;
-     * }
-     * switch (choice) {
-     * case 1:
-     * showMovieListing();
-     * break;
-     * case 2:
-     * addMovieMenu();
-     * break;
-     * case 3:
-     * removeMovie();
-     * break;
-     * default:
-     * showErrorMessage();
-     * }
-     * } while (!(0 < choice && choice <= 3));
-     * }
-     */
 
 }

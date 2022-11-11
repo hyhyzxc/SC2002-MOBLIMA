@@ -10,5 +10,7 @@ public interface Sorter {
 	 * Gets an ArrayList that is sorted.
 	 * @return sorted ArrayList.
 	 */
-	public ArrayList getSorted();
+	public ArrayList getSortedRating();
+	
+	public ArrayList getSortedSales();
 }

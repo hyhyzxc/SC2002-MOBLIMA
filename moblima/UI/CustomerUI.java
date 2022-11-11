@@ -112,7 +112,7 @@ public class CustomerUI {
      */
     public void showTop5Movies() {
         MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSorted();
+        ArrayList<Movie> movies = MM.getSortedRating();
         System.out.println("Title (Rating):");
         for (int i = 0; i < 5; i++) {
             System.out.printf("%s (%f)\n", movies.get(i).getTitle(), movies.get(i).getAverageRatings());

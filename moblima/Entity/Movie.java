@@ -173,6 +173,14 @@ public class Movie implements Serializable {
    public ArrayList<String> getReviews() {
        return reviews;
    }
+   
+   /**
+    * Gets the total number of sales of this Movie.
+    * @return this Movie's numSales.
+    */
+   public int getNumSales() {
+	   return numSales;
+   }
 
    /**
     * Changes the status of this Movie.
