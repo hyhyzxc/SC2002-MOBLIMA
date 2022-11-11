@@ -396,7 +396,8 @@ public class StaffUI {
             System.out.println("Option 1: Add New Movie");
             System.out.println("Option 2: Get Movie List");
             System.out.println("Option 3: Remove Movie");
-            System.out.println("Option 4: Update Movie Location and Showtimes");
+            System.out.println("Option 4: Add Movie Location and Showtimes");
+            /* add new function to update / remove movie showtimes */
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Movies by Rating");
