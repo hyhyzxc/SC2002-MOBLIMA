@@ -36,7 +36,7 @@ public class Status {
      */
     public void setAddPriceProportion(String statusType, double newPrice) {
         status.put(statusType, newPrice);
-        s.saveStatusDict(this.status, "DayTypeDatabase.ser");
+        s.saveStatusDict(this.status, "StatusDatabase.ser");
     };
 
 }

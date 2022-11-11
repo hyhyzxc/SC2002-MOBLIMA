@@ -30,10 +30,11 @@ public class StatusSerializer extends Serializer {
 		try {
 			fi = new FileInputStream(fileName);
 			os = new ObjectInputStream(fi);
-			statusDict = ((HashMap<String, Double>) os.readObject());
+			statusDict = (HashMap<String, Double>) os.readObject();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (EOFException e) {
+			System.out.println("EOFException");
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

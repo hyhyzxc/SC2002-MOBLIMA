@@ -34,13 +34,13 @@ public class DayTypeSerializer extends Serializer {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (EOFException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} finally {
 			try {
 				os.close();

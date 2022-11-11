@@ -1,21 +1,24 @@
 package moblima.Entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import moblima.Serializer.DayTypeSerializer;
 
-public class DayType {
-    public static DayTypeSerializer s = new DayTypeSerializer();
+public class DayType implements Serializable {
+    static final long serialVersionUID = 99999L;
     HashMap<String, Double> dayType;
 
     public DayType() {
-        dayType = s.getDayTypeDict("DayTypeDatabase.ser");
+        dayType = DayTypeSerializer.getDayTypeDict("DayTypeDatabase.ser");
+        System.out.println(dayType == null);
         if (dayType == null) {
             dayType = new HashMap<String, Double>();
-            setAddPriceProportion("WEEKDAY", 1);
-            setAddPriceProportion("WEEKEND", 2);
-            setAddPriceProportion("PUBLIC_HOLIDAY", 3);
+            dayType.put("WEEKDAY", (double) 1);
+            dayType.put("WEEKEND", (double) 2);
+            dayType.put("PUBLIC_HOLIDAY", (double) 3);
         }
+        DayTypeSerializer.saveDayTypeDict(this.dayType, "DayTypeDatabase.ser");
     }
 
     /**
@@ -24,7 +27,11 @@ public class DayType {
      * @return priceProportion
      */
     public double getPriceProportion(String dayName) {
-        return dayType.get(dayName);
+        System.out.println(dayName);
+        if (dayName == null)
+            return 0;
+        System.out.println(dayType.get("WEEKDAY"));
+        return 0;
     };
 
     /**
@@ -35,7 +42,7 @@ public class DayType {
      */
     public void setAddPriceProportion(String dayName, double newPrice) {
         dayType.put(dayName, newPrice);
-        s.saveDayTypeDict(this.dayType, "DayTypeDatabase.ser");
+        DayTypeSerializer.saveDayTypeDict(this.dayType, "DayTypeDatabase.ser");
     };
 
 }
