@@ -264,6 +264,109 @@ public class StaffUI {
     }
 
     /**
+     * Allows staff to change the price of the tickets of different Day Types or
+     * Customer Status Type. If no existing predefined price for a new category, the
+     * new criteria
+     * is added. For example, if staff wants to add "DAY_A" with priceProportion of
+     * 8, but currently
+     * there's no "DAY_A" day type, it will be added.
+     * 
+     * If "DAY_A" already exists, then the priceProportion corresponding to "DAY_A"
+     * will be updated.
+     * 
+     */
+    public void configurePriceOfTickets() {
+        int choice;
+        System.out.println("Configure Ticket Price by:");
+        System.out.println("1: Type of Day (e.g: Public Holiday, Weekday, Weekend...");
+        System.out.println("2: Type of Customer (e.g: Adult, Senior Citizen, Child...");
+        System.out.println("0: Back");
+        choice = sc.nextInt();
+        String key;
+        double newPrice;
+        switch (choice) {
+            case 1:
+                DayType d = new DayType();
+                System.out.println("Pick: (1) Delete (2) Add");
+                int c = sc.nextInt();
+                System.out.println("Existing Keys");
+                try {
+                    for (String k : d.getAllExistingKeys()) {
+                        System.out.println(k);
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println("There are no existing keys!, please try again");
+                    return;
+                }
+
+                switch (c) {
+                    case 1:
+                        System.out.println("--------Delete--------");
+                        System.out.println("Please choose from the available keys");
+                        try {
+                            d.delKey(sc.next());
+                        } catch (NullPointerException e) {
+                            System.out.println("Sorry, there's no such key to delete");
+                            return;
+                        }
+                        break;
+                    case 2:
+                        System.out.println("--------Add--------");
+                        System.out.println("You may choose from the existing keys, or input a new type");
+                        key = sc.next();
+                        System.out.println("Enter new price");
+                        newPrice = sc.nextDouble();
+                        d.setAddPriceProportion(key, newPrice);
+                        System.out.println("Successfully updated!");
+                        break;
+
+                }
+
+            case 2:
+                Status s = new Status();
+                System.out.println("Pick: (1) Delete (2) Add");
+                int c2 = sc.nextInt();
+                System.out.println("Existing Keys");
+                try {
+                    for (String k : s.getAllExistingKeys()) {
+                        System.out.println(k);
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println("There are no existing keys!, please try again");
+                    return;
+                }
+
+                switch (c2) {
+                    case 1:
+                        System.out.println("--------Delete--------");
+                        System.out.println("Please choose from the available keys");
+                        try {
+                            s.delKey(sc.next());
+                        } catch (NullPointerException e) {
+                            System.out.println("Sorry, there's no such key to delete");
+                            return;
+                        }
+                        break;
+                    case 2:
+                        System.out.println("--------Add--------");
+                        System.out.println("You may choose from the existing keys, or input a new type");
+                        key = sc.next();
+                        System.out.println("Enter new price");
+                        newPrice = sc.nextDouble();
+                        s.setAddPriceProportion(key, newPrice);
+                        System.out.println("Successfully updated!");
+                        break;
+
+                }
+            case 0:
+                return;
+            default:
+                showErrorMessage();
+        }
+
+    }
+
+    /**
      * Initialises StaffUI.
      * Displays user's options and calls relevent methods.
      */
@@ -282,8 +385,9 @@ public class StaffUI {
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Movies by Rating");
+            System.out.println("Option 8: Configure Price of Tickets");
+            System.out.println("Option 9: Configure Settings (e.g: add Day Type, add Type of Customer)");
             System.out.println("Option 0: Return to previous menu");
-            /* TODO: Add function to configure Price */
 
             try {
                 choice = sc.nextInt();
@@ -339,6 +443,9 @@ public class StaffUI {
                     viewMoviesByRating();
                     break;
 
+                case 8:
+                    configurePriceOfTickets();
+                    break;
                 case 0:
                     break;
 
