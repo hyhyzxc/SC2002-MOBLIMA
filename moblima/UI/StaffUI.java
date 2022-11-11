@@ -87,18 +87,17 @@ public class StaffUI {
             Movie newMovie;
             switch (movieType) {
                 case 1:
-                    newMovie = new RegularMovie(title, synopsis, status, director, cast, movieID, 2.0);
+                    newMovie = new RegularMovie(title, synopsis, status, director, cast, movieID);
                     break;
                 case 2:
-                    newMovie = new BlockbusterMovie(title, synopsis, status, director, cast, movieID, 3.0);
+                    newMovie = new BlockbusterMovie(title, synopsis, status, director, cast, movieID);
                     break;
                 case 3:
-                    newMovie = new ThreeDMovie(title, synopsis, status, director, cast, movieID, 4.0);
+                    newMovie = new ThreeDMovie(title, synopsis, status, director, cast, movieID);
                     break;
                 default:
                     throw new InvalidInputException();
             }
-            ;
             MM.addNewMovie(newMovie);
         } catch (Exception e) {
             System.out.println("Error input!");

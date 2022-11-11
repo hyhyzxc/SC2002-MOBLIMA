@@ -51,7 +51,7 @@ public class Movie implements Serializable {
     /**
      * The price constant of this Movie.
      */
-    private double priceProportion;
+    protected double priceProportion;
     /**
      * The serialVersionUID of this Movie.
      */
@@ -65,10 +65,9 @@ public class Movie implements Serializable {
      * @param director This Movie's director.
      * @param cast This Movie's cast.
      * @param movieID This Movie's movieID.
-     * @param priceProportion this Movie's priceProportion.
      */
     public Movie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
-            int movieID, double priceProportion) {
+            int movieID) {
         this.title = title;
         this.synopsis = sypnosis;
         this.status = status;

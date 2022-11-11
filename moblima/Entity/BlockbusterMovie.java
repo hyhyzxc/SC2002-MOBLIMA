@@ -19,7 +19,8 @@ public class BlockbusterMovie extends Movie {
      */
     public BlockbusterMovie(String title, String sypnosis, ShowingStatus status, String director,
             ArrayList<String> cast,
-            int movieID, double priceProportion) {
-        super(title, sypnosis, status, director, cast, movieID, priceProportion);
+            int movieID) {
+        super(title, sypnosis, status, director, cast, movieID);
+        priceProportion = 3;
     }
 }
