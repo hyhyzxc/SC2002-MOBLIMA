@@ -248,7 +248,12 @@ public class StaffUI {
         for (Booking booking : bookings) {
             booking.toTicket();
         }
+    }
 
+    /**
+     * Retrieves all Movies from MovieManager and displays sorted by rating.
+     */
+    public void viewMoviesByRating() {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movies = MM.getSortedRating();
         System.out.println("Title (Rating):");
@@ -258,23 +263,8 @@ public class StaffUI {
     }
 
     /**
-     * Retrieves all Movies from MovieManager and displays sorted by rating.
+     * Retrieves all Movies from MovieManager and displays sorted by sales.
      */
-    public void viewMoviesByRating() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSorted();
-        System.out.println("Title (Rating):");
-        for (Movie m : movies) {
-            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
-        }
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedRating();
-        System.out.println("Title (Rating):");
-        for (Movie m : movies) {
-            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
-        }
-    }
-
     public void viewMoviesBySales() {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movies = MM.getSortedSales();
@@ -387,15 +377,6 @@ public class StaffUI {
 
     }
 
-    public void viewMoviesBySales() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedSales();
-        System.out.println("Title (Rating):");
-        for (Movie m : movies) {
-            System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
-        }
-    }
-
     /**
      * Initialises StaffUI.
      * Displays user's options and calls relevent methods.
@@ -488,7 +469,7 @@ public class StaffUI {
                 default:
                     showErrorMessage();
             }
-        } while ((1 <= choice && choice <= 8));
+        } while ((1 <= choice && choice <= 9));
     }
 
     /**
