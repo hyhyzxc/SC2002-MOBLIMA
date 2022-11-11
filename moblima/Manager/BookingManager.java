@@ -49,7 +49,7 @@ public class BookingManager {
      * the given owner.
      * 
      * @param owner This BookingManager's owner.
-     * @return this owner's customerBookings.
+     * @return ArrayList of this owner's customerBookings.
      */
     public ArrayList<Booking> getBookingsOfCustomer(CustomerAccount owner) {
         bookings = s.getBookings("BookingDatabase.ser");
@@ -65,7 +65,7 @@ public class BookingManager {
     /**
      * Gets an ArrayList of Booking.
      * 
-     * @return this BookingManager's bookings.
+     * @return ArrayList of this BookingManager's bookings.
      */
     public ArrayList<Booking> getBookings() {
         return bookings;
