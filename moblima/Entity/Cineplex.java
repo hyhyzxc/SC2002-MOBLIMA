@@ -29,9 +29,9 @@ public class Cineplex implements Serializable {
     public Cineplex(String location) {
         this.location = location;
         this.theatres = new ArrayList<Cinema>();
-        Cinema c1 = new Cinema("REG", 2.0, CinemaType.REGULAR);
-        Cinema c2 = new Cinema("GCC", 4.0, CinemaType.GOLD_CLASS);
-        Cinema c3 = new Cinema("PMS", 6.0, CinemaType.PLATINUM_MOVIE_SUITES);
+        Cinema c1 = new Cinema("REG", CinemaType.REGULAR);
+        Cinema c2 = new Cinema("GCC", CinemaType.GOLD_CLASS);
+        Cinema c3 = new Cinema("PMS", CinemaType.PLATINUM_MOVIE_SUITES);
         theatres.add(c1);
         theatres.add(c2);
         theatres.add(c3);

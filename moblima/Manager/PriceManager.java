@@ -2,15 +2,7 @@ package moblima.Manager;
 
 import java.util.ArrayList;
 
-import moblima.Entity.Booking;
-import moblima.Entity.Cinema;
-import moblima.Entity.Cineplex;
-import moblima.Entity.DayType;
-import moblima.Entity.Movie;
-import moblima.Entity.Seat;
-import moblima.Entity.SeatType;
-import moblima.Entity.Session;
-import moblima.Entity.Status;
+import moblima.Entity.*;
 
 /**
  * Logic Class that calculates price of a booking. Can be an individual ticket
@@ -44,12 +36,12 @@ public class PriceManager {
     }
 
     public void setPriceProportion(Object o, double newPrice) {
-        if (o instanceof Movie) {
-            ((Movie) o).setPriceProportion(newPrice);
+        if (o instanceof MovieType) {
+            Movie.setPriceProportion((MovieType) o, newPrice);
         } else if (o instanceof Cinema) {
-            ((Cinema) o).setPriceProportion(newPrice);
+            Cinema.setPriceProportion((CinemaType) o, newPrice);
         } else if (o instanceof Seat) {
-            ((Seat) o).setPriceProportion(newPrice);
+            Seat.setPriceProportion((SeatType) o, newPrice);
         } else {
             // throw some errors
         }

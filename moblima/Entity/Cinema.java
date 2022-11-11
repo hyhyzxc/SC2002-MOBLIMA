@@ -18,9 +18,18 @@ public class Cinema implements Serializable {
      */
     private ArrayList<Seat> seats;
     /**
-     * The price proportionality constant for the cinema.
+     * The price for the regular cinema.
      */
-    private double priceProportion;
+    private static double priceR = 2;
+    /**
+     * The price for the Gold Class cinema.
+     */
+    private static double priceG = 4;
+    /**
+     * The price for the Platinum Movie Suites.
+     */
+    private static double priceP = 6;
+
     /**
      * The type of the Cinema
      */
@@ -32,22 +41,21 @@ public class Cinema implements Serializable {
      * 
      * @param cinemaID
      */
-    public Cinema(String cinemaID, double priceProportion, CinemaType type) {
+    public Cinema(String cinemaID, CinemaType type) {
         this.cinemaID = cinemaID;
-        this.priceProportion = priceProportion;
         this.seats = new ArrayList<Seat>();
         this.type = type;
         for (int i = 0; i < 20; i++) {
-            seats.add(new Seat(i + 1, SeatType.REGULAR, 2));
+            seats.add(new Seat(i + 1, SeatType.REGULAR));
         }
         for (int i = 20; i < 30; i++) {
-            seats.add(new Seat(i + 1, SeatType.COUPLE, 8));
+            seats.add(new Seat(i + 1, SeatType.COUPLE));
         }
         for (int i = 30; i < 40; i++) {
-            seats.add(new Seat(i + 1, SeatType.ELITE, 4));
+            seats.add(new Seat(i + 1, SeatType.ELITE));
         }
         for (int i = 40; i < 50; i++) {
-            seats.add(new Seat(i + 1, SeatType.ULTIMA, 6));
+            seats.add(new Seat(i + 1, SeatType.ULTIMA));
         }
     }
 
@@ -75,7 +83,16 @@ public class Cinema implements Serializable {
      * @return this Cinema's price.
      */
     public double getPriceProportion() {
-        return priceProportion;
+        switch(this.getCinemaType()) {
+        case REGULAR:
+        	return priceR;
+        case GOLD_CLASS:
+        	return priceG;
+        case PLATINUM_MOVIE_SUITES:
+        	return priceP;
+        default:
+        	return 0;
+        }
     }
 
     /**
@@ -88,12 +105,18 @@ public class Cinema implements Serializable {
     }
 
     /**
-     * Mutator method to change price proportion of the cinema.
-     * 
-     * @param the new price.
+     * Static Mutator method to change price proportion of the cinema.
+     * @param type CinemaType to be changed.
+     * @param newPrice the new price.
      */
-    public void setPriceProportion(double newPrice) {
-        this.priceProportion = newPrice;
-        return;
+    public static void setPriceProportion(CinemaType type, double newPrice) {
+    	switch(type){
+        case REGULAR:
+        	priceR = newPrice;
+        case GOLD_CLASS:
+        	priceG = newPrice;
+        case PLATINUM_MOVIE_SUITES:
+        	priceP = newPrice;
+        }
     }
 }

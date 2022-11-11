@@ -16,13 +16,25 @@ public class Seat implements Serializable {
      */
     private int seatID;
     /**
-     * This Seat's Price.
+     * The price of Regular Seat.
      */
-    protected double price;
+    private static double priceR = 2;
+    /**
+     * The price of Elite Seat.
+     */
+    private static double priceE = 4;
+    /**
+     * The price of Ultima Seat.
+     */
+    private static double priceU = 6;
+    /**
+     * The price of Couple Seat.
+     */
+    private static double priceC = 8;
     /**
      * This Seat's type.
      */
-    protected SeatType type;
+    private SeatType type;
 
     /**
      * Creates new Seat with given ID and price.
@@ -30,11 +42,10 @@ public class Seat implements Serializable {
      * @param seatID This Seat's ID.
      * @param price  This Seat's price.
      */
-    public Seat(int seatID, SeatType type, double price) {
+    public Seat(int seatID, SeatType type) {
         this.occupied = false;
         this.seatID = seatID;
         this.type = type;
-        this.price = price;
     }
 
     /**
@@ -92,17 +103,36 @@ public class Seat implements Serializable {
      * @return This Seat's price.
      */
     public double getPriceProportion() {
-        return this.price;
+        switch(this.getSeatType()) {
+        case REGULAR:
+        	return priceR;
+        case ELITE:
+        	return priceE;
+        case ULTIMA:
+        	return priceU;
+        case COUPLE:
+        	return priceC;
+    	default:
+    		return 0;
+        }
     }
 
     /**
-     * Mutator method to change price proportion of the seat.
-     * 
-     * @param the new price.
+     * Static Mutator method to change price proportion of the seat.
+     * @param type Type of Seat to be changed
+     * @param newPrice the new price.
      */
-    public void setPriceProportion(double newPrice) {
-        this.price = newPrice;
-        return;
+    public static void setPriceProportion(SeatType type, double newPrice) {
+    	switch(type) {
+        case REGULAR:
+        	priceR = newPrice;
+        case ELITE:
+        	priceE = newPrice;
+        case ULTIMA:
+        	priceU = newPrice;
+        case COUPLE:
+        	priceC = newPrice;
+        }
     }
 
 }

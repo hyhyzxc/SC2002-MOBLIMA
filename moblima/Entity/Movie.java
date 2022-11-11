@@ -49,10 +49,6 @@ public class Movie implements Serializable {
      */
     private int numSales;
     /**
-     * The price constant of this Movie.
-     */
-    private double priceProportion;
-    /**
      * The type of this Movie.
      */
     private MovieType type;
@@ -60,7 +56,19 @@ public class Movie implements Serializable {
      * The serialVersionUID of this Movie.
      */
     private static final long serialVersionUID = 4361251724076664901L;
-
+    /**
+     * Static price of regular movies.
+     */
+    private static double priceR = 2;
+    /**
+     * static price of blockbuster movies.
+     */
+    private static double priceBB = 3;
+    /**
+     * static price of 3D movies.
+     */
+    private static double price3D = 4;
+    
     /**
      * Creates a new Movie with given title, sypnosis, status, director, cast,
      * movieID.
@@ -71,11 +79,10 @@ public class Movie implements Serializable {
      * @param director This Movie's director.
      * @param cast     This Movie's cast.
      * @param movieID  This Movie's movieID.
-     * @param price    This Movie's price.
      * @param type     This Movie's type.
      */
     public Movie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
-            int movieID, double price, MovieType type) {
+            int movieID, MovieType type) {
         this.title = title;
         this.synopsis = sypnosis;
         this.status = status;
@@ -84,7 +91,6 @@ public class Movie implements Serializable {
         this.movieID = movieID;
         this.averageRatings = 0;
         this.numSales = 0;
-        this.priceProportion = price;
         this.type = type;
         ratings = new ArrayList<Float>();
         reviews = new ArrayList<String>();
@@ -210,6 +216,14 @@ public class Movie implements Serializable {
     public void setStatus(ShowingStatus status) {
         this.status = ShowingStatus.END_OF_SHOWING;
     }
+    
+    /**
+     * Gets this Movie's Type.
+     * @return type This Movie's Type.
+     */
+    public MovieType getMovieType() {
+    	return this.type;
+    }
 
     /**
      * Gets the price proportion constant for this Movie.
@@ -217,17 +231,32 @@ public class Movie implements Serializable {
      * @return this Movie's price.
      */
     public double getPriceProportion() {
-        return priceProportion;
+        switch(this.getMovieType()) {
+        case REGULAR:
+        	return priceR;
+        case BLOCKBUSTER:
+        	return priceBB;
+        case THREED:
+        	return price3D;
+        default:
+        	return 0;
+        }
     };
 
     /**
-     * Mutator method to change price proportion of the movie.
-     * 
-     * @param the new price.
+     * Static Mutator method to change price proportion of the movie.
+     * @param type Type whose price is to be changed.
+     * @param price the new price.
      */
-    public void setPriceProportion(double newPrice) {
-        this.priceProportion = newPrice;
-        return;
+    public static void setPriceProportion(MovieType type, double newPrice) {
+        switch(type) {
+        case REGULAR:
+        	priceR = newPrice;
+        case BLOCKBUSTER:
+        	 priceBB = newPrice;
+        case THREED:
+        	price3D = newPrice;
+        }
     }
 
 }
