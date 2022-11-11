@@ -18,7 +18,7 @@ public class Seat implements Serializable {
     /**
      * This Seat's Price.
      */
-    private double price;
+    protected double price;
     /**
      * This Seat's type.
      */
@@ -29,9 +29,10 @@ public class Seat implements Serializable {
      * @param seatID This Seat's ID.
      * @param price This Seat's price.
      */
-    public Seat(int seatID, double price) {
+    public Seat(int seatID, SeatType type, double price) {
         this.occupied = false;
         this.seatID = seatID;
+        this.type = type;
         this.price = price;
     }
 
