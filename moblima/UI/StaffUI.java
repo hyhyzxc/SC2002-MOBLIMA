@@ -19,7 +19,7 @@ public class StaffUI {
     /**
      * Static Scanner object for all IO.
      */
-    static final Scanner sc = new Scanner(System.in);
+    static final Scanner sc = new Scanner(System.in).useDelimiter("\\n");
     /**
      * Static instance of ManagerList for entire programme.
      */
@@ -315,7 +315,8 @@ public class StaffUI {
                         System.out.println("--------Delete--------");
                         System.out.println("Please choose from the available keys");
                         try {
-                            d.delKey(sc.next());
+                            String s = sc.next();
+                            d.delKey(s);
                         } catch (NullPointerException e) {
                             System.out.println("Sorry, there's no such key to delete");
                             return;
@@ -332,7 +333,7 @@ public class StaffUI {
                         break;
 
                 }
-
+                break;
             case 2:
                 Status s = new Status();
                 System.out.println("Pick: (1) Delete (2) Add");
@@ -352,7 +353,8 @@ public class StaffUI {
                         System.out.println("--------Delete--------");
                         System.out.println("Please choose from the available keys");
                         try {
-                            s.delKey(sc.next());
+                            String s2 = sc.next();
+                            s.delKey(s2);
                         } catch (NullPointerException e) {
                             System.out.println("Sorry, there's no such key to delete");
                             return;
@@ -369,10 +371,12 @@ public class StaffUI {
                         break;
 
                 }
+                break;
             case 0:
                 return;
             default:
                 showErrorMessage();
+                return;
         }
 
     }
