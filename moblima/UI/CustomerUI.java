@@ -14,7 +14,7 @@ import java.lang.*;
  * @author
  *
  */
-public class CustomerUI {
+public class CustomerUI extends UserUI {
     /**
      * The CustomerAccount logged into the UI.
      */
@@ -35,8 +35,7 @@ public class CustomerUI {
      * @param managerList List of Managers.
      */
     public CustomerUI(CustomerAccount account, ManagerList managerList) {
-        this.owner = account;
-        this.managerList = managerList;
+        super(account, managerList);
     }
 
     /**
@@ -211,7 +210,6 @@ public class CustomerUI {
                         System.out.println("----------------------------------------");
                     }
                     break;
-
                 // case 7:
                 // showTop5MovieBySales();
                 // break;

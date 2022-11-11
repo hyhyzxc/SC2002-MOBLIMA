@@ -64,7 +64,7 @@ public class CinemaManager {
     /**
      * Gets the full ArrayList of sessions across all cineplexes.
      * 
-     * @return
+     * @return ArrayList of all sesssions.
      */
     public ArrayList<Session> getAllSessions() {
         cineplexList = s.getCineplexStatus("CineplexDatabase.ser");

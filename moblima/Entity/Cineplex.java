@@ -70,4 +70,5 @@ public class Cineplex implements Serializable {
     public void addSession(Session session) {
         availableSessions.add(session);
     }
+
 }

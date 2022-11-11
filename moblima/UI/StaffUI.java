@@ -15,23 +15,11 @@ import moblima.Manager.*;
  * @author
  *
  */
-public class StaffUI {
-    /**
-     * Static Scanner object for all IO.
-     */
-    static final Scanner sc = new Scanner(System.in);
+public class StaffUI extends UserUI {
     /**
      * Static instance of ManagerList for entire programme.
      */
     static final Random r = new Random();
-    /**
-     * The StaffAccount logged into the UI.
-     */
-    private StaffAccount owner;
-    /**
-     * This StaffUI's list of managers.
-     */
-    private ManagerList managerList;
 
     /**
      * Creates new StaffUI with given account and managerList.
@@ -40,8 +28,7 @@ public class StaffUI {
      * @param managerList List of Managers.
      */
     public StaffUI(StaffAccount account, ManagerList managerList) {
-        this.owner = account;
-        this.managerList = managerList;
+        super(account, managerList);
     }
 
     /**
@@ -464,6 +451,7 @@ public class StaffUI {
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Sorted Movies");
             System.out.println("Option 8: Configure Price of Tickets");
+            System.out.println("Option 9: View Seating Plan");
             System.out.println("Option 0: Return to previous menu");
 
             try {
@@ -522,7 +510,8 @@ public class StaffUI {
                 case 8:
                     configurePriceOfTickets();
                     break;
-
+                case 9:
+                	showSeatingPlan();
                 case 0:
                     break;
 
