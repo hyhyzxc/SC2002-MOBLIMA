@@ -164,7 +164,11 @@ public class LoginUI {
                     while (true) {
                         account = loginCustomerAccount();
                         if (account == null) {
-                            System.out.println("Wrong password! Try again.");
+                            System.out.println("Wrong password! Try again? Enter 0 to terminate.");
+                            int tryagain = sc.nextInt();
+                            if (tryagain == 0) {
+                                return;
+                            }
                         } else
                             break;
                     }
@@ -183,7 +187,11 @@ public class LoginUI {
                     while (true) {
                         staffAccount = loginStaffAccount();
                         if (staffAccount == null) {
-                            System.out.println("Wrong password! Try again.");
+                            System.out.println("Wrong password! Try again? Enter 0 to terminate.");
+                            int tryy = sc.nextInt();
+                            if (tryy == 0) {
+                                return;
+                            }
                         } else
                             break;
                     }
