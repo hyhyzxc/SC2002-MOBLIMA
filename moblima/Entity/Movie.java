@@ -7,7 +7,7 @@ import java.util.*;
  * Represents a Movie.
  * Concrete class that implements the Serializable interface.
  */
-public class Movie implements Serializable {
+public abstract class Movie implements Serializable {
     /**
      * The ratings of this Movie.
      */
@@ -224,5 +224,7 @@ public class Movie implements Serializable {
         this.priceProportion = newPrice;
         return;
     }
+
+    public abstract String printType();
 
 }
