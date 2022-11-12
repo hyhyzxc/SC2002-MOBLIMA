@@ -185,30 +185,12 @@ public class Movie implements Serializable {
     }
 
     /**
-     * Gets the reviews of this Movie.
-     * 
-     * @return this Movie's reviews.
-     */
-    public ArrayList<String> getReviews() {
-        return reviews;
-    }
-
-    /**
      * Gets the total number of sales of this Movie.
      * 
      * @return this Movie's numSales.
      */
     public int getNumSales() {
         return numSales;
-    }
-
-    /**
-     * Changes the status of this Movie.
-     * 
-     * @param status This Movie's status.
-     */
-    public void setStatus(ShowingStatus status) {
-        this.status = ShowingStatus.END_OF_SHOWING;
     }
 
     /**
