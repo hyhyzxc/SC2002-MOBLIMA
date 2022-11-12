@@ -121,5 +121,4 @@ public class MovieManager {
         movieList.sort((m1, m2) -> m1.getAverageRatings() > m2.getAverageRatings() ? -1 : 1);
         return movieList;
     }
-
 }

@@ -525,4 +525,40 @@ public class StaffUI {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
 
+    /*
+     * public void showUpdateMovieListingMenu() {
+     * int choice = 0;
+     * System.out.println("---------------------------------");
+     * System.out.println("    Update Movie Listing Menu    ");
+     * System.out.println("---------------------------------");
+     * System.out.println("Select options:");
+     * System.out.println("Option 1: Show Movie Listing");
+     * System.out.println("Option 2: Add Movie");
+     * System.out.println("Option 3: Remove Movie");
+     * System.out.println("Option 0: Return to previous menu");
+     * do {
+     * try {
+     * choice = sc.nextInt();
+     * } catch (Exception e) {
+     * sc.nextLine();
+     * showErrorMessage();
+     * continue;
+     * }
+     * switch (choice) {
+     * case 1:
+     * showMovieListing();
+     * break;
+     * case 2:
+     * addMovieMenu();
+     * break;
+     * case 3:
+     * removeMovie();
+     * break;
+     * default:
+     * showErrorMessage();
+     * }
+     * } while (!(0 < choice && choice <= 3));
+     * }
+     */
+
 }

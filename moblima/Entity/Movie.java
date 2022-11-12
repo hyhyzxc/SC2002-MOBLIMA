@@ -212,6 +212,24 @@ public class Movie implements Serializable {
     }
 
     /**
+     * Gets the reviews of this Movie.
+     * 
+     * @return this Movie's reviews.
+     */
+    public ArrayList<String> getReviews() {
+        return reviews;
+    }
+
+    /**
+     * Changes the status of this Movie.
+     * 
+     * @param status This Movie's status.
+     */
+    public void setStatus(ShowingStatus status) {
+        this.status = ShowingStatus.END_OF_SHOWING;
+    }
+
+    /**
      * Gets the price proportion constant for this Movie.
      * 
      * @return this Movie's price.
