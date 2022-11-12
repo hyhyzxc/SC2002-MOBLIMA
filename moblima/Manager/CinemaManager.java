@@ -97,17 +97,19 @@ public class CinemaManager {
      * 
      * @return
      */
-    public ArrayList<Session> getAllSessions() {
+    public LinkedHashMap<String, ArrayList<Session>> getAllSessions() {
         cineplexList = s.getCineplexStatus("CineplexDatabase.ser");
         ArrayList<Session> sessions = new ArrayList<Session>();
-
+        LinkedHashMap<String, ArrayList<Session>> sessionsMap = new LinkedHashMap<String, ArrayList<Session>>();
         for (int i = 0; i < cineplexList.size(); i++) {
             ArrayList<Session> cineSess = cineplexList.get(i).getAvailableSessions();
             for (Session j : cineSess) {
                 sessions.add(j);
             }
+            sessionsMap.put(cineplexList.get(i).getLocation(), sessions);
+            sessions = new ArrayList<Session>();
         }
-        return sessions;
+        return sessionsMap;
     }
 
     /**

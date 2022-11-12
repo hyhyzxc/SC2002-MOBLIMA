@@ -3,6 +3,7 @@ package moblima.UI;
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.*;
 
 import moblima.Entity.*;
@@ -237,22 +238,49 @@ public class StaffUI {
      */
     public void getAllSessions() {
         CinemaManager CM = managerList.getCinemaManager();
-        ArrayList<Session> sessions = CM.getAllSessions();
+        LinkedHashMap<String, ArrayList<Session>> sessionsMap = CM.getAllSessions();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
-        if (sessions.size() == 0) {
+        if (sessionsMap.size() == 0) {
             System.out.println("------------------");
             System.out.println("No available sessions!");
             System.out.println("------------------");
             return;
         }
-        for (int i = 0; i < sessions.size(); i++) {
-            System.out.println("------------------");
-            System.out.println("Session No: " + (i + 1));
-            System.out.println("Movie Title: " + sessions.get(i).getMovie().getTitle());
-            System.out.println("Start Time: " + sessions.get(i).getSessionDateTimeStart().format(dtf));
-            System.out.println("End Time: " + sessions.get(i).getSessionDateTimeEnd().format(dtf));
-            System.out.println("Day Type: " + sessions.get(i).getDay());
-            System.out.println("------------------");
+
+        ArrayList<String> keys = new ArrayList<String>(sessionsMap.keySet());
+        for (int i = 0; i < sessionsMap.size(); i++) {
+            String cineplexName = keys.get(i);
+            ArrayList<Session> sessions = sessionsMap.get(cineplexName);
+            System.out.printf("(%d) Cineplex Name: %s \n", i + 1, cineplexName);
+            if (sessions == null)
+                continue;
+            for (int j = 0; j < sessions.size(); j++) {
+                Session session = sessions.get(j);
+                System.out.println("------------------");
+                System.out.println("Session No: " + (j + 1));
+                System.out.println("Movie Title: " + session.getMovie().getTitle());
+                System.out.println("Start Time: " + session.getSessionDateTimeStart().format(dtf));
+                System.out.println("End Time: " + session.getSessionDateTimeEnd().format(dtf));
+                System.out.println("Day Type: " + session.getDay());
+                System.out.println("------------------");
+            }
+        }
+        System.out.printf("(1) Remove a Session\n(0) Back\n");
+        int c = sc.nextInt();
+        switch (c) {
+            case 1:
+                System.out.println("Enter the Cineplex No. to delete from");
+                int cineplexNum = sc.nextInt();
+                System.out.println("Enter the session number to delete: ");
+                int seshNum = sc.nextInt();
+                Session toRemove = sessionsMap.get(keys.get(cineplexNum - 1)).get(seshNum);
+                CM.removeSessionFromCineplex(toRemove, cineplexNum - 1);
+                break;
+
+            case 0:
+                return;
+            default:
+                System.out.println("Invalid Choice");
         }
     }
 

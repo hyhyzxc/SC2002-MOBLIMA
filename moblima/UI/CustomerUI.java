@@ -133,21 +133,9 @@ public class CustomerUI {
             System.out.println("Rank: " + i++);
             System.out.println("Movie: " + movieName);
             System.out.println("Rating: " + hm.get(movieName));
-            // System.out.printf("Rank: %d\nMovie: %d\nAvg Rating: %.2f\n", i++, movieName,
-            // hm.get(movieName));
             System.out.println("------------------------------------");
         }
     }
-
-    // public void showTop5MovieBySales() {
-    // BookingManager BM = managerList.getBookingManager();
-    // Map<String, Float> map = BM.sortMoviesBySales();
-    // for (Map.Entry<String, Float> en : map.entrySet()) {
-    // System.out
-    // .println("Movie Title: " + en.getKey() + "---->" + "Number of Sales: " +
-    // en.getValue());
-    // }
-    // }
 
     public void showTop5MoviesBySales() {
         SortContext sortContext = new SortContext(new SortBySales());
