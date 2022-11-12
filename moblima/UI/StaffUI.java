@@ -149,6 +149,7 @@ public class StaffUI {
      */
     public void removeMovie() throws InvalidInputException {
         MovieManager MM = managerList.getMovieManager();
+        CinemaManager CM = managerList.getCinemaManager();
         ArrayList<Movie> movieList = MM.getMovieList();
         getAllMovieDetails();
         System.out.println("Choose the movie");
@@ -156,6 +157,8 @@ public class StaffUI {
         if (choice < 1 || choice > movieList.size()) {
             throw new InvalidInputException();
         }
+        System.out.println("movie title staffUi part" + movieList.get(choice - 1).getTitle());
+        CM.removeAllSessionsFromCineplexes(movieList.get(choice - 1).getTitle());
         MM.removeMovie(choice - 1);
 
     }
@@ -235,6 +238,12 @@ public class StaffUI {
         CinemaManager CM = managerList.getCinemaManager();
         ArrayList<Session> sessions = CM.getAllSessions();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
+        if (sessions.size() == 0) {
+            System.out.println("------------------");
+            System.out.println("No available sessions!");
+            System.out.println("------------------");
+            return;
+        }
         for (int i = 0; i < sessions.size(); i++) {
             System.out.println("------------------");
             System.out.println("Session No: " + (i + 1));
@@ -257,9 +266,10 @@ public class StaffUI {
         }
     }
 
-    // /**
-    // * Retrieves all Movies from MovieManager and displays sorted by rating.
-    // */
+    /**
+     * Displays a list of movies sorted by a movie's average rating. Higher rating
+     * indicates higher rank and thus will be displayed first.
+     */
     public void viewMoviesByRating() {
         SortContext sortContext = new SortContext(new SortByRatings());
         LinkedHashMap<String, Float> hm = sortContext.executeSort();
@@ -275,12 +285,14 @@ public class StaffUI {
             System.out.println("Rank: " + i++);
             System.out.println("Movie: " + movieName);
             System.out.println("Rating: " + hm.get(movieName));
-            // System.out.printf("Rank: %d\nMovie: %d\nAvg Rating: %f\n", i++, movieName,
-            // hm.get(movieName));
             System.out.println("------------------------------------");
         }
     }
 
+    /**
+     * Displays a list of movies sorted by a movie's number of sales. Higher number
+     * of sales indicates higher rank and thus will be displayed first.
+     */
     public void viewMoviesBySales() {
         SortContext sortContext = new SortContext(new SortBySales());
         LinkedHashMap<String, Float> hm = sortContext.executeSort();
@@ -297,8 +309,6 @@ public class StaffUI {
             System.out.println("Rank: " + i++);
             System.out.println("Movie: " + movieName);
             System.out.println("Num of Sales: " + hm.get(movieName));
-            // System.out.printf("Rank: %d\nMovie: %d\nNum of Sales: %f\n", i++, movieName,
-            // hm.get(movieName));
             System.out.println("------------------------------------");
         }
     }

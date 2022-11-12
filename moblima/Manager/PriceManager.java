@@ -43,15 +43,4 @@ public class PriceManager {
         return price;
     }
 
-    public void setPriceProportion(Object o, double newPrice) {
-        if (o instanceof Movie) {
-            ((Movie) o).setPriceProportion(newPrice);
-        } else if (o instanceof Cinema) {
-            ((Cinema) o).setPriceProportion(newPrice);
-        } else if (o instanceof Seat) {
-            ((Seat) o).setPriceProportion(newPrice);
-        } else {
-            // throw some errors
-        }
-    }
 }
