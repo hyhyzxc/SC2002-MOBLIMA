@@ -9,17 +9,9 @@ import java.io.Serializable;
  */
 public class Customer extends User implements Serializable {
     /**
-     * The customerID of this Customer.
-     */
-    private int customerID;
-    /**
      * The type of this Customer.
      */
     private String type;
-    /**
-     * The name of this Customer.
-     */
-    private String name;
     /**
      * The email of this Customer.
      */

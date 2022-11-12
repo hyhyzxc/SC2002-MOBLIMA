@@ -9,18 +9,6 @@ import java.io.Serializable;
  */
 public class CustomerAccount extends Account implements Serializable {
     /**
-     * This owner of this CustomerAccount.
-     */
-    private Customer owner;
-    /**
-     * The username of this CustomerAccount.
-     */
-    private String username;
-    /**
-     * The password of this CustomerAccount.
-     */
-    private String password;
-    /**
      * The serialVersionUID of this CustomerAccount.
      */
     private static final long serialVersionUID = 9091804401885457679L;
