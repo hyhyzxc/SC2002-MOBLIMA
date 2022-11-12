@@ -2,10 +2,10 @@ package moblima.Manager;
 
 import java.util.*;
 
+import Serializer.StaffUI;
 import moblima.Entity.Movie;
 import moblima.Entity.ShowingStatus;
 import moblima.Serializer.MovieSerializer;
-import moblima.UI.StaffUI;
 
 import java.io.*;
 
@@ -127,8 +127,15 @@ public class MovieManager {
      * Updates movie chosen.
      */
     public void updateMovie(int ID, Movie newMovie) {
-        movieList = s.getMovieList("MovieDatabase.ser");
-        movieList.set(ID, newMovie);
-        s.saveMovieList(movieList, "MovieDatabase.ser");
+        ArrayList<Movie> newList = getMovieList();
+        Movie movie = newList.get(ID - 1);
+        ArrayList<Movie> list = s.getMovieList("MovieDatabase.ser");
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getTitle().equals(movie.getTitle())) {
+                list.set(i, newMovie);
+
+            }
+        }
+        s.saveMovieList(list, "MovieDatabase.ser");
     }
 }

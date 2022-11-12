@@ -517,10 +517,12 @@ public class StaffUI {
                     break;
                 default:
                     throw new InvalidInputException();
+
             }
             MM.updateMovie(ID, newMovie);
         } catch (Exception e) {
             System.out.println("Error input!");
+            System.out.println(e.getMessage());
         }
 
     }
