@@ -2,6 +2,7 @@ package moblima.Manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import moblima.Entity.ManagerList;
 import moblima.Entity.Movie;
@@ -9,9 +10,9 @@ import moblima.Entity.Movie;
 public class SortByRatings implements Sorter {
 	MovieManager MM = (new ManagerList()).getMovieManager();
 
-	public HashMap<String, Float> sortBy() {
+	public LinkedHashMap<String, Float> sortBy() {
 		ArrayList<Movie> movies = MM.getSorted();
-		HashMap<String, Float> hm = new HashMap<>();
+		LinkedHashMap<String, Float> hm = new LinkedHashMap<>();
 
 		for (Movie movie : movies) {
 			// System.out.println(movie.getAverageRatings());
@@ -29,7 +30,7 @@ public class SortByRatings implements Sorter {
 	}
 
 	@Override
-	public HashMap<String, Float> sortBy(HashMap<String, Float> hm) {
+	public LinkedHashMap<String, Float> sortBy(LinkedHashMap<String, Float> hm) {
 		// TODO Auto-generated method stub
 		return null;
 	}

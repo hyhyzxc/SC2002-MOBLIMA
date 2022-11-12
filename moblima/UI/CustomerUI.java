@@ -117,7 +117,7 @@ public class CustomerUI {
      */
     public void showTop5Movies() {
         SortContext sortContext = new SortContext(new SortByRatings());
-        HashMap<String, Float> hm = sortContext.executeSort();
+        LinkedHashMap<String, Float> hm = sortContext.executeSort();
         int size = hm.size();
         if (size <= 1) {
             System.out.println("Sorry there's only one or less movies");
@@ -129,7 +129,7 @@ public class CustomerUI {
             if (i == 6)
                 return;
             System.out.println("------------------------------------");
-            System.out.println("Rank: " + i);
+            System.out.println("Rank: " + i++);
             System.out.println("Movie: " + movieName);
             System.out.println("Rating: " + hm.get(movieName));
             // System.out.printf("Rank: %d\nMovie: %d\nAvg Rating: %.2f\n", i++, movieName,
@@ -150,7 +150,7 @@ public class CustomerUI {
 
     public void showTop5MoviesBySales() {
         SortContext sortContext = new SortContext(new SortBySales());
-        HashMap<String, Float> hm = sortContext.executeSort();
+        LinkedHashMap<String, Float> hm = sortContext.executeSort();
         int size = hm.size();
         if (size <= 1) {
             System.out.println("Sorry there's only one or less movies");
@@ -162,7 +162,7 @@ public class CustomerUI {
             if (i == 6)
                 return;
             System.out.println("------------------------------------");
-            System.out.println("Rank: " + i);
+            System.out.println("Rank: " + i++);
             System.out.println("Movie: " + movieName);
             System.out.println("Num of Sales: " + hm.get(movieName));
             // System.out.printf("Rank: %d\nMovie: %d\nNum of Sales: %f\n", i++, movieName,
@@ -180,6 +180,7 @@ public class CustomerUI {
      */
     public void init() throws InvalidEmailException, InvalidPhoneNoException {
         int choice = 0;
+        StaffConfigs staffc = new StaffConfigs();
         do {
             System.out.println("---------------------");
             System.out.println("    Customer Menu    ");
@@ -236,10 +237,18 @@ public class CustomerUI {
                     break;
 
                 case 6:
+                    if (staffc.getCurrentConfigs().get("VIEW_BY_RATINGS") == false) {
+                        System.out.println("Viewing by ratings disabled, sorry, please consult a staff");
+                        break;
+                    }
                     showTop5Movies();
                     break;
 
                 case 7:
+                    if (staffc.getCurrentConfigs().get("VIEW_BY_NUM_SALES") == false) {
+                        System.out.println("Viewing by number of sales disabled, sorry, please consult a staff");
+                        break;
+                    }
                     showTop5MoviesBySales();
                     break;
 

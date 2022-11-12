@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 public class SortByValue implements Sorter {
 
 	@Override
-	public HashMap<String, Float> sortBy(HashMap<String, Float> hm) {
+	public LinkedHashMap<String, Float> sortBy(LinkedHashMap<String, Float> hm) {
 		// Create a list from elements of HashMap
 		List<Entry<String, Float>> list = new LinkedList<Map.Entry<String, Float>>(hm.entrySet());
 
@@ -19,7 +19,7 @@ public class SortByValue implements Sorter {
 		});
 
 		// put data from sorted list to hashmap
-		HashMap<String, Float> temp = new LinkedHashMap<String, Float>();
+		LinkedHashMap<String, Float> temp = new LinkedHashMap<String, Float>();
 		for (Map.Entry<String, Float> aa : list) {
 			temp.put(aa.getKey(), aa.getValue());
 		}
@@ -27,7 +27,7 @@ public class SortByValue implements Sorter {
 	}
 
 	@Override
-	public HashMap<String, Float> sortBy() {
+	public LinkedHashMap<String, Float> sortBy() {
 		// TODO Auto-generated method stub
 		return null;
 	}

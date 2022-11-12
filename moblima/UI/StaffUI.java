@@ -255,7 +255,7 @@ public class StaffUI {
     // */
     public void viewMoviesByRating() {
         SortContext sortContext = new SortContext(new SortByRatings());
-        HashMap<String, Float> hm = sortContext.executeSort();
+        LinkedHashMap<String, Float> hm = sortContext.executeSort();
         int size = hm.size();
         if (size <= 1) {
             System.out.println("Sorry there's only one or less movies");
@@ -272,7 +272,7 @@ public class StaffUI {
 
     public void viewMoviesBySales() {
         SortContext sortContext = new SortContext(new SortBySales());
-        HashMap<String, Float> hm = sortContext.executeSort();
+        LinkedHashMap<String, Float> hm = sortContext.executeSort();
         int size = hm.size();
         if (size <= 1) {
             System.out.println("Sorry there's only one or less movies");
@@ -395,6 +395,22 @@ public class StaffUI {
     }
 
     /**
+     * Allows Staff to change the visibility of customer when viewing movies by a
+     * filter.
+     */
+    public void configureCustomerVisibility() {
+        System.out.println("Configure Customer Visibility");
+        System.out.println("Which would you like to change?");
+        StaffConfigs staffc = new StaffConfigs();
+        staffc.printCurrentConfigs();
+        String choice = sc.next();
+        System.out.println("Enter boolean value: true/false");
+        boolean newBool = sc.nextBoolean();
+        staffc.changeConfigs(choice, newBool);
+        return;
+    }
+
+    /**
      * Initialises StaffUI.
      * Displays user's options and calls relevent methods.
      */
@@ -416,6 +432,7 @@ public class StaffUI {
             System.out.println("Option 7: View Movies by Rating");
             System.out.println("Option 8: View Movies by Ticket Sales");
             System.out.println("Option 9: Configure Price of Tickets");
+            System.out.println("Option 10: Configure Customer Visibility");
             System.out.println("Option 0: Return to previous menu");
 
             try {
@@ -480,6 +497,9 @@ public class StaffUI {
                     configurePriceOfTickets();
                     break;
 
+                case 10:
+                    configureCustomerVisibility();
+                    break;
                 case 0:
                     break;
 

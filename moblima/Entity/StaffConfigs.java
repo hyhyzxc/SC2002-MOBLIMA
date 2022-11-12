@@ -18,11 +18,22 @@ public class StaffConfigs implements Serializable {
 		}
 	}
 
+	public HashMap<String, Boolean> getCurrentConfigs() {
+		return configs;
+	}
+
+	public void printCurrentConfigs() {
+		for (String c : configs.keySet()) {
+			System.out.printf("%s : %s \n", c, configs.get(c));
+		}
+	}
+
 	public void changeConfigs(String toChange, boolean newBool) {
 		try {
 			if (configs.containsKey(toChange)) {
 				configs.put(toChange, newBool);
 				System.out.println("Succesfully changed!");
+				StaffConfigsSerializer.saveStaffConfigs(configs, "StaffConfigsDatabase.ser");
 			} else {
 				System.out.println("Sorry please only choose from the available configs");
 			}

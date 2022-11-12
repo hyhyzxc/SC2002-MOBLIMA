@@ -71,7 +71,7 @@ public class BookingManager {
         return bookings;
     }
 
-    public static HashMap<String, Float> sortByValue(HashMap<String, Float> hm) {
+    public static LinkedHashMap<String, Float> sortByValue(LinkedHashMap<String, Float> hm) {
         // Create a list from elements of HashMap
         List<Entry<String, Float>> list = new LinkedList<Map.Entry<String, Float>>(hm.entrySet());
 
@@ -84,16 +84,16 @@ public class BookingManager {
         });
 
         // put data from sorted list to hashmap
-        HashMap<String, Float> temp = new LinkedHashMap<String, Float>();
+        LinkedHashMap<String, Float> temp = new LinkedHashMap<String, Float>();
         for (Map.Entry<String, Float> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
         return temp;
     }
 
-    public HashMap<String, Float> sortMoviesBySales() {
+    public LinkedHashMap<String, Float> sortMoviesBySales() {
         bookings = s.getBookings("BookingDatabase.ser");
-        HashMap<String, Float> map = new HashMap<>();
+        LinkedHashMap<String, Float> map = new LinkedHashMap<>();
         for (Booking booking : bookings) {
             String movieBooked = booking.getSessionBooked().getMovie().getTitle();
             if (!map.containsKey(movieBooked)) {
@@ -103,7 +103,7 @@ public class BookingManager {
                 map.replace(movieBooked, sale, sale + 1);
             }
         }
-        HashMap<String, Float> sortedMap = sortByValue(map);
+        LinkedHashMap<String, Float> sortedMap = sortByValue(map);
         return sortedMap;
 
     }

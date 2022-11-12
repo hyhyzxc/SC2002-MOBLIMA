@@ -2,6 +2,7 @@ package moblima.Manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import moblima.Entity.Movie;
 
@@ -16,11 +17,11 @@ public class SortContext {
 		this.sorter = sorter;
 	}
 
-	public HashMap<String, Float> executeSort(HashMap<String, Float> hm) {
+	public LinkedHashMap<String, Float> executeSort(LinkedHashMap<String, Float> hm) {
 		return this.sorter.sortBy(hm);
 	}
 
-	public HashMap<String, Float> executeSort() {
+	public LinkedHashMap<String, Float> executeSort() {
 		return this.sorter.sortBy();
 	}
 }
