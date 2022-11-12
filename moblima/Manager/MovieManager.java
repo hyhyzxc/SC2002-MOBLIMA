@@ -2,7 +2,6 @@ package moblima.Manager;
 
 import java.util.*;
 
-import Serializer.StaffUI;
 import moblima.Entity.Movie;
 import moblima.Entity.ShowingStatus;
 import moblima.Serializer.MovieSerializer;
