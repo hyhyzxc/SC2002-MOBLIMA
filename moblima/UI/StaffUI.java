@@ -273,7 +273,7 @@ public class StaffUI {
                 int cineplexNum = sc.nextInt();
                 System.out.println("Enter the session number to delete: ");
                 int seshNum = sc.nextInt();
-                Session toRemove = sessionsMap.get(keys.get(cineplexNum - 1)).get(seshNum);
+                Session toRemove = sessionsMap.get(keys.get(cineplexNum - 1)).get(seshNum - 1);
                 CM.removeSessionFromCineplex(toRemove, cineplexNum - 1);
                 break;
 
@@ -397,6 +397,7 @@ public class StaffUI {
                         System.out.println("Enter new price");
                         newPrice = sc.nextDouble();
                         d.setAddPriceProportion(key, newPrice);
+                        System.out.println();
                         System.out.println("Successfully updated!");
                         break;
 
