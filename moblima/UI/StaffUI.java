@@ -265,6 +265,7 @@ public class StaffUI {
                 System.out.println("------------------");
             }
         }
+
         System.out.printf("(1) Remove a Session\n(0) Back\n");
         int c = sc.nextInt();
         switch (c) {
@@ -273,7 +274,7 @@ public class StaffUI {
                 int cineplexNum = sc.nextInt();
                 System.out.println("Enter the session number to delete: ");
                 int seshNum = sc.nextInt();
-                Session toRemove = sessionsMap.get(keys.get(cineplexNum - 1)).get(seshNum);
+                Session toRemove = sessionsMap.get(keys.get(cineplexNum - 1)).get(seshNum - 1);
                 CM.removeSessionFromCineplex(toRemove, cineplexNum - 1);
                 break;
 
@@ -333,20 +334,20 @@ public class StaffUI {
         int i = 1;
         System.out.println("Movie Title: Num of Sales");
         for (String movieName : hm.keySet()) {
-        	boolean found = false;
-        	for (Movie m : managerList.getMovieManager().getMovieList()) {
-        		if (movieName.equals(m.getTitle())) 
-        			found = true;
-        	}
-        	if (found) {
-        		System.out.println("------------------------------------");
+            boolean found = false;
+            for (Movie m : managerList.getMovieManager().getMovieList()) {
+                if (movieName.equals(m.getTitle()))
+                    found = true;
+            }
+            if (found) {
+                System.out.println("------------------------------------");
                 System.out.println("------------------------------------");
                 System.out.println("Rank: " + i++);
                 System.out.println("Movie: " + movieName);
                 System.out.println("Num of Sales: " + hm.get(movieName));
                 System.out.println("------------------------------------");
-        	}
-        	else continue;
+            } else
+                continue;
         }
     }
 
