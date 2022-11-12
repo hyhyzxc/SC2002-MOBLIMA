@@ -99,19 +99,42 @@ public class BookingUI {
         ArrayList<Seat> seats = cinemaChosen.getSeats();
         for (int i = 0; i < seats.size(); i++) {
             if (i % 10 == 0) {
-                System.out.println();
-                System.out.print("|");
+                if (i != 0)
+                    System.out.println();
+                else {
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println();
+                    System.out.println("                        Screen                      ");
+                    System.out.println();
+                    System.out.println("-----------------------------------------------------------");
+                }
+                if (i != 20)
+                    System.out.print("|             |");
+                else
+                    System.out.print("|    Aisle    |");
             }
             if (seats.get(i).isOccupied()) {
                 System.out.print("X|");
             } else {
-                System.out.print((i + 1) + "|");
+                if (i >= 10)
+                    System.out.print((i + 1) + "|");
+                else
+                    System.out.print(" " + (i + 1) + "|");
+
+            }
+            if (i % 10 == 9) {
+                if (i != 29)
+                    System.out.print("             |");
+                else {
+                    System.out.print("    Aisle    |");
+                }
             }
         }
         System.out.println();
-        System.out.printf("--------------------------------%n");
+        System.out.println();
+        System.out.printf("-------------------------------------%n");
         System.out.printf("            Seat Types      %n");
-        System.out.printf("--------------------------------%n");
+        System.out.printf("-------------------------------------%n");
         System.out.printf("| %-10s | %-20s |%n", "1-20: ", "Regular Seat");
         System.out.printf("| %-10s | %-20s |%n", "21-30: ", "Couple Seat");
         System.out.printf("| %-10s | %-20s |%n", "31-40: ", "Elite Seat");
@@ -177,19 +200,42 @@ public class BookingUI {
         ArrayList<Seat> seats = cinemaChosen.getSeats();
         for (int i = 0; i < seats.size(); i++) {
             if (i % 10 == 0) {
-                System.out.println();
-                System.out.print("|");
+                if (i != 0)
+                    System.out.println();
+                else {
+                    System.out.println("-----------------------------------------------------------");
+                    System.out.println();
+                    System.out.println("                        Screen                      ");
+                    System.out.println();
+                    System.out.println("-----------------------------------------------------------");
+                }
+                if (i != 20)
+                    System.out.print("|             |");
+                else
+                    System.out.print("|    Aisle    |");
             }
             if (seats.get(i).isOccupied()) {
                 System.out.print("X|");
             } else {
-                System.out.print((i + 1) + "|");
+                if (i >= 10)
+                    System.out.print((i + 1) + "|");
+                else
+                    System.out.print(" " + (i + 1) + "|");
+
+            }
+            if (i % 10 == 9) {
+                if (i != 29)
+                    System.out.print("             |");
+                else {
+                    System.out.print("    Aisle    |");
+                }
             }
         }
         System.out.println();
-        System.out.printf("--------------------------------%n");
+        System.out.println();
+        System.out.printf("-------------------------------------%n");
         System.out.printf("            Seat Types      %n");
-        System.out.printf("--------------------------------%n");
+        System.out.printf("-------------------------------------%n");
         System.out.printf("| %-10s | %-20s |%n", "1-20: ", "Regular Seat");
         System.out.printf("| %-10s | %-20s |%n", "21-30: ", "Couple Seat");
         System.out.printf("| %-10s | %-20s |%n", "31-40: ", "Elite Seat");
