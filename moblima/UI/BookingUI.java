@@ -262,10 +262,10 @@ public class BookingUI {
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss");
             String datetime = now.format(df).substring(0, 14).replace(" ", "").replace(":", "");
-            System.out.println("this is datetime" + datetime);
+            // System.out.println("this is datetime" + datetime);
             String TID = cinemaChosen.getCinemaID() + datetime;
             CM.reserveSeat(seatChosen);
-            System.out.println("owner " + owner);
+            // System.out.println("Owner " + owner);
             Booking newBooking = new Booking(TID, owner, sessionChosen, cineplexChosen, seatChosen, cinemaChosen);
             BookingManager BM = managerList.getBookingManager();
             System.out.println("------------- Confirm Payment ------------");

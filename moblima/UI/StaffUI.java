@@ -273,7 +273,7 @@ public class StaffUI {
                 int cineplexNum = sc.nextInt();
                 System.out.println("Enter the session number to delete: ");
                 int seshNum = sc.nextInt();
-                Session toRemove = sessionsMap.get(keys.get(cineplexNum - 1)).get(seshNum - 1);
+                Session toRemove = sessionsMap.get(keys.get(cineplexNum - 1)).get(seshNum);
                 CM.removeSessionFromCineplex(toRemove, cineplexNum - 1);
                 break;
 
@@ -397,7 +397,6 @@ public class StaffUI {
                         System.out.println("Enter new price");
                         newPrice = sc.nextDouble();
                         d.setAddPriceProportion(key, newPrice);
-                        System.out.println();
                         System.out.println("Successfully updated!");
                         break;
 
@@ -569,11 +568,15 @@ public class StaffUI {
                         System.out.println(e.getMessage());
                     }
                     // staffUI.main(null);
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 2:
                     getAllMovieDetails();
                     // staffUI.main(null);
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 3:
@@ -582,6 +585,8 @@ public class StaffUI {
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     // staffUI.main(null);
                     break;
                 case 4:
@@ -594,6 +599,8 @@ public class StaffUI {
                     } catch (InvalidInputException e) {
                         System.out.println(e.getMessage());
                     }
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
                 case 5:
                     try {
@@ -602,31 +609,45 @@ public class StaffUI {
                         System.out.println(e.getMessage());
                     }
                     // staffUI.main(null);
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 6:
                     getAllSessions();
                     // staffUI.main(null);
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 7:
                     getAllBookings();
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 8:
                     viewMoviesByRating();
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 9:
                     viewMoviesBySales();
+                    System.out.println(
+                            "---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 10:
                     configurePriceOfTickets();
+                    System.out.println(
+                            "-----------------------------------------------------------------------------------------------------------------------------");
                     break;
 
                 case 11:
                     configureCustomerVisibility();
+                    System.out.println(
+                            "-----------------------------------------------------------------------------------------------------------------------------");
                     break;
                 case 0:
                     break;
