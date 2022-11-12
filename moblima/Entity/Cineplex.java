@@ -89,12 +89,22 @@ public class Cineplex implements Serializable {
      *                  cineplex
      */
     public void deleteAllSessionsByMovieName(String movieName) {
-        for (int i = 0; i < availableSessions.size(); i++) {
-            System.out.println("thsi is: " + availableSessions.get(i).getMovie().getTitle());
-            if (availableSessions.get(i).getMovie().getTitle() == "to rm") {
-                System.out.println("moviename in deleteallsessions" + movieName);
-                availableSessions.remove(i);
+        ArrayList<Session> toRemove = new ArrayList<Session>();
+        for (Session session : availableSessions) {
+            String title = session.getMovie().getTitle();
+            if (title.equals(movieName)) {
+                System.out.println("Add " + movieName);
+                toRemove.add(session);
             }
+        }
+        availableSessions.removeAll(toRemove);
+        // printAllAvailableSessions(this.location);
+    }
+
+    public void printAllAvailableSessions(String cineplexName) {
+        System.out.println("Available now for cineplex : " + this.getLocation());
+        for (Session s : availableSessions) {
+            System.out.println(s.getMovie().getTitle());
         }
     }
 

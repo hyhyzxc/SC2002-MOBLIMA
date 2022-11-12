@@ -89,7 +89,7 @@ public class CinemaManager {
             cineplex.deleteAllSessionsByMovieName(movieName);
         }
         s.saveCineplexStatus(cineplexList, "CineplexDatabase.ser");
-        System.out.printf("All sessions tied to movie %s removed from Cineplex.", movieName);
+        System.out.printf("All sessions tied to movie %s removed from Cineplex", movieName);
     }
 
     /**
