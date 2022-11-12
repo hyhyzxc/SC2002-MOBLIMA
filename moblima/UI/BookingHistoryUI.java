@@ -47,7 +47,7 @@ public class BookingHistoryUI {
         } else {
             for (Booking booking : bookings) {
                 booking.toTicket();
-                System.out.printf("| %-20s | %-20s |%n", "Seat Type: ", PM.calcPrice(booking));
+                System.out.printf("| %-20s | %-20s |%n", "Price: ", PM.calcPrice(booking));
             }
         }
     }

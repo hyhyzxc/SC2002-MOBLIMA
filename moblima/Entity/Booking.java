@@ -141,6 +141,6 @@ public class Booking implements Serializable {
         System.out.printf("| %-20s | %-20s |%n", "Cineplex: ", cineplexBooked.getLocation());
         System.out.printf("| %-20s | %-20s |%n", "Seat No: ", seatBooked.getSeatID());
         System.out.printf("| %-20s | %-20s |%n", "Seat Type: ", seatBooked.getSeatType().getName());
-        System.out.printf("| %-20s | %-20s |%n", "Seat Type: ", seatBooked.getSeatType().getName());
+
     }
 }
