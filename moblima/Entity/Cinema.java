@@ -32,22 +32,21 @@ public class Cinema implements Serializable {
      * 
      * @param cinemaID
      */
-    public Cinema(String cinemaID, double priceProportion, CinemaType type) {
+    public Cinema(String cinemaID, double priceProportion) {
         this.cinemaID = cinemaID;
         this.priceProportion = priceProportion;
         this.seats = new ArrayList<Seat>();
-        this.type = type;
         for (int i = 0; i < 20; i++) {
-            seats.add(new Seat(i + 1, SeatType.REGULAR, 2));
+            seats.add(new RegularSeat(i + 1, 2.0));
         }
         for (int i = 20; i < 30; i++) {
-            seats.add(new Seat(i + 1, SeatType.COUPLE, 8));
+            seats.add(new CoupleSeat(i + 1, 8.0));
         }
         for (int i = 30; i < 40; i++) {
-            seats.add(new Seat(i + 1, SeatType.ELITE, 4));
+            seats.add(new EliteSeat(i + 1, 4.0));
         }
         for (int i = 40; i < 50; i++) {
-            seats.add(new Seat(i + 1, SeatType.ULTIMA, 6));
+            seats.add(new UltimaSeat(i + 1, 6.0));
         }
     }
 
