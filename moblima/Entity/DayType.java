@@ -78,4 +78,13 @@ public class DayType implements Serializable {
 
     }
 
+    /**
+     * Returns the hashmap containing the daytypes and their corresponding price
+     * proportion.
+     * 
+     */
+    public HashMap<String, Double> getDayList() {
+        return this.dayType;
+    }
+
 }

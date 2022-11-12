@@ -19,7 +19,7 @@ public class StaffUI {
     /**
      * Static Scanner object for all IO.
      */
-    static final Scanner sc = new Scanner(System.in).useDelimiter("\\n");
+    static final Scanner sc = new Scanner(System.in);
     /**
      * Static instance of ManagerList for entire programme.
      */
@@ -303,7 +303,7 @@ public class StaffUI {
                 System.out.println("Existing Keys");
                 try {
                     for (String k : d.getAllExistingKeys()) {
-                        System.out.println(k);
+                        System.out.println(k + " " + d.getDayList().get(k));
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no existing keys!, please try again");
@@ -340,8 +340,8 @@ public class StaffUI {
                 int c2 = sc.nextInt();
                 System.out.println("Existing Keys");
                 try {
-                    for (String k : s.getAllExistingKeys()) {
-                        System.out.println(k);
+                    for (String name : s.getAllExistingKeys()) {
+                        System.out.println(name + " " + s.getStatusList().get(name));
                     }
                 } catch (NullPointerException e) {
                     System.out.println("There are no existing keys!, please try again");

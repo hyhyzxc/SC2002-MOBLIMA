@@ -77,4 +77,18 @@ public class Status {
 
     }
 
+    /**
+     * Returns the status list
+     */
+    public HashMap<String, Double> getStatusList() {
+        return this.status;
+    }
+
+    /**
+     * returns the size of the status list
+     */
+    public int getSize() {
+        return this.status.size();
+    }
+
 }
