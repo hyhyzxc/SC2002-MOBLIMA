@@ -36,7 +36,7 @@ public class LoginUI {
      * @throws InvalidInputException
      */
     public static void registerCustomer() throws InvalidInputException {
-        CustomerManager CM = managerList.getCustomerManager();
+        AccountManager CM = managerList.getCustomerManager();
         System.out.println("Welcome to registration page for new Customer!");
         System.out.println("Please input name: ");
         String name;
@@ -71,13 +71,13 @@ public class LoginUI {
      * @return
      */
     public static CustomerAccount loginCustomerAccount() {
-        CustomerManager CM = managerList.getCustomerManager();
+        AccountManager CM = managerList.getCustomerManager();
         System.out.println("Welcome to login page for Customers!");
         System.out.println("Please input username");
         String username = sc.next();
         System.out.println("Please enter password.");
         String password = sc.next();
-        CustomerAccount account = CM.validateLoginDetails(username, password);
+        CustomerAccount account = (CustomerAccount) CM.validateLoginDetails(username, password);
         return account;
     }
 
@@ -85,7 +85,7 @@ public class LoginUI {
      * Gets valid user input for Staff and registers them as a new Staff.
      */
     public static void registerStaff() throws InvalidInputException {
-        StaffManager SM = managerList.getStaffManager();
+        AccountManager SM = managerList.getStaffManager();
         System.out.println("Welcome to registration page for new Staff!");
         System.out.println("Please input name: ");
         String name;
@@ -111,13 +111,13 @@ public class LoginUI {
      * @return The StaffAccount retrieved.
      */
     public static StaffAccount loginStaffAccount() {
-        StaffManager SM = managerList.getStaffManager();
+        AccountManager SM = managerList.getStaffManager();
         System.out.println("Welcome to login page for Staff!");
         System.out.println("Please input username");
         String username = sc.next();
         System.out.println("Please enter password.");
         String password = sc.next();
-        StaffAccount account = SM.validateLoginDetails(username, password);
+        StaffAccount account = (StaffAccount) SM.validateLoginDetails(username, password);
         return account;
     }
 

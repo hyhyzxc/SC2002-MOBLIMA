@@ -128,8 +128,10 @@ public class StaffUI {
             String castString = "|" + String.join("|", castList);
             System.out.println("Cast: " + castString);
             double avgRatings = Math.round(movieList.get(i).getAverageRatings() * 10) / 10.0;
-
-            System.out.println("Average Ratings: " + avgRatings);
+            if (avgRatings != 0)
+                System.out.println("Average Ratings: " + avgRatings);
+            else
+                System.out.println("Average Ratings: NA");
             ArrayList<String> reviews = movieList.get(i).getReviews();
             for (int j = 0; j < reviews.size(); j++) {
                 System.out.println("Review " + (j + 1) + ": " + reviews.get(j));
@@ -189,6 +191,11 @@ public class StaffUI {
                 throw new InvalidInputException();
             }
             Movie movie = movieList.get(movieChoice - 1);
+            if (movie.getStatus().equals(ShowingStatus.COMING_SOON)
+                    || movie.getStatus().equals(ShowingStatus.END_OF_SHOWING)) {
+                System.out.println("Movie not available to book.");
+                return;
+            }
 
             sc.nextLine();
             System.out.println("Enter Movie Showtime in format DD/MM/YYYY h:mm a");
