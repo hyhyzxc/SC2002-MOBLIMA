@@ -121,6 +121,7 @@ public class StaffUI {
             System.out.println("------------------");
             System.out.println("Movie No: " + (i + 1));
             System.out.println("Title: " + movieList.get(i).getTitle());
+            System.out.println("Type: " + movieList.get(i).printType());
             System.out.println("Synopsis: " + movieList.get(i).getSynopsis());
             System.out.println("Status: " + movieList.get(i).getStatus().toString());
             System.out.println("Director: " + movieList.get(i).getDirector());

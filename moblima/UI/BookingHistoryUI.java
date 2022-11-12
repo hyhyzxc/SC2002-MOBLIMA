@@ -9,13 +9,14 @@ import java.util.*;
 
 /**
  * Handles all user IO for current BookingHistory
- * @author 
+ * 
+ * @author
  *
  */
 public class BookingHistoryUI {
-	/**
-	 * The Owner that this BookingHistoryUI is servicing.
-	 */
+    /**
+     * The Owner that this BookingHistoryUI is servicing.
+     */
     private CustomerAccount owner;
     /**
      * This StaffUI's list of managers.
@@ -24,7 +25,8 @@ public class BookingHistoryUI {
 
     /**
      * Creates new BookingHistoryUI with given account and managerList.
-     * @param account The Owner that this BookingHistoryUI is servicing.
+     * 
+     * @param account     The Owner that this BookingHistoryUI is servicing.
      * @param managerList This StaffUI's list of managers.
      */
     public BookingHistoryUI(CustomerAccount account, ManagerList managerList) {
@@ -37,6 +39,7 @@ public class BookingHistoryUI {
      */
     private void getBookingHistory() {
         BookingManager BM = managerList.getBookingManager();
+        PriceManager PM = managerList.getPriceManager();
         ArrayList<Booking> bookings = BM.getBookingsOfCustomer(owner);
         if (bookings == null) {
             System.out.println("No bookings made.");
@@ -44,6 +47,7 @@ public class BookingHistoryUI {
         } else {
             for (Booking booking : bookings) {
                 booking.toTicket();
+                System.out.printf("| %-20s | %-20s |%n", "Price: ", PM.calcPrice(booking));
             }
         }
     }

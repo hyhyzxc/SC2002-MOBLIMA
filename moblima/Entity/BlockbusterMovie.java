@@ -24,4 +24,8 @@ public class BlockbusterMovie extends Movie {
         super(title, sypnosis, status, director, cast, movieID);
         priceProportion = 3;
     }
+
+    public String printType() {
+        return "Blockbuster Movie";
+    }
 }
