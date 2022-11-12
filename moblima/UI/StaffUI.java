@@ -465,6 +465,66 @@ public class StaffUI {
         return;
     }
 
+    public void updateMovieDetails(int ID) throws InvalidInputException {
+        try {
+            MovieManager MM = managerList.getMovieManager();
+            System.out.println("Please enter the movie title.");
+            String title = sc.nextLine();
+
+            System.out.println("Please enter the synopsis.");
+            String synopsis = sc.nextLine();
+            System.out.println("Please enter Showing Status.");
+            System.out.println("1: Coming Soon");
+            System.out.println("2: Preview");
+            System.out.println("3: Now Showing");
+            System.out.println("4: End of Showing");
+            int statusChoice = sc.nextInt();
+            if (statusChoice < 1 || statusChoice > 4) {
+                throw new InvalidInputException();
+            }
+            ShowingStatus status = (statusChoice == 1) ? ShowingStatus.COMING_SOON
+                    : (statusChoice == 2) ? ShowingStatus.PREVIEW
+                            : (statusChoice == 3) ? ShowingStatus.NOW_SHOWING : ShowingStatus.END_OF_SHOWING;
+            System.out.println("Please enter Director name.");
+            sc.nextLine();
+            String director = sc.nextLine();
+            ArrayList<String> cast = new ArrayList<>();
+            String newCast;
+            do {
+                System.out.println("Please enter cast. Press enter without inputting to terminate.");
+                newCast = sc.nextLine();
+                cast.add(newCast);
+            } while (!newCast.isEmpty());
+            int movieID = r.nextInt(100000);
+            System.out.println("Enter the type of Movie.");
+            System.out.println("1: Regular");
+            System.out.println("2: Blockbuster");
+            System.out.println("3: 3D Movie");
+            int movieType = sc.nextInt();
+            if (movieType < 1 || movieType > 3) {
+                throw new InvalidInputException();
+            }
+            Movie newMovie;
+            switch (movieType) {
+                case 1:
+                    newMovie = new RegularMovie(title, synopsis, status, director, cast, movieID);
+                    break;
+                case 2:
+                    newMovie = new BlockbusterMovie(title, synopsis, status, director, cast, movieID);
+                    break;
+                case 3:
+                    newMovie = new ThreeDMovie(title, synopsis, status, director, cast, movieID);
+                    break;
+                default:
+                    throw new InvalidInputException();
+            }
+            MM.updateMovie(ID, newMovie);
+        } catch (Exception e) {
+            System.out.println("Error input!");
+        }
+
+    }
+
     /**
      * Initialises StaffUI.
      * Displays user's options and calls relevent methods.
@@ -480,14 +540,15 @@ public class StaffUI {
             System.out.println("Option 1: Add New Movie");
             System.out.println("Option 2: Get Movie List");
             System.out.println("Option 3: Remove Movie");
-            System.out.println("Option 4: Add Movie Location and Showtimes");
+            System.out.println("Option 4: Update Movie Details");
+            System.out.println("Option 5: Add Movie Location and Showtimes");
             /* add new function to update / remove movie showtimes */
-            System.out.println("Option 5: View All Sessions");
-            System.out.println("Option 6: View All Bookings");
-            System.out.println("Option 7: View Movies by Rating");
-            System.out.println("Option 8: View Movies by Ticket Sales");
-            System.out.println("Option 9: Configure Price of Tickets");
-            System.out.println("Option 10: Configure Customer Visibility");
+            System.out.println("Option 6: View All Sessions");
+            System.out.println("Option 7: View All Bookings");
+            System.out.println("Option 8: View Movies by Rating");
+            System.out.println("Option 9: View Movies by Ticket Sales");
+            System.out.println("Option 10: Configure Price of Tickets");
+            System.out.println("Option 11: Configure Customer Visibility");
             System.out.println("Option 0: Return to previous menu");
 
             try {
@@ -521,8 +582,18 @@ public class StaffUI {
                     }
                     // staffUI.main(null);
                     break;
-
                 case 4:
+                    try {
+                        getAllMovieDetails();
+                        System.out.println("Choose the movie to update.");
+                        int movieID = sc.nextInt();
+                        sc.nextLine();
+                        updateMovieDetails(movieID);
+                    } catch (InvalidInputException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 5:
                     try {
                         updateCineplexMovies();
                     } catch (InvalidInputException e) {
@@ -531,28 +602,28 @@ public class StaffUI {
                     // staffUI.main(null);
                     break;
 
-                case 5:
+                case 6:
                     getAllSessions();
                     // staffUI.main(null);
                     break;
 
-                case 6:
+                case 7:
                     getAllBookings();
                     break;
 
-                case 7:
+                case 8:
                     viewMoviesByRating();
                     break;
 
-                case 8:
+                case 9:
                     viewMoviesBySales();
                     break;
 
-                case 9:
+                case 10:
                     configurePriceOfTickets();
                     break;
 
-                case 10:
+                case 11:
                     configureCustomerVisibility();
                     break;
                 case 0:
@@ -561,7 +632,7 @@ public class StaffUI {
                 default:
                     showErrorMessage();
             }
-        } while ((1 <= choice && choice <= 9));
+        } while ((1 <= choice && choice <= 11));
     }
 
     /**
