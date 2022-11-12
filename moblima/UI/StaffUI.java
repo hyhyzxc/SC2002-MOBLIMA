@@ -333,12 +333,20 @@ public class StaffUI {
         int i = 1;
         System.out.println("Movie Title: Num of Sales");
         for (String movieName : hm.keySet()) {
-            System.out.println("------------------------------------");
-            System.out.println("------------------------------------");
-            System.out.println("Rank: " + i++);
-            System.out.println("Movie: " + movieName);
-            System.out.println("Num of Sales: " + hm.get(movieName));
-            System.out.println("------------------------------------");
+        	boolean found = false;
+        	for (Movie m : managerList.getMovieManager().getMovieList()) {
+        		if (movieName.equals(m.getTitle())) 
+        			found = true;
+        	}
+        	if (found) {
+        		System.out.println("------------------------------------");
+                System.out.println("------------------------------------");
+                System.out.println("Rank: " + i++);
+                System.out.println("Movie: " + movieName);
+                System.out.println("Num of Sales: " + hm.get(movieName));
+                System.out.println("------------------------------------");
+        	}
+        	else continue;
         }
     }
 

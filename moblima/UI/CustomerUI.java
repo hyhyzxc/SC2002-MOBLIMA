@@ -148,15 +148,22 @@ public class CustomerUI {
         int i = 1;
         System.out.println("Movie Title: Num of Sales");
         for (String movieName : hm.keySet()) {
+        	boolean found = false;
+        	for (Movie m : managerList.getMovieManager().getMovieList()) {
+        		if (movieName.equals(m.getTitle())) 
+        			found = true;
+        	}
             if (i == 6)
                 return;
-            System.out.println("------------------------------------");
-            System.out.println("Rank: " + i++);
-            System.out.println("Movie: " + movieName);
-            System.out.println("Num of Sales: " + hm.get(movieName));
-            // System.out.printf("Rank: %d\nMovie: %d\nNum of Sales: %f\n", i++, movieName,
-            // hm.get(movieName));
-            System.out.println("------------------------------------");
+            if (found) {
+            	System.out.println("------------------------------------");
+                System.out.println("Rank: " + i++);
+                System.out.println("Movie: " + movieName);
+                System.out.println("Num of Sales: " + hm.get(movieName));
+                // System.out.printf("Rank: %d\nMovie: %d\nNum of Sales: %f\n", i++, movieName,
+                // hm.get(movieName));
+                System.out.println("------------------------------------");
+            } else continue;
         }
     }
 
