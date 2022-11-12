@@ -85,7 +85,6 @@ public class CinemaManager {
      */
     public void removeAllSessionsFromCineplexes(String movieName) {
         for (Cineplex cineplex : cineplexList) {
-            System.out.println(movieName);
             cineplex.deleteAllSessionsByMovieName(movieName);
         }
         s.saveCineplexStatus(cineplexList, "CineplexDatabase.ser");
