@@ -10,13 +10,14 @@ import java.lang.*;
 
 /**
  * Handles all user IO for current Customer
- * @author 
+ * 
+ * @author
  *
  */
 public class CustomerUI {
-	/**
-	 * The CustomerAccount logged into the UI.
-	 */
+    /**
+     * The CustomerAccount logged into the UI.
+     */
     private static CustomerAccount owner;
     /**
      * This CustomerUI's list of managers.
@@ -29,7 +30,8 @@ public class CustomerUI {
 
     /**
      * Creates new CustomerUI with given account and managerList.
-     * @param account Current account logged into the UI.
+     * 
+     * @param account     Current account logged into the UI.
      * @param managerList List of Managers.
      */
     public CustomerUI(CustomerAccount account, ManagerList managerList) {
@@ -73,6 +75,7 @@ public class CustomerUI {
 
     /**
      * Allows user to input ratings and reviews for a movie.
+     * 
      * @throws InvalidInputException
      */
     public void addRatingAndReview() throws InvalidInputException {
@@ -108,32 +111,70 @@ public class CustomerUI {
     }
 
     /**
-     * Uses MovieManager and displays top 5 movies ranked by rating.
+     * Shows the Top 5 Movies by the Ratings. If only one movie exists, then don't
+     * show at all. If staff disabled customer from filtering by rating, then
+     * return.
      */
     public void showTop5Movies() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedRating();
-        System.out.println("Title (Rating):");
-        for (int i = 0; i < 5; i++) {
-            System.out.printf("%s (%f)\n", movies.get(i).getTitle(), movies.get(i).getAverageRatings());
+        SortContext sortContext = new SortContext(new SortByRatings());
+        HashMap<String, Float> hm = sortContext.executeSort();
+        int size = hm.size();
+        if (size <= 1) {
+            System.out.println("Sorry there's only one or less movies");
+            return;
+        }
+        int i = 1;
+        System.out.println("Movie Title: Ratings");
+        for (String movieName : hm.keySet()) {
+            if (i == 6)
+                return;
+            System.out.println("------------------------------------");
+            System.out.println("Rank: " + i);
+            System.out.println("Movie: " + movieName);
+            System.out.println("Rating: " + hm.get(movieName));
+            // System.out.printf("Rank: %d\nMovie: %d\nAvg Rating: %.2f\n", i++, movieName,
+            // hm.get(movieName));
+            System.out.println("------------------------------------");
         }
     }
 
-    /**
-     * Uses Booking Manager and displays top 5 movies ranked by sales.
-     */
-    public void showTop5MovieBySales() {
-        BookingManager BM = managerList.getBookingManager();
-        Map<String, Integer> map = BM.sortMoviesBySales();
-        for (Map.Entry<String, Integer> en : map.entrySet()) {
-            System.out
-                    .println("Movie Title: " + en.getKey() + "---->" + "Number of Sales: " + en.getValue());
+    // public void showTop5MovieBySales() {
+    // BookingManager BM = managerList.getBookingManager();
+    // Map<String, Float> map = BM.sortMoviesBySales();
+    // for (Map.Entry<String, Float> en : map.entrySet()) {
+    // System.out
+    // .println("Movie Title: " + en.getKey() + "---->" + "Number of Sales: " +
+    // en.getValue());
+    // }
+    // }
+
+    public void showTop5MoviesBySales() {
+        SortContext sortContext = new SortContext(new SortBySales());
+        HashMap<String, Float> hm = sortContext.executeSort();
+        int size = hm.size();
+        if (size <= 1) {
+            System.out.println("Sorry there's only one or less movies");
+            return;
+        }
+        int i = 1;
+        System.out.println("Movie Title: Num of Sales");
+        for (String movieName : hm.keySet()) {
+            if (i == 6)
+                return;
+            System.out.println("------------------------------------");
+            System.out.println("Rank: " + i);
+            System.out.println("Movie: " + movieName);
+            System.out.println("Num of Sales: " + hm.get(movieName));
+            // System.out.printf("Rank: %d\nMovie: %d\nNum of Sales: %f\n", i++, movieName,
+            // hm.get(movieName));
+            System.out.println("------------------------------------");
         }
     }
 
     /**
      * Initialises CustomerUI.
      * Displays user's options and calls relevant methods and UIs.
+     * 
      * @throws InvalidEmailException
      * @throws InvalidPhoneNoException
      */
@@ -199,7 +240,7 @@ public class CustomerUI {
                     break;
 
                 case 7:
-                    showTop5MovieBySales();
+                    showTop5MoviesBySales();
                     break;
 
                 default:

@@ -250,27 +250,40 @@ public class StaffUI {
         }
     }
 
-    /**
-     * Retrieves all Movies from MovieManager and displays sorted by rating.
-     */
+    // /**
+    // * Retrieves all Movies from MovieManager and displays sorted by rating.
+    // */
     public void viewMoviesByRating() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedRating();
-        System.out.println("Title (Rating):");
-        for (Movie m : movies) {
-            System.out.printf("%s (%f)\n", m.getTitle(), m.getAverageRatings());
+        SortContext sortContext = new SortContext(new SortByRatings());
+        HashMap<String, Float> hm = sortContext.executeSort();
+        int size = hm.size();
+        if (size <= 1) {
+            System.out.println("Sorry there's only one or less movies");
+            return;
+        }
+        int i = 1;
+        System.out.println("Movie Title: Ratings");
+        for (String movieName : hm.keySet()) {
+            System.out.println("------------------------------------");
+            System.out.printf("Rank: %d\nMovie: %d\nAvg Rating: %f\n", i++, movieName, hm.get(movieName));
+            System.out.println("------------------------------------");
         }
     }
 
-    /**
-     * Retrieves all Movies from MovieManager and displays sorted by sales.
-     */
     public void viewMoviesBySales() {
-        MovieManager MM = managerList.getMovieManager();
-        ArrayList<Movie> movies = MM.getSortedSales();
-        System.out.println("Title (Rating):");
-        for (Movie m : movies) {
-            System.out.printf("%s (%f)\n", m.getTitle(), m.getNumSales());
+        SortContext sortContext = new SortContext(new SortBySales());
+        HashMap<String, Float> hm = sortContext.executeSort();
+        int size = hm.size();
+        if (size <= 1) {
+            System.out.println("Sorry there's only one or less movies");
+            return;
+        }
+        int i = 1;
+        System.out.println("Movie Title: Num of Sales");
+        for (String movieName : hm.keySet()) {
+            System.out.println("------------------------------------");
+            System.out.printf("Rank: %d\nMovie: %d\nNum of Sales: %f\n", i++, movieName, hm.get(movieName));
+            System.out.println("------------------------------------");
         }
     }
 
@@ -401,7 +414,6 @@ public class StaffUI {
             System.out.println("Option 5: View All Sessions");
             System.out.println("Option 6: View All Bookings");
             System.out.println("Option 7: View Movies by Rating");
-
             System.out.println("Option 8: View Movies by Ticket Sales");
             System.out.println("Option 9: Configure Price of Tickets");
             System.out.println("Option 0: Return to previous menu");

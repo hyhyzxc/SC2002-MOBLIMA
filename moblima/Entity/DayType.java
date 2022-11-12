@@ -13,7 +13,6 @@ public class DayType implements Serializable {
 
     public DayType() {
         dayType = DayTypeSerializer.getDayTypeDict("DayTypeDatabase.ser");
-        System.out.println(dayType == null);
         if (dayType == null) {
             dayType = new HashMap<String, Double>();
             dayType.put("WEEKDAY", (double) 1);

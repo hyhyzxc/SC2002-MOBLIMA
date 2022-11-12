@@ -71,39 +71,39 @@ public class BookingManager {
         return bookings;
     }
 
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm) {
+    public static HashMap<String, Float> sortByValue(HashMap<String, Float> hm) {
         // Create a list from elements of HashMap
-        List<Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
+        List<Entry<String, Float>> list = new LinkedList<Map.Entry<String, Float>>(hm.entrySet());
 
         // Sort the list
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> o1,
-                    Map.Entry<String, Integer> o2) {
+        Collections.sort(list, new Comparator<Map.Entry<String, Float>>() {
+            public int compare(Map.Entry<String, Float> o1,
+                    Map.Entry<String, Float> o2) {
                 return (o2.getValue()).compareTo(o1.getValue());
             }
         });
 
         // put data from sorted list to hashmap
-        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
-        for (Map.Entry<String, Integer> aa : list) {
+        HashMap<String, Float> temp = new LinkedHashMap<String, Float>();
+        for (Map.Entry<String, Float> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
         return temp;
     }
 
-    public HashMap<String, Integer> sortMoviesBySales() {
+    public HashMap<String, Float> sortMoviesBySales() {
         bookings = s.getBookings("BookingDatabase.ser");
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, Float> map = new HashMap<>();
         for (Booking booking : bookings) {
             String movieBooked = booking.getSessionBooked().getMovie().getTitle();
             if (!map.containsKey(movieBooked)) {
-                map.put(movieBooked, 1);
+                map.put(movieBooked, (float) 1);
             } else {
-                Integer sale = map.get(movieBooked);
+                Float sale = map.get(movieBooked);
                 map.replace(movieBooked, sale, sale + 1);
             }
         }
-        HashMap<String, Integer> sortedMap = sortByValue(map);
+        HashMap<String, Float> sortedMap = sortByValue(map);
         return sortedMap;
 
     }

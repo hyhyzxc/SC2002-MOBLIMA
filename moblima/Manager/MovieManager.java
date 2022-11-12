@@ -117,13 +117,9 @@ public class MovieManager {
      * 
      * @return the movie list sorted by ratings.
      */
-    public ArrayList<Movie> getSortedRating() {
+    public ArrayList<Movie> getSorted() {
         movieList.sort((m1, m2) -> m1.getAverageRatings() > m2.getAverageRatings() ? -1 : 1);
         return movieList;
     }
 
-    public ArrayList<Movie> getSortedSales() {
-        movieList.sort((m1, m2) -> m1.getNumSales() > m2.getNumSales() ? -1 : 1);
-        return movieList;
-    }
 }
