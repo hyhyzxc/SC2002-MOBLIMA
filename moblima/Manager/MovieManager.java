@@ -133,9 +133,11 @@ public class MovieManager {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getTitle().equals(movie.getTitle())) {
                 list.set(i, newMovie);
-
+                s.saveMovieList(list, "MovieDatabase.ser");
+                System.out.println("Movie successfully updated!");
+                return;
             }
         }
-        s.saveMovieList(list, "MovieDatabase.ser");
+        System.out.println("Error! Movie not found in database.");
     }
 }
