@@ -89,13 +89,13 @@ public class StaffUI {
             Movie newMovie;
             switch (movieType) {
                 case 1:
-                    newMovie = new Movie(title, synopsis, status, director, cast, movieID, 2, MovieType.REGULAR);
+                    newMovie = new RegularMovie(title, synopsis, status, director, cast, movieID);
                     break;
                 case 2:
-                    newMovie = new Movie(title, synopsis, status, director, cast, movieID, 3, MovieType.BLOCKBUSTER);
+                    newMovie = new BlockbusterMovie(title, synopsis, status, director, cast, movieID);
                     break;
                 case 3:
-                    newMovie = new Movie(title, synopsis, status, director, cast, movieID, 4, MovieType.THREED);
+                    newMovie = new ThreeDMovie(title, synopsis, status, director, cast, movieID);
                     break;
                 default:
                     throw new InvalidInputException();

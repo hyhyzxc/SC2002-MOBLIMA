@@ -8,7 +8,7 @@ import java.util.Set;
 import moblima.Serializer.DayTypeSerializer;
 
 public class DayType implements Serializable {
-    static final long serialVersionUID = 99999L;
+    private static final long serialVersionUID = 99999L;
     HashMap<String, Double> dayType;
 
     public DayType() {
