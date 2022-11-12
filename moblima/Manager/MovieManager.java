@@ -122,4 +122,13 @@ public class MovieManager {
         movieList.sort((m1, m2) -> m1.getAverageRatings() > m2.getAverageRatings() ? -1 : 1);
         return movieList;
     }
+
+    /*
+     * Updates movie chosen.
+     */
+    public void updateMovie(int ID, Movie newMovie) {
+        movieList = s.getMovieList("MovieDatabase.ser");
+        movieList.set(ID, newMovie);
+        s.saveMovieList(movieList, "MovieDatabase.ser");
+    }
 }
