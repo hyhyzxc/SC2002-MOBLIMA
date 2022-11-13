@@ -161,7 +161,6 @@ public class StaffUI {
         if (choice < 1 || choice > movieList.size()) {
             throw new InvalidInputException();
         }
-        System.out.println("movie title staffUi part" + movieList.get(choice - 1).getTitle());
         CM.removeAllSessionsFromCineplexes(movieList.get(choice - 1).getTitle());
         MM.removeMovie(choice - 1);
 
