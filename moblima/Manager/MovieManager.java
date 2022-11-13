@@ -62,9 +62,9 @@ public class MovieManager {
      * @param movieChoice the movie option from the list of movies.
      */
     public void removeMovie(int movieChoice) {
-        Movie toRemove = movieList.get(movieChoice);
-        toRemove.setStatus(ShowingStatus.END_OF_SHOWING);
-
+        // Movie toRemove = movieList.get(movieChoice);
+        // toRemove.setStatus(ShowingStatus.END_OF_SHOWING);
+        movieList.remove(movieChoice);
         s.saveMovieList(movieList, "MovieDatabase.ser");
         System.out.println("Movie Successfully Removed");
 
