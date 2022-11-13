@@ -9,7 +9,6 @@ package moblima.Exceptions;
 public class InvalidInputException extends Exception {
     /**
      * Creates a InvalidInputException with a given error message.
-     * @param message this InvalidInputException's error messgae.
      */
     public InvalidInputException() {
         super("Input is invalid! Try again.");

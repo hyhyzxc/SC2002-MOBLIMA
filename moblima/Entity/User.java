@@ -51,6 +51,10 @@ public abstract class User implements Serializable {
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * Abstract method to get status of User
+     * @return This User's status.
+     */
     public abstract String getStatus();
 }

@@ -19,7 +19,6 @@ public class RegularMovie extends Movie {
      * @param director This RegularMovie's director.
      * @param cast     This RegularMovie's cast.
      * @param movieID  This RegularMovie's movieID.
-     * @param price    This RegularMovie's price.
      */
     public RegularMovie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
             int movieID) {

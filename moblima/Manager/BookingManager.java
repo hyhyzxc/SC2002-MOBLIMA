@@ -73,7 +73,7 @@ public class BookingManager {
 
     /**
      * Returns movies sorted by sales, same as SortByValue Sorting class.
-     * 
+     * @param hm Linked HashMap to be sorted.
      * @return Linked HashMap of sorted movies by value.
      */
     public static LinkedHashMap<String, Float> sortByValue(LinkedHashMap<String, Float> hm) {

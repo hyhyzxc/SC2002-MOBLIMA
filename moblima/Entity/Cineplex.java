@@ -106,7 +106,7 @@ public class Cineplex implements Serializable {
     /**
      * Prints all available sessions for a particular cineplex.
      * 
-     * @param cineplexName
+     * @param cineplexName This Cineplex's name.
      */
     public void printAllAvailableSessions(String cineplexName) {
         System.out.println("Available now for cineplex : " + this.getLocation());

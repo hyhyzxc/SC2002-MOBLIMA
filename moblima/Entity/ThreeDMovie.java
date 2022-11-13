@@ -19,7 +19,6 @@ public class ThreeDMovie extends Movie {
      * @param director This ThreeDMovie's director.
      * @param cast     This ThreeDMovie's cast.
      * @param movieID  This ThreeDMovie's movieID.
-     * @param price    This ThreeDMovie's price.
      */
     public ThreeDMovie(String title, String sypnosis, ShowingStatus status, String director,
             ArrayList<String> cast,

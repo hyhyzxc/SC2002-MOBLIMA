@@ -74,7 +74,7 @@ public class MovieManager {
      * Saves movie rating to movie database.
      * 
      * @param rating   the rating to be given to this movie.
-     * @param movieNum the movie option from the list of movies.
+     * @param title Title of movie to add rating to.
      */
     public void addNewMovieRating(float rating, String title) {
         for (int i = 0; i < movieList.size(); i++) {
@@ -93,7 +93,7 @@ public class MovieManager {
      * Saves movie review to movie database.
      * 
      * @param review   the review to be given to this movie.
-     * @param movieNum the movie option from the list of movies.
+     * @param title Title of movie to add review to.
      */
     public void addNewMovieReview(String review, String title) {
         for (int i = 0; i < movieList.size(); i++) {
@@ -134,7 +134,7 @@ public class MovieManager {
         return movieList;
     }
 
-    /*
+    /**
      * Updates movie chosen.
      */
     public void updateMovie(int ID, Movie newMovie) {

@@ -19,7 +19,6 @@ public class BlockbusterMovie extends Movie {
      * @param director This BlockbusterMovie's director.
      * @param cast     This BlockbusterMovie's cast.
      * @param movieID  This BlockbusterMovie's movieID.
-     * @param price    This BlockbusterMovie's price.
      */
     public BlockbusterMovie(String title, String sypnosis, ShowingStatus status, String director,
             ArrayList<String> cast,

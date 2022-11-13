@@ -8,7 +8,6 @@ import javax.swing.text.html.parser.Entity;
 import moblima.Entity.*;
 import moblima.Exceptions.*;
 import moblima.Manager.*;
-import moblima.*;
 
 /**
  * Main class of entire programme.
@@ -36,7 +35,7 @@ public class LoginUI {
     /**
      * Gets valid user input for Customer and registers them as a new Customer.
      * 
-     * @throws InvalidInputException
+     * @throws InvalidInputException Raises exception when input is invalid
      */
     public static void registerCustomer() throws InvalidInputException {
         AccountManager CM = managerList.getCustomerManager();
@@ -71,7 +70,7 @@ public class LoginUI {
      * Gets valid username and password from the user and logs them into their
      * CustomerAccount if valid.
      * 
-     * @return
+     * @return Customer account that just logged in.
      */
     public static CustomerAccount loginCustomerAccount() {
         AccountManager CM = managerList.getCustomerManager();
@@ -86,6 +85,7 @@ public class LoginUI {
 
     /**
      * Gets valid user input for Staff and registers them as a new Staff.
+     * @throws InvalidInputException Raises exception when input is invalid
      */
     public static void registerStaff() throws InvalidInputException {
         AccountManager SM = managerList.getStaffManager();
@@ -137,8 +137,8 @@ public class LoginUI {
      * Calls other UI init functions to transfer control flow.
      * 
      * @param args
-     * @throws InvalidEmailException
-     * @throws InvalidPhoneNoException
+     * @throws InvalidEmailException Raises exception when email is invalid
+     * @throws InvalidPhoneNoException Raises exception when phone number is invalid
      */
     public static void main(String[] args) throws InvalidEmailException, InvalidPhoneNoException {
         Scanner sc = new Scanner(System.in);

@@ -9,6 +9,11 @@ import java.util.*;
  * @since 2022-11-13
  */
 public class RegularCinema extends Cinema {
+	/**
+	 * Creates new RegularCinema Object
+	 * @param cinemaID ID of this Cinema.
+	 * @param price Price of this Cinema.
+	 */
     public RegularCinema(String cinemaID, double price) {
     	/**
     	 * Creates new RegularCinema

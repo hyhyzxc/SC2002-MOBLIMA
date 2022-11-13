@@ -17,8 +17,14 @@ import moblima.Serializer.DayTypeSerializer;
  */
 public class DayType implements Serializable {
     private static final long serialVersionUID = 99999L;
+    /**
+     * List of day types.
+     */
     LinkedHashMap<String, Double> dayType;
 
+    /**
+     * Creates new Day object.
+     */
     public DayType() {
         dayType = DayTypeSerializer.getDayTypeDict("DayTypeDatabase.ser");
         if (dayType == null) {
@@ -47,7 +53,7 @@ public class DayType implements Serializable {
     /**
      * Gets the key according to the index
      * 
-     * @return day key string
+     * @return i day key string
      */
     public String getKey(int i) {
         return getAllExistingKeys().get(i);
@@ -55,7 +61,7 @@ public class DayType implements Serializable {
 
     /**
      * Returns the price proportion corresponding to the DayType
-     * 
+     * @param dayName name of Day.
      * @return priceProportion
      */
     public double getPriceProportion(String dayName) {
@@ -71,8 +77,8 @@ public class DayType implements Serializable {
      * Mutator for setting price proportion and adding price proportion
      * dayName is made all caps, and any space is replaced with '_'
      * 
-     * @param dayName
-     * @param newPrice
+     * @param dayName name of Day.
+     * @param newPrice new price to be set
      */
     public void setAddPriceProportion(String dayName, double newPrice) {
         dayType.put(dayName.toUpperCase().replace(" ", "_"), newPrice);
@@ -85,7 +91,7 @@ public class DayType implements Serializable {
      * It saves the new predefined dayType dictionary where the specified type is
      * removed.
      * 
-     * @param dayName
+     * @param dayName name of day.
      */
     public void delKey(String dayName) throws NullPointerException {
         try {

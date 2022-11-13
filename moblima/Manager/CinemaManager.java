@@ -65,7 +65,7 @@ public class CinemaManager {
      * Method to remove a particular session for a cineplex specified by the staff.
      * 
      * @param session        the session to be removed from the cineplex
-     * @param cinexplexIndex the predefined position of the cineplex from the list
+     * @param cineplexIndex the predefined position of the cineplex from the list
      *                       of cineplexes
      */
     public void removeSessionFromCineplex(Session session, int cineplexIndex) {
@@ -115,7 +115,7 @@ public class CinemaManager {
     /**
      * Change given seat's status to empty.
      * 
-     * @param seat
+     * @param seat Seat to be unreserved.
      */
     public void unreserveSeat(Seat seat) {
         seat.setEmpty();
@@ -125,7 +125,7 @@ public class CinemaManager {
     /**
      * Change given seat's status to occupied.
      * 
-     * @param seat
+     * @param seat Seat to be reserved.
      */
     public void reserveSeat(Seat seat) {
         seat.setOccupied();

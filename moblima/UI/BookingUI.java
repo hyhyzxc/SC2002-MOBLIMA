@@ -31,7 +31,7 @@ public class BookingUI {
 
     /**
      * Creates a new BookingUI with the specified owner.
-     * 
+     * @param managerList this BookingUI's managerList.
      * @param owner This BookingUI's owner.
      */
     public BookingUI(CustomerAccount owner, ManagerList managerList) {
@@ -46,9 +46,9 @@ public class BookingUI {
      * A booking with settle the payment process and collect the owner's validated
      * email and handphone number.
      * 
-     * @throws InvalidInputException
-     * @throws InvalidEmailException
-     * @throws InvalidPhoneNoException
+     * @throws InvalidInputException Raises exception when input is invalid.
+     * @throws InvalidEmailException Raises exception when email is invalid.
+     * @throws InvalidPhoneNoException Raises exception when phone number is invalid.
      */
     public static void viewSeatAvailability() throws InvalidInputException {
         CinemaManager CM = managerList.getCinemaManager();
@@ -321,7 +321,6 @@ public class BookingUI {
      * Initialises BookingUI.
      * Displays the outline of the main menu and calls makeBooking()
      * 
-     * @param args
      */
     public void init() {
 

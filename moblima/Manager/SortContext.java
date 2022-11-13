@@ -30,15 +30,25 @@ public class SortContext {
 
 	/**
 	 * Sets the Sorter of this SortContext with the given Sorter.
+	 * @param sorter Sorter to be set.
 	 */
 	public void setSort(Sorter sorter) {
 		this.sorter = sorter;
 	}
 
+	/**
+	 * Executes sorting.
+	 * @param hm LinkedHashMap to be sorted.
+	 * @return sorted LinkedHashMap.
+	 */
 	public LinkedHashMap<String, Float> executeSort(LinkedHashMap<String, Float> hm) {
 		return this.sorter.sortBy(hm);
 	}
 
+	/**
+	 * Executes sorting.
+	 * @return Sorted LinkedHashMap.
+	 */
 	public LinkedHashMap<String, Float> executeSort() {
 		return this.sorter.sortBy();
 	}

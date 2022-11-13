@@ -71,8 +71,6 @@ public abstract class Movie implements Serializable {
      * @param director This Movie's director.
      * @param cast     This Movie's cast.
      * @param movieID  This Movie's movieID.
-     * @param price    This Movie's price.
-     * @param type     This Movie's type.
      */
     public Movie(String title, String sypnosis, ShowingStatus status, String director, ArrayList<String> cast,
             int movieID) {
@@ -222,13 +220,17 @@ public abstract class Movie implements Serializable {
     /**
      * Mutator method to change price proportion of the movie.
      * 
-     * @param the new price.
+     * @param newPrice new price.
      */
     public void setPriceProportion(double newPrice) {
         this.priceProportion = newPrice;
         return;
     }
-
+    
+    /**
+     * Abstract method to print type of Movie.
+     * @return Type of this Movie.
+     */
     public abstract String printType();
 
 }

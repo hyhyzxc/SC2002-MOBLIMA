@@ -100,7 +100,7 @@ public class Seat implements Serializable {
     /**
      * Mutator method to change price proportion of the seat.
      * 
-     * @param the new price.
+     * @param newPrice the new price.
      */
     public void setPriceProportion(double newPrice) {
         this.price = newPrice;

@@ -80,7 +80,7 @@ public class CustomerUI {
     /**
      * Allows user to input ratings and reviews for a movie.
      * 
-     * @throws InvalidInputException
+     * @throws InvalidInputException Raises exception when input is invalid
      */
     public void addRatingAndReview() throws InvalidInputException {
         MovieManager MM = managerList.getMovieManager();
@@ -137,6 +137,9 @@ public class CustomerUI {
         }
     }
 
+    /**
+     * Displays top 5 movies ranked by ticket sales.
+     */
     public void showTop5MoviesBySales() {
         SortContext sortContext = new SortContext(new SortBySales());
         LinkedHashMap<String, Float> hm = sortContext.executeSort();
@@ -171,8 +174,8 @@ public class CustomerUI {
      * Initialises CustomerUI.
      * Displays user's options and calls relevant methods and UIs.
      * 
-     * @throws InvalidEmailException
-     * @throws InvalidPhoneNoException
+     * @throws InvalidEmailException Raises exception when email is invalid
+     * @throws InvalidPhoneNoException Raises exception when phone number is invalid
      */
     public void init() throws InvalidEmailException, InvalidPhoneNoException {
         int choice = 0;

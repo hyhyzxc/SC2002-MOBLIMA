@@ -25,7 +25,8 @@ public class PriceManager {
      * Returns the price of a single ticket based on movie type, day type,
      * status (CHILD, ADULT, SENIOR CITIZEN), time of day.
      * 
-     * @param ticket A single unit from tickets
+     * @param booking Booking to calculate the price of.
+     * @return price of booking.
      */
     public double calcPrice(Booking booking) {
         double price = 0;

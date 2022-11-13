@@ -47,11 +47,11 @@ public class Booking implements Serializable {
      * Creates a new Booking with the given TID, owner, session, cineplex, seat.
      * 
      * @param TID      This Booking's TID.
-     * @param owner    This Booking's owner.
      * @param session  This Booking's session.
      * @param cineplex This Booking's cineplex.
      * @param seat     This Booking's seat.
      * @param cinema   This Booking's cinema.
+     * @param ownerAccount This Booking's owner account.
      */
     public Booking(String TID, CustomerAccount ownerAccount, Session session, Cineplex cineplex, Seat seat,
             Cinema cinema) {

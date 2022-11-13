@@ -32,8 +32,8 @@ public class Cinema implements Serializable {
     /**
      * Creates a Cinema with given cinemaID.
      * Cinema consist of RegularSeat, CoupleSeat,EliteSeat and UltimaSeat.
-     * 
-     * @param cinemaID
+     * @param priceProportion This Cinema's price proportion.
+     * @param cinemaID this Cinema's ID.
      */
     public Cinema(String cinemaID, double priceProportion) {
         this.cinemaID = cinemaID;
@@ -92,7 +92,7 @@ public class Cinema implements Serializable {
     /**
      * Mutator method to change price proportion of the cinema.
      * 
-     * @param the new price.
+     * @param newPrice the new price.
      */
     public void setPriceProportion(double newPrice) {
         this.priceProportion = newPrice;

@@ -9,7 +9,6 @@ package moblima.Exceptions;
 public class InvalidPhoneNoException extends Exception {
     /**
      * Creates a InvalidPhoneNoException with a given error message.
-     * @param message this InvalidPhoneNoException's error messgae.
      */
     public InvalidPhoneNoException() {
         super("Handphone Number is invalid. Please try again.");

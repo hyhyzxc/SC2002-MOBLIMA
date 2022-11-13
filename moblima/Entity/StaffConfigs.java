@@ -11,9 +11,15 @@ import moblima.Serializer.StaffConfigsSerializer;
  */
 public class StaffConfigs implements Serializable {
 
+	/**
+	 * List of configs.
+	 */
 	 
 	private HashMap<String, Boolean> configs;
 
+	/**
+	 * Creates a new Staff Config.
+	 */
 	public StaffConfigs() {
 		configs = StaffConfigsSerializer.getStaffConfigs("StaffConfigsDatabase.ser");
 		if (configs == null) {
@@ -41,6 +47,8 @@ public class StaffConfigs implements Serializable {
 
 	/**
 	 * Modifies the current configuration with the given toChange and newBool values. 
+	 * @param toChange Item to be changed.
+	 * @param newBool Boolean variable to set Item to.
 	 */
 	public void changeConfigs(String toChange, boolean newBool) {
 		try {

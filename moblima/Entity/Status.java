@@ -30,7 +30,7 @@ public class Status {
 
     /**
      * Returns the price proportion corresponding to the status type
-     * 
+     * @param statusType Status to get price of.
      * @return priceProportion
      */
     public double getPriceProportion(String statusType) {
@@ -56,7 +56,7 @@ public class Status {
 
     /**
      * Gets the key according to the index
-     * 
+     * @param i the id to get the key of.
      * @return day key string
      */
     public String getKey(int i) {
@@ -68,8 +68,8 @@ public class Status {
      * statusType is converted into all upper case, and any spacings is replaced
      * with '_'
      * 
-     * @param statusType
-     * @param newPrice
+     * @param statusType Type of Status whose price will be changed.
+     * @param newPrice New price to be set.
      */
     public void setAddPriceProportion(String statusType, double newPrice) {
         status.put(statusType.toUpperCase().replace(' ', '_'), newPrice);
@@ -83,7 +83,7 @@ public class Status {
      * It saves the new predefined statusType dictionary where the specified type is
      * removed.
      * 
-     * @param statusType
+     * @param statusType Type of Status to be removed.
      */
     public void delKey(String statusType) throws NullPointerException {
         try {
@@ -99,6 +99,7 @@ public class Status {
 
     /**
      * Returns the status list
+     * @return Status List
      */
     public LinkedHashMap<String, Double> getStatusList() {
         return this.status;
@@ -106,6 +107,7 @@ public class Status {
 
     /**
      * returns the size of the status list
+     * @return this Status' size.
      */
     public int getSize() {
         return this.status.size();

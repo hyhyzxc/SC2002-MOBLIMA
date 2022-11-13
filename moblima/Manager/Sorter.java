@@ -16,7 +16,7 @@ public interface Sorter {
 	/**
 	 * Allows Sorter types to implement their own sorting algorithms
 	 * 
-	 * @param hm
+	 * @param hm Linked HashMap to be sorted.
 	 * @return A sorted LinkedHashMap according to the sorting algorithm.
 	 */
 	public LinkedHashMap<String, Float> sortBy(LinkedHashMap<String, Float> hm);

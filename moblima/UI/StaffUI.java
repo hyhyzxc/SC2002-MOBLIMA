@@ -49,6 +49,7 @@ public class StaffUI {
 
     /**
      * Gets user input and adds new Movie to MovieManager movieList.
+     * @throws InvalidInputException Raises exception when input is invalid.
      */
     public void addNewMovie() throws InvalidInputException {
         try {
@@ -149,7 +150,7 @@ public class StaffUI {
      * Gets user input for movie title to be removed and removes it from
      * MovieManager's movieList.
      * 
-     * @throws InvalidInputException
+     * @throws InvalidInputException Raises exception when input is invalid
      */
     public void removeMovie() throws InvalidInputException {
         MovieManager MM = managerList.getMovieManager();
@@ -169,7 +170,7 @@ public class StaffUI {
     /**
      * Gets user input to assign a Movie to a Cineplex.
      * 
-     * @throws InvalidInputException
+     * @throws InvalidInputException Raises exception when input is invalid
      */
     public void updateCineplexMovies() throws InvalidInputException {
         CinemaManager CM = managerList.getCinemaManager();
@@ -492,7 +493,12 @@ public class StaffUI {
         staffc.changeConfigs(choice, newBool);
         return;
     }
-
+ 
+    /**
+     * Allows Staff to configure Movie details.
+     * @param ID ID of movie to configured.
+     * @throws InvalidInputException Raises exception when input is invalid
+     */
     public void updateMovieDetails(int ID) throws InvalidInputException {
         try {
             MovieManager MM = managerList.getMovieManager();
