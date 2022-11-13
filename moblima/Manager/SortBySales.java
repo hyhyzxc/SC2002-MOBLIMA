@@ -8,7 +8,19 @@ import moblima.Entity.Booking;
 import moblima.Manager.SortByValue;
 import moblima.Serializer.BookingSerializer;
 
+/**
+ * Represents a SortBySales.
+ * Concrete base class that implements the Sorter interface.
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-11
+ */
 public class SortBySales implements Sorter {
+	/**
+	 * Sorts the movies the the LinkedHashMap according to their movie sales.
+	 * Movies with the most sales will be listed first.
+	 * @return a LinkedHashMap of sorted movie titles.
+	 */
 	public LinkedHashMap<String, Float> sortBy() {
 		ArrayList<Booking> bookings = (new BookingSerializer()).getBookings("BookingDatabase.ser");
 		LinkedHashMap<String, Float> map = new LinkedHashMap<>();

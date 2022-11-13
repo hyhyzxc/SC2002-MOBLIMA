@@ -3,6 +3,9 @@ package moblima.Entity;
 /**
  * Represents the Type of each Seat.
  * Enum class.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public enum SeatType {
     REGULAR("Regular"),

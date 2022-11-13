@@ -6,7 +6,7 @@ import moblima.Entity.User;
  * Represents an AccountManager.
  * Interface class implemented by CustomerManager and StaffManager.
  * Consist of abstract methods that allows users to register a new account and verify their log in details. 
- * @author
+ * @author Amabel Lim
  * @version 1.0
  * @since 2022-11-08
  */

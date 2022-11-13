@@ -5,6 +5,9 @@ import java.util.ArrayList;
 /**
  * Represents a 3D Movie.
  * Subclass of Movie Superclass.
+ * @author Amabel Lim
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class ThreeDMovie extends Movie {
     /**

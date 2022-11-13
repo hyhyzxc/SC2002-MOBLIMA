@@ -6,6 +6,9 @@ import java.time.LocalDateTime;
 /**
  * Represents a Session in which Movie will be showing.
  * implements Serializable.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Session implements Serializable {
     /**

@@ -13,9 +13,11 @@ import moblima.Entity.Session;
 import moblima.Entity.Status;
 
 /**
- * Logic Class that calculates price of a booking. Can be an individual ticket
- * or
- * the total of all tickets.
+ * Logic Class that calculates price of a booking. 
+ * The cost can be of an individual ticket or the sum of all tickets.
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-11
  */
 public class PriceManager {
 

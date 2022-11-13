@@ -3,6 +3,9 @@ package moblima.Entity;
 /**
  * Represents a CinemaType
  * Enum class.
+ * @author Darren Lee
+ * @version 1.0
+ * @since 2022-11-13
  */
 public enum CinemaType {
     REGULAR("Regular"),

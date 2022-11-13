@@ -6,10 +6,17 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 import moblima.Serializer.StatusSerializer;
-
+/**
+ * Represents a Status.
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-13
+ */
 public class Status {
     LinkedHashMap<String, Double> status;
-
+    /**
+     * Creates a new Status.
+     */
     public Status() {
         status = StatusSerializer.getStatusDict("StatusDatabase.ser");
         if (status == null) {

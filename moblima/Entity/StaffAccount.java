@@ -6,6 +6,9 @@ import java.io.Serializable;
  * Represents the Staff Account that stores a Staff.
  * Subclass of Account.
  * Implements Serializable.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class StaffAccount extends Account implements Serializable {
 	/**
@@ -14,7 +17,7 @@ public class StaffAccount extends Account implements Serializable {
     private static final long serialVersionUID = -558553967080513790L;
 
     /**
-     * Creates a new StaffAccount with given User owner, username and password
+     * Creates a new StaffAccount with given User owner, username and password.
      * @param owner User of this account.
      * @param username Username of this account.
      * @param password Password of this account.

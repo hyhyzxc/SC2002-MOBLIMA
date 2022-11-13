@@ -11,7 +11,7 @@ import java.io.*;
 /**
  * Represents a MovieManager.
  * 
- * @author
+ * @author Darren Lee
  * @version 1.0
  * @since 2022-11-11
  */

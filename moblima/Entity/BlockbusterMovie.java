@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 /**
  * Represents a BlockbusterMovie
- * Subclass of Movie superclass
+ * Subclass of Movie superclass.
+ * @author Amabel Lim
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class BlockbusterMovie extends Movie {
     /**

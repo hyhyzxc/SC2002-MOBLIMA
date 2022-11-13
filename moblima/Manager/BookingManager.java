@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 /**
  * Represent a BookingManager.
  * 
- * @author
+ * @author Isaac Wong
  * @version 1.0
  * @since 2022-11-08
  */

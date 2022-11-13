@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import moblima.Entity.Ticket;
 
 /**
- * Responsible for creating a storage of Ticket type whose lifetime last only
- * during
- * runtime.
+ * Responsible for creating a storage of Ticket type 
+ * whose lifetime last only during runtime.
+ * @author Amabel Lim
+ * @version 1.0
+ * @since 2022-11-11
  */
 public class TicketManager {
 	ArrayList<Ticket> tickets = new ArrayList<Ticket>();
@@ -43,7 +45,10 @@ public class TicketManager {
 			// seatToRemove.setEmpty(); // this should be in UI, not in this.
 		}
 	}
-
+	/**
+	 * Gets an ArrayList of Ticket. 
+	 * @return this TicketManager's 
+	 */
 	public ArrayList<Ticket> getTickets() {
 		return this.tickets;
 	}

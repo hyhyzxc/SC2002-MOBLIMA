@@ -6,6 +6,9 @@ import java.io.Serializable;
  * Represents a Customer
  * Concrete base class that extends the User.
  * Concrete base class that implements the Serializable interface.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Customer extends User implements Serializable {
     /**

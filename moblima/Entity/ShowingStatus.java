@@ -3,6 +3,9 @@ package moblima.Entity;
 /**
  * Represents the Showing Status of a Movie.
  * Enum class.
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-13
  */
 public enum ShowingStatus {
     COMING_SOON("Coming Soon"),

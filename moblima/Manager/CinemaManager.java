@@ -8,7 +8,7 @@ import moblima.Serializer.*;
 /**
  * Represents a CinemaManager.
  * 
- * @author
+ * @author Goh Hong Yi
  * @version 1.0
  * @since 2022-11-08
  */

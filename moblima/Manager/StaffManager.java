@@ -11,7 +11,7 @@ import moblima.UI.LoginUI;
  * Represents a StaffManager.
  * Concrete class that implements the AccountManager interface.
  * 
- * @author
+ * @author Darren Lee
  * @version 1.0
  * @since 2022-11-11
  */

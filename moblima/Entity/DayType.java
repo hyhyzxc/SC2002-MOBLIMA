@@ -11,8 +11,9 @@ import moblima.Serializer.DayTypeSerializer;
 /**
  * Class DayType holds all the price proportions tied to the corresponding
  * daytypes.
- * 
  * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class DayType implements Serializable {
     private static final long serialVersionUID = 99999L;

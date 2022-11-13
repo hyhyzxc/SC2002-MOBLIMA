@@ -5,6 +5,9 @@ import java.io.Serializable;
 /**
  * Represents a user that logs into MOBLIMA.
  * Concrete class that implements Serializable.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public abstract class User implements Serializable {
     /**

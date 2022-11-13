@@ -6,6 +6,9 @@ import java.util.*;
 /**
  * Represents a Cineplex
  * Concrete base class that implements the Serializable interface.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Cineplex implements Serializable {
     /**

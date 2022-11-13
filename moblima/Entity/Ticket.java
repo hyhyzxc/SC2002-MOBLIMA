@@ -2,6 +2,9 @@ package moblima.Entity;
 
 /**
  * Represents an instance of a ticket in the customer's "Shopping Cart".
+ * @author Darren Lee
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Ticket {
 	/**
