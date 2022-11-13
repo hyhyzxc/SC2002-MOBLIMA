@@ -10,7 +10,9 @@ import java.util.*;
 /**
  * Handles all user IO for current BookingHistory
  * 
- * @author
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-11
  *
  */
 public class BookingHistoryUI {

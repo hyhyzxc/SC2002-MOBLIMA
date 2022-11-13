@@ -13,7 +13,9 @@ import moblima.Manager.*;
 /**
  * Handles all user IO for current Staff
  * 
- * @author
+ * @author Amabel Lee
+ * @version 1.0
+ * @since 2022-11-11
  *
  */
 public class StaffUI {
