@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 /**
  * Represent an Account
- * Abstract class that implements the Serializable interface
+ * Abstract class that implements the Serializable interface.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Account implements Serializable {
     /**

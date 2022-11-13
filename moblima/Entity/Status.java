@@ -1,17 +1,26 @@
 package moblima.Entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import moblima.Serializer.StatusSerializer;
-
+/**
+ * Represents a Status.
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-13
+ */
 public class Status {
-    HashMap<String, Double> status;
-
+    LinkedHashMap<String, Double> status;
+    /**
+     * Creates a new Status.
+     */
     public Status() {
         status = StatusSerializer.getStatusDict("StatusDatabase.ser");
         if (status == null) {
-            status = new HashMap<String, Double>();
+            status = new LinkedHashMap<String, Double>();
             setAddPriceProportion("STUDENT", 2);
             setAddPriceProportion("ADULT", 4);
             setAddPriceProportion("SENIOR_CITIZEN", 1);
@@ -33,14 +42,25 @@ public class Status {
     };
 
     /**
-     * getAllExistingKeys() returns the set of all keys stored in the HashMap.
+     * getAllExistingKeys() returns the array of all keys stored in the HashMap.
      * This is useful in scenarios where a list of options need to be presented on
      * an UI.
      * 
-     * @return a set of keys of status
+     * @return an array of keys of statuses.
      */
-    public Set<String> getAllExistingKeys() {
-        return status.keySet();
+    public ArrayList<String> getAllExistingKeys() {
+        Set<String> keys = status.keySet();
+        ArrayList<String> keysArray = new ArrayList<String>(keys);
+        return keysArray;
+    }
+
+    /**
+     * Gets the key according to the index
+     * 
+     * @return day key string
+     */
+    public String getKey(int i) {
+        return getAllExistingKeys().get(i);
     }
 
     /**
@@ -80,7 +100,7 @@ public class Status {
     /**
      * Returns the status list
      */
-    public HashMap<String, Double> getStatusList() {
+    public LinkedHashMap<String, Double> getStatusList() {
         return this.status;
     }
 
@@ -91,4 +111,16 @@ public class Status {
         return this.status.size();
     }
 
+    /**
+     * Prints the status type structure so that staff can view the different
+     * type statuses of customers and
+     * their corresponding price proportion.
+     */
+    public void printStatus() {
+        int i = 1;
+        for (String s : status.keySet()) {
+            System.out.printf("%d. %s : %.1f\n", i++, s, status.get(s));
+        }
+        System.out.println("\n-------------------------\n");
+    }
 }

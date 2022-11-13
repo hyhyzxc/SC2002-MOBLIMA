@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 /**
  * Represent a BookingManager.
  * 
- * @author
+ * @author Isaac Wong
  * @version 1.0
  * @since 2022-11-08
  */
@@ -71,6 +71,11 @@ public class BookingManager {
         return bookings;
     }
 
+    /**
+     * Returns movies sorted by sales, same as SortByValue Sorting class.
+     * 
+     * @return Linked HashMap of sorted movies by value.
+     */
     public static LinkedHashMap<String, Float> sortByValue(LinkedHashMap<String, Float> hm) {
         // Create a list from elements of HashMap
         List<Entry<String, Float>> list = new LinkedList<Map.Entry<String, Float>>(hm.entrySet());
@@ -91,6 +96,11 @@ public class BookingManager {
         return temp;
     }
 
+    /**
+     * Returns movies sorted by sales, same as SortBySales Sorting class.
+     * 
+     * @return Linked HashMap of sorted movies by sales.
+     */
     public LinkedHashMap<String, Float> sortMoviesBySales() {
         bookings = s.getBookings("BookingDatabase.ser");
         LinkedHashMap<String, Float> map = new LinkedHashMap<>();

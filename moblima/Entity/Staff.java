@@ -6,6 +6,9 @@ import java.io.Serializable;
  * Represents a Staff.
  * Subclass of User Superclass.
  * Implements Serializable.
+ * @author Amabel Lim
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Staff extends User implements Serializable {
     /**

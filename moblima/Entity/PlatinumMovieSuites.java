@@ -3,8 +3,11 @@ package moblima.Entity;
 import java.util.ArrayList;
 
 /**
- * Represents a Platinum Movie Suites
- * Concrete class that extends from Cinema
+ * Represents a Platinum Movie Suites.
+ * Concrete class that extends from Cinema.
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class PlatinumMovieSuites extends Cinema {
 	/**

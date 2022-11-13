@@ -11,7 +11,7 @@ public class StatusSerializer extends Serializer {
 		super();
 	}
 
-	public static void saveStatusDict(HashMap<String, Double> o, String filename) {
+	public static void saveStatusDict(LinkedHashMap<String, Double> o, String filename) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -23,14 +23,14 @@ public class StatusSerializer extends Serializer {
 		}
 	}
 
-	public static HashMap<String, Double> getStatusDict(String fileName) {
+	public static LinkedHashMap<String, Double> getStatusDict(String fileName) {
 		FileInputStream fi = null;
 		ObjectInputStream os = null;
-		HashMap<String, Double> statusDict = null;
+		LinkedHashMap<String, Double> statusDict = null;
 		try {
 			fi = new FileInputStream(fileName);
 			os = new ObjectInputStream(fi);
-			statusDict = (HashMap<String, Double>) os.readObject();
+			statusDict = (LinkedHashMap<String, Double>) os.readObject();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (EOFException e) {

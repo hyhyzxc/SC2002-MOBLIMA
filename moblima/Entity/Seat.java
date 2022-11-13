@@ -5,6 +5,9 @@ import java.io.Serializable;
 /**
  * Represents a Seat in a Cinema.
  * Implements Serializable.
+ * @author Darren Lee
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Seat implements Serializable {
     /**

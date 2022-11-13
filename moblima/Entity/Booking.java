@@ -3,8 +3,11 @@ package moblima.Entity;
 import java.io.Serializable;
 
 /**
- * Represents a Booking
- * Class that implements the Serializable interface
+ * Represents a Booking.
+ * Class that implements the Serializable interface.
+ * @author Isaac Wong
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Booking implements Serializable {
     /**

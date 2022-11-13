@@ -11,7 +11,7 @@ public class DayTypeSerializer extends Serializer {
 		super();
 	}
 
-	public static void saveDayTypeDict(HashMap<String, Double> o, String filename) {
+	public static void saveDayTypeDict(LinkedHashMap<String, Double> o, String filename) {
 		try {
 			FileOutputStream fileOut = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -23,14 +23,14 @@ public class DayTypeSerializer extends Serializer {
 		}
 	}
 
-	public static HashMap<String, Double> getDayTypeDict(String fileName) {
+	public static LinkedHashMap<String, Double> getDayTypeDict(String fileName) {
 		FileInputStream fi = null;
 		ObjectInputStream os = null;
-		HashMap<String, Double> dayTypeDict = null;
+		LinkedHashMap<String, Double> dayTypeDict = null;
 		try {
 			fi = new FileInputStream(fileName);
 			os = new ObjectInputStream(fi);
-			dayTypeDict = ((HashMap<String, Double>) os.readObject());
+			dayTypeDict = ((LinkedHashMap<String, Double>) os.readObject());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (EOFException e) {

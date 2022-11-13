@@ -7,6 +7,9 @@ import java.util.*;
  * Represents a Cinema.
  * Concrete base class that implements the Serializable interface.
  * All cinema types extend this class.
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Cinema implements Serializable {
     /**

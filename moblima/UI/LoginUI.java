@@ -14,7 +14,9 @@ import moblima.*;
  * Main class of entire programme.
  * Initialises Login Menu for the user.
  * 
- * @author
+ * @author Yap Shen Hwei
+ * @version 1.0
+ * @since 2022-11-11
  *
  */
 public class LoginUI {

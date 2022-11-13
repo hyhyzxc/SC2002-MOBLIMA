@@ -3,7 +3,10 @@ package moblima.Entity;
 import java.util.ArrayList;
 /**
  * Represents a Gold Class Cinema
- * Concrete class that extends from Cinema
+ * Concrete class that extends from Cinema.
+ * @author Darren Lee
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class GoldClassCinema extends Cinema {
 	/**

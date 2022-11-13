@@ -14,7 +14,7 @@ import java.io.*;
  * Represents a CustomerManagers.
  * Concrete class that implements the AccountManager interface.
  * 
- * @author
+ * @author Yap Shen Hwei
  * @version 1.0
  * @since 2022-11-08
  */

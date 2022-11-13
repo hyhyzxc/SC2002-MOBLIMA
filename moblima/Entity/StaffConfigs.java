@@ -5,7 +5,13 @@ import java.util.HashMap;
 
 import moblima.Serializer.StaffConfigsSerializer;
 
+/**
+ * Represents a StaffConfigs.
+ * Concrete base class that implements the Serializable interface. 
+ */
 public class StaffConfigs implements Serializable {
+
+	 
 	private HashMap<String, Boolean> configs;
 
 	public StaffConfigs() {
@@ -17,17 +23,25 @@ public class StaffConfigs implements Serializable {
 			StaffConfigsSerializer.saveStaffConfigs(configs, "StaffConfigsDatabase.ser");
 		}
 	}
-
+	/**
+	 * Gets the current configuration.
+	 * @return this StaffConfigs' configs. 
+	 */
 	public HashMap<String, Boolean> getCurrentConfigs() {
 		return configs;
 	}
-
+	/**
+	 * Displays the current configuration. 
+	 */
 	public void printCurrentConfigs() {
 		for (String c : configs.keySet()) {
 			System.out.printf("%s : %s \n", c, configs.get(c));
 		}
 	}
 
+	/**
+	 * Modifies the current configuration with the given toChange and newBool values. 
+	 */
 	public void changeConfigs(String toChange, boolean newBool) {
 		try {
 			if (configs.containsKey(toChange)) {

@@ -6,6 +6,9 @@ import java.util.*;
 /**
  * Represents a Cineplex
  * Concrete base class that implements the Serializable interface.
+ * @author Goh Hong Yi
+ * @version 1.0
+ * @since 2022-11-13
  */
 public class Cineplex implements Serializable {
     /**
@@ -93,7 +96,6 @@ public class Cineplex implements Serializable {
         for (Session session : availableSessions) {
             String title = session.getMovie().getTitle();
             if (title.equals(movieName)) {
-                System.out.println("Add " + movieName);
                 toRemove.add(session);
             }
         }
@@ -101,6 +103,11 @@ public class Cineplex implements Serializable {
         // printAllAvailableSessions(this.location);
     }
 
+    /**
+     * Prints all available sessions for a particular cineplex.
+     * 
+     * @param cineplexName
+     */
     public void printAllAvailableSessions(String cineplexName) {
         System.out.println("Available now for cineplex : " + this.getLocation());
         for (Session s : availableSessions) {

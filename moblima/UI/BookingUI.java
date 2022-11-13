@@ -10,7 +10,9 @@ import java.util.*;
 /**
  * Handles all user IO for booking purposes.
  * 
- * @author
+ * @author Amabel Lee
+ * @version 1.0
+ * @since 2022-11-11
  *
  */
 public class BookingUI {
