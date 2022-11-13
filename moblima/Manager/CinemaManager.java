@@ -72,6 +72,7 @@ public class CinemaManager {
         Cineplex cineplex = cineplexList.get(cineplexIndex);
         cineplex.deleteSession(session);
         s.saveCineplexStatus(cineplexList, "CineplexDatabase.ser");
+        System.out.println();
         System.out.println("Session removed from Cineplex.");
 
     }
@@ -94,7 +95,7 @@ public class CinemaManager {
     /**
      * Gets the full ArrayList of sessions across all cineplexes.
      * 
-     * @return
+     * @return all the sessions of all cineplexes.
      */
     public LinkedHashMap<String, ArrayList<Session>> getAllSessions() {
         cineplexList = s.getCineplexStatus("CineplexDatabase.ser");

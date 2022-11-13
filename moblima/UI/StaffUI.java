@@ -214,15 +214,13 @@ public class StaffUI {
             LocalDateTime endtime = LocalDateTime.parse(movieEndtime, dtff);
 
             System.out.println("Enter Day Type");
-            System.out.println("1: Weekday");
-            System.out.println("2: Weekend");
-            System.out.println("3: Public Holiday");
+            DayType dt = new DayType();
+            dt.printDayType();
             int dayChoice = sc.nextInt();
-            if (dayChoice < 1 || dayChoice > 3) {
+            if (dayChoice < 1 || dayChoice > dt.getAllExistingKeys().size()) {
                 throw new InvalidInputException();
             }
-            String day = (dayChoice == 1) ? "WEEKDAY"
-                    : (dayChoice == 2) ? "WEEKEND" : "PUBLIC_HOLIDAY";
+            String day = dt.getAllExistingKeys().get(dayChoice - 1);
             sc.nextLine();
 
             Session session = new Session(movie, showtime, endtime, day);
@@ -238,6 +236,7 @@ public class StaffUI {
      */
     public void getAllSessions() {
         CinemaManager CM = managerList.getCinemaManager();
+        DayType dt = new DayType();
         LinkedHashMap<String, ArrayList<Session>> sessionsMap = CM.getAllSessions();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy h:mm a");
         if (sessionsMap.size() == 0) {
@@ -262,6 +261,7 @@ public class StaffUI {
                 System.out.println("Start Time: " + session.getSessionDateTimeStart().format(dtf));
                 System.out.println("End Time: " + session.getSessionDateTimeEnd().format(dtf));
                 System.out.println("Day Type: " + session.getDay());
+                System.out.println("Day Price Proportion: " + dt.getDayList().get(session.getDay()));
                 System.out.println("------------------");
             }
         }
@@ -368,6 +368,7 @@ public class StaffUI {
         System.out.println("Configure Ticket Price by:");
         System.out.println("1: Type of Day (e.g: Public Holiday, Weekday, Weekend...");
         System.out.println("2: Type of Customer (e.g: Adult, Senior Citizen, Child...");
+        System.out.println("3: View Configurations");
         System.out.println("0: Back");
         choice = sc.nextInt();
         String key;
@@ -375,7 +376,7 @@ public class StaffUI {
         switch (choice) {
             case 1:
                 DayType d = new DayType();
-                System.out.println("Pick: (1) Delete (2) Add");
+                System.out.println("Pick: (1) Delete (2) Add (0) Back");
                 int c = sc.nextInt();
                 System.out.println("Existing Keys");
                 try {
@@ -408,12 +409,17 @@ public class StaffUI {
                         d.setAddPriceProportion(key, newPrice);
                         System.out.println("Successfully updated!");
                         break;
+                    case 0:
+                        return;
+                    default:
+                        showErrorMessage();
+                        return;
 
                 }
                 break;
             case 2:
                 Status s = new Status();
-                System.out.println("Pick: (1) Delete (2) Add");
+                System.out.println("Pick: (1) Delete (2) Add (0) Back");
                 int c2 = sc.nextInt();
                 System.out.println("Existing Keys");
                 try {
@@ -446,9 +452,21 @@ public class StaffUI {
                         s.setAddPriceProportion(key, newPrice);
                         System.out.println("Successfully updated!");
                         break;
+                    case 0:
+                        return;
+                    default:
+                        showErrorMessage();
+                        return;
 
                 }
                 break;
+            case 3:
+                DayType dt = new DayType();
+                dt.printDayType();
+                Status st = new Status();
+                st.printStatus();
+                break;
+
             case 0:
                 return;
             default:
@@ -553,8 +571,6 @@ public class StaffUI {
             System.out.println("Option 3: Remove Movie");
             System.out.println("Option 4: Update Movie Details");
             System.out.println("Option 5: Add Movie Location and Showtimes");
-            /* add new function to update / remove movie showtimes */
-
             System.out.println("Option 6: View All Sessions");
             System.out.println("Option 7: View All Bookings");
             System.out.println("Option 8: View Movies by Rating");
@@ -675,41 +691,5 @@ public class StaffUI {
     private static void showErrorMessage() {
         System.out.println("Invalid option. Please enter a valid option. ");
     }
-
-    /*
-     * public void showUpdateMovieListingMenu() {
-     * int choice = 0;
-     * System.out.println("---------------------------------");
-     * System.out.println("    Update Movie Listing Menu    ");
-     * System.out.println("---------------------------------");
-     * System.out.println("Select options:");
-     * System.out.println("Option 1: Show Movie Listing");
-     * System.out.println("Option 2: Add Movie");
-     * System.out.println("Option 3: Remove Movie");
-     * System.out.println("Option 0: Return to previous menu");
-     * do {
-     * try {
-     * choice = sc.nextInt();
-     * } catch (Exception e) {
-     * sc.nextLine();
-     * showErrorMessage();
-     * continue;
-     * }
-     * switch (choice) {
-     * case 1:
-     * showMovieListing();
-     * break;
-     * case 2:
-     * addMovieMenu();
-     * break;
-     * case 3:
-     * removeMovie();
-     * break;
-     * default:
-     * showErrorMessage();
-     * }
-     * } while (!(0 < choice && choice <= 3));
-     * }
-     */
 
 }

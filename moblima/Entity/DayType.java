@@ -2,19 +2,26 @@ package moblima.Entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 import moblima.Serializer.DayTypeSerializer;
 
+/**
+ * Class DayType holds all the price proportions tied to the corresponding
+ * daytypes.
+ * 
+ * @author Yap Shen Hwei
+ */
 public class DayType implements Serializable {
     private static final long serialVersionUID = 99999L;
-    HashMap<String, Double> dayType;
+    LinkedHashMap<String, Double> dayType;
 
     public DayType() {
         dayType = DayTypeSerializer.getDayTypeDict("DayTypeDatabase.ser");
         if (dayType == null) {
-            dayType = new HashMap<String, Double>();
+            dayType = new LinkedHashMap<String, Double>();
             dayType.put("WEEKDAY", (double) 1);
             dayType.put("WEEKEND", (double) 2);
             dayType.put("PUBLIC_HOLIDAY", (double) 3);
@@ -23,14 +30,26 @@ public class DayType implements Serializable {
     }
 
     /**
-     * getAllExistingKeys() returns the set of all keys stored in the HashMap.
+     * getAllExistingKeys() returns the set of all keys stored in the LinkedHashMap.
      * This is useful in scenarios where a list of options need to be presented on
      * an UI.
      * 
-     * @return a set of keys of dayType
+     * @return an array of keys of dayType
      */
-    public Set<String> getAllExistingKeys() {
-        return dayType.keySet();
+    public ArrayList<String> getAllExistingKeys() {
+        ArrayList<String> keysArray = new ArrayList<>();
+        Set<String> keys = dayType.keySet();
+        keysArray = new ArrayList<String>(keys);
+        return keysArray;
+    }
+
+    /**
+     * Gets the key according to the index
+     * 
+     * @return day key string
+     */
+    public String getKey(int i) {
+        return getAllExistingKeys().get(i);
     }
 
     /**
@@ -78,12 +97,26 @@ public class DayType implements Serializable {
     }
 
     /**
-     * Returns the hashmap containing the daytypes and their corresponding price
+     * Returns the LinkedHashMap containing the daytypes and their corresponding
+     * price
      * proportion.
      * 
+     * @return dayType
      */
-    public HashMap<String, Double> getDayList() {
+    public LinkedHashMap<String, Double> getDayList() {
         return this.dayType;
+    }
+
+    /**
+     * Prints the day type structure so that staff can view the different days and
+     * their corresponding price proportion.
+     */
+    public void printDayType() {
+        int i = 1;
+        for (String day : dayType.keySet()) {
+            System.out.printf("%d. %s : %.1f\n", i++, day, dayType.get(day));
+        }
+        System.out.println("\n-------------------------\n");
     }
 
 }
