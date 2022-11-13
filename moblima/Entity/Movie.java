@@ -6,6 +6,7 @@ import java.util.*;
 /**
  * Represents a Movie.
  * Concrete class that implements the Serializable interface.
+ * 
  * @author Amabel Lim
  * @version 1.0
  * @since 2022-11-13
@@ -162,7 +163,7 @@ public abstract class Movie implements Serializable {
         ratings.add(rating);
         float sum = 0;
         for (int i = 0; i < ratings.size(); i++) {
-            System.out.println("Rating is " + ratings.get(i));
+            // System.out.println("Rating is " + ratings.get(i));
             sum += ratings.get(i);
         }
         this.averageRatings = sum / ratings.size();
