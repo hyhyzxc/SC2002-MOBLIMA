@@ -11,7 +11,9 @@ import java.lang.*;
 /**
  * Handles all user IO for current Customer
  * 
- * @author
+ * @author Isaac Wong
+ * @version 1.0
+ * @since 2022-11-11
  *
  */
 public class CustomerUI {
