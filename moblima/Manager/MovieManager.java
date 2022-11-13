@@ -77,10 +77,16 @@ public class MovieManager {
      * @param rating   the rating to be given to this movie.
      * @param movieNum the movie option from the list of movies.
      */
-    public void addNewMovieRating(float rating, int movieNum) {
-        Movie movieToRate = movieList.get(movieNum);
-        movieToRate.addRatings(rating);
-        s.saveMovieList(movieList, "MovieDatabase.ser");
+    public void addNewMovieRating(float rating, String title) {
+        for (int i = 0; i < movieList.size(); i++) {
+            if (movieList.get(i).getTitle().equals(title)) {
+                movieList.get(i).addRatings(rating);
+                s.saveMovieList(movieList, "MovieDatabase.ser");
+                return;
+            }
+        }
+        System.out.println("No such movie title exists in database.");
+
     }
 
     /**
@@ -90,10 +96,16 @@ public class MovieManager {
      * @param review   the review to be given to this movie.
      * @param movieNum the movie option from the list of movies.
      */
-    public void addNewMovieReview(String review, int movieNum) {
-        Movie movieToReview = movieList.get(movieNum);
-        movieToReview.addReview(review);
-        s.saveMovieList(movieList, "MovieDatabase.ser");
+    public void addNewMovieReview(String review, String title) {
+        for (int i = 0; i < movieList.size(); i++) {
+            if (movieList.get(i).getTitle().equals(title)) {
+                movieList.get(i).addReview(review);
+                s.saveMovieList(movieList, "MovieDatabase.ser");
+                return;
+            }
+        }
+        System.out.println("No such movie title exists in database.");
+
     }
 
     /**

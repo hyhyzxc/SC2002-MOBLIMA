@@ -61,10 +61,11 @@ public class CustomerUI {
             String castString = "|" + String.join("|", castList);
             System.out.println("Cast: " + castString);
             double avgRatings = Math.round(movieList.get(i).getAverageRatings() * 10) / 10.0;
-            if (avgRatings != 0)
+            if (avgRatings != 0) {
                 System.out.println("Average Ratings: " + avgRatings);
-            else
+            } else {
                 System.out.println("Average Ratings: NA");
+            }
             ArrayList<String> reviews = movieList.get(i).getReviews();
             for (int j = 0; j < reviews.size(); j++) {
                 System.out.println("Review " + (j + 1) + ": " + reviews.get(j));
@@ -83,24 +84,21 @@ public class CustomerUI {
         MovieManager MM = managerList.getMovieManager();
         ArrayList<Movie> movieList = MM.getMovieList();
         showAllMovieDetails();
-        System.out.println("Choose the Movie Number to rate.");
-
-        int choice = sc.nextInt();
-        if (!(choice >= 1 && choice <= movieList.size())) {
-            throw new InvalidInputException();
-        }
+        System.out.println("Enter the movie title to add rating.");
+        sc.nextLine();
+        String title = sc.nextLine();
         System.out.println("Enter the rating from 1 - 5");
         float rating = sc.nextFloat();
         if (rating < 1 || rating > 5) {
             throw new InvalidInputException();
         }
-        MM.addNewMovieRating(rating, choice - 1);
+        MM.addNewMovieRating(rating, title);
         System.out.println("Rating made!");
 
         System.out.println("Enter review. Press Enter to terminate. ");
         sc.nextLine();
         String review = sc.nextLine();
-        MM.addNewMovieReview(review, choice - 1);
+        MM.addNewMovieReview(review, title);
         System.out.println("Review made!");
     }
 
