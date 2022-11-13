@@ -7,7 +7,8 @@ import java.util.LinkedHashMap;
 import moblima.Entity.Movie;
 
 /**
- * Represents a SortContext.
+ * Represents a SortContext that delegates the sorting work to the sorter.
+ * 
  * @author Amabel Lim
  * @version 1.0
  * @since 2022-11-12
@@ -20,6 +21,7 @@ public class SortContext {
 
 	/**
 	 * Creates a new SortContext with the given Sorter.
+	 * 
 	 * @param sorter this SortContext's Sorter.
 	 */
 	public SortContext(Sorter sorter) {
