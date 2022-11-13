@@ -30,15 +30,15 @@ public class BookingSerializer extends Serializer {
             os = new ObjectInputStream(fi);
             bookings = ((ArrayList<Booking>) os.readObject());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (EOFException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             try {
                 os.close();

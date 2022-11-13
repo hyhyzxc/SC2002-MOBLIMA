@@ -32,16 +32,16 @@ public class StatusSerializer extends Serializer {
 			os = new ObjectInputStream(fi);
 			statusDict = (LinkedHashMap<String, Double>) os.readObject();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (EOFException e) {
 			System.out.println("EOFException");
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} finally {
 			try {
 				os.close();

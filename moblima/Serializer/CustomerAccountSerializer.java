@@ -33,15 +33,15 @@ public class CustomerAccountSerializer extends Serializer {
             os = new ObjectInputStream(fi);
             accountList = ((ArrayList<CustomerAccount>) os.readObject());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (EOFException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             try {
                 os.close();

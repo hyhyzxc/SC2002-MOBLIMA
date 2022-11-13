@@ -32,13 +32,13 @@ public class DayTypeSerializer extends Serializer {
 			os = new ObjectInputStream(fi);
 			dayTypeDict = ((LinkedHashMap<String, Double>) os.readObject());
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (EOFException e) {
 			// e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 		} catch (Exception e) {
 			// e.printStackTrace();
 		} finally {

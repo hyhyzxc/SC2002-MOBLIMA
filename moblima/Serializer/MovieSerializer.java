@@ -32,15 +32,15 @@ public class MovieSerializer extends Serializer {
             os = new ObjectInputStream(fi);
             movieList = ((ArrayList<Movie>) os.readObject());
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (EOFException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             try {
                 os.close();
