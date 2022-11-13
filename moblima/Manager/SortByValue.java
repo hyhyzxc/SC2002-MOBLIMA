@@ -2,15 +2,21 @@ package moblima.Manager;
 
 import java.util.*;
 import java.util.Map.Entry;
+
 /**
  * Represents a SortByValue.
  * Concrete base class that implements Sorter interface.
+ * 
  * @author Yap Shen Hwei
  * @version 1.0
  * @since 2022-11-11
  */
 public class SortByValue implements Sorter {
-
+	/**
+	 * Implements a sorting algorithm by the value attribute of an object
+	 * 
+	 * @return a sorted LinkedHashMap
+	 */
 	@Override
 	public LinkedHashMap<String, Float> sortBy(LinkedHashMap<String, Float> hm) {
 		// Create a list from elements of HashMap

@@ -13,13 +13,18 @@ import java.util.LinkedHashMap;
  * @since 2022-11-11
  */
 public interface Sorter {
-
+	/**
+	 * Allows Sorter types to implement their own sorting algorithms
+	 * 
+	 * @param hm
+	 * @return A sorted LinkedHashMap according to the sorting algorithm.
+	 */
 	public LinkedHashMap<String, Float> sortBy(LinkedHashMap<String, Float> hm);
 
 	/**
 	 * Method to sort a L
 	 * 
-	 * @return
+	 * @return A sorted LinkedHashMap according to the sorting algorithm.
 	 */
 	public LinkedHashMap<String, Float> sortBy();
 }

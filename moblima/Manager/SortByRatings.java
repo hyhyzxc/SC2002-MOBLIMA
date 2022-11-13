@@ -10,6 +10,7 @@ import moblima.Entity.Movie;
 /**
  * Represents a SortByRatings.
  * Concrete base class that imlements Sorter interface.
+ * 
  * @author Yap Shen Hwei
  * @version 1.0
  * @since 2022-11-11
@@ -20,6 +21,7 @@ public class SortByRatings implements Sorter {
 	/**
 	 * Sorts the movies the the LinkedHashMap according to their ratings.
 	 * Movies with the highest ratings will be listed first.
+	 * 
 	 * @return a LinkedHashMap of sorted movie titles.
 	 */
 	public LinkedHashMap<String, Float> sortBy() {
@@ -32,12 +34,6 @@ public class SortByRatings implements Sorter {
 		}
 
 		return hm;
-
-		// System.out.println("Title (Rating):");
-		// for (int i = 0; i < 5; i++) {
-		// System.out.printf("%s (%f)\n", movies.get(i).getTitle(),
-		// movies.get(i).getAverageRatings());
-		// }
 
 	}
 
